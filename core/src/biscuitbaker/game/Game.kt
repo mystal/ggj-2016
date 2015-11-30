@@ -20,8 +20,10 @@ class Game {
         // TODO: and upgrades
         var json = Json()
         var productsDir = Gdx.files.internal("data/products")
-        for (productFile in productsDir.list()) {
-            var info = json.fromJson(ProductInfo::class.java, productFile.readString())
+        for (productFile in productsDir.list()
+                .filter { it.extension() == "json" }) {
+            var jsonText = productFile.readString()
+            var info = json.fromJson(ProductInfo::class.java, jsonText)
             products.add(Product(info))
         }
     }

@@ -84,8 +84,15 @@ class Ui(game: Game) {
         game.products.forEachIndexed { i, product ->
             var productStatus = productStatuses[i]
             var productButton = productButtons[i]
-            productStatus.setText("%s: %d".format(product.name, product.owned))
-            productButton.isDisabled = game.biscuits < product.price
+            if (product.isVisible(game)) {
+                productStatus.isVisible = true
+                productStatus.setText("%s: %d".format(product.name, product.owned))
+                productButton.isVisible = true
+                productButton.isDisabled = game.biscuits < product.price
+            } else {
+                productStatus.isVisible = false
+                productButton.isVisible = false
+            }
         }
         stage.draw()
     }

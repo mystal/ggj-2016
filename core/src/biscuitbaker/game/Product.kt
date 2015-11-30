@@ -16,5 +16,16 @@ class Product(info: ProductInfo) {
     public val bps: Double
         get() = info.bps
 
-    public var displayCondition: Long = 0
+    // Whether to display this product in the store. Once visible, it
+    // will always be visible.
+    private var visible: Boolean = false
+
+    // TODO: Add several levels of visibility
+    // e.g. show shadowed item first, then full item once it is affordable
+    public fun isVisible(game: Game): Boolean {
+        if (!visible) {
+            visible = info.requirements?.isSatisfied(game) ?: true
+        }
+        return visible
+    }
 }

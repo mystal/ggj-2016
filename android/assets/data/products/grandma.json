@@ -1,5 +1,8 @@
 {
   "name": "Grandma",
   "price": 100,
-  "bps": 5
+  "bps": 5,
+  "requirements": {
+    "biscuits": 70
+  }
 }
