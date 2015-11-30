@@ -1,11 +1,20 @@
 package biscuitbaker.game
 
-class Product(name: String, price: Long, bps: Double) {
+class Product(info: ProductInfo) {
+    public var info: ProductInfo = info
+        private set
+
     public var owned: Int = 0
-    public var name: String = name
-    public var price: Long = price
+
+    public val name: String
+        get() = info.name
+
+    public val price: Long
+        get() = info.price
 
     // TODO: Make this a Long
-    public var bps: Double = bps
+    public val bps: Double
+        get() = info.bps
+
     public var displayCondition: Long = 0
 }

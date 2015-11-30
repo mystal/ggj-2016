@@ -10,8 +10,11 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import java.util.*
 
 class Ui(game: Game) {
-    internal var skin: Skin = Skin(Gdx.files.internal("data/uiskin.json"))
-    internal var stage: Stage = Stage(FitViewport(800f, 600f))
+    internal val WIDTH: Float = 800f
+    internal val HEIGHT: Float = 600f
+
+    internal var skin: Skin = Skin(Gdx.files.internal("ui/uiskin.json"))
+    internal var stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
 
     internal var biscuitsOwned: Label
     internal var biscuitsPerSecond: Label
@@ -62,7 +65,6 @@ class Ui(game: Game) {
             productStatuses.add(productStatus)
             productButtons.add(productButton)
         }
-
 
         table.add(biscuitColumn).width(250f).expandY().top()
         table.add(centerColumn).width(350f).expandY().top()

@@ -1,5 +1,7 @@
 package biscuitbaker.game
 
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.utils.Json
 import java.util.*
 
 class Game {
@@ -14,8 +16,14 @@ class Game {
         private set
 
     init {
-        // TODO: Dynamically load products
-        products.add(Product("Cursor", 10, 0.1))
+        // Dynamically load products
+        // TODO: and upgrades
+        var json = Json()
+        var productsDir = Gdx.files.internal("data/products")
+        for (productFile in productsDir.list()) {
+            var info = json.fromJson(ProductInfo::class.java, productFile.readString())
+            products.add(Product(info))
+        }
     }
 
     fun update(dt: Float) {
