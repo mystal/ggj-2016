@@ -1,15 +1,7 @@
 package biscuitbaker.game
 
-//data class ProductInfo(val name: String, val price: Long, val bps: Double)
-// NOTE: Can't use a data class since JsonBeans expects a default constructor
-class ProductInfo() {
-    public var name: String = ""
-    public var price: Long = 0
-    public var bps: Double = 0.0
-    public var requirements: Requirements? = null
-}
-
-class Requirements() {
+// TODO: Rename to reflect use in Products and Upgrades
+class ProductRequirements() {
     public var biscuits: Long? = null
     //var upgrades: ArrayList<String>
 

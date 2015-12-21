@@ -5,26 +5,35 @@ import com.badlogic.gdx.utils.Json
 import java.util.*
 
 class Game {
-    // TODO: Make this a Long that is tenths of cookies owned
+    // TODO: Maybe make this a Long that is tenths of cookies owned?
     public var biscuits: Double = 0.0
-        private set
-
-    public var products: ArrayList<Product> = ArrayList()
         private set
 
     public var bps: Double = 0.0
         private set
 
+    public var products: ArrayList<Product> = ArrayList()
+        private set
+
+    public var upgrades: ArrayList<Upgrade> = ArrayList()
+        private set
+
     init {
-        // Dynamically load products
-        // TODO: and upgrades
+        // Load products and upgrades
         var json = Json()
-        var productsDir = Gdx.files.internal("data/products")
-        for (productFile in productsDir.list()
-                .filter { it.extension() == "json" }) {
-            var jsonText = productFile.readString()
-            var info = json.fromJson(ProductInfo::class.java, jsonText)
+
+        val productsFile = Gdx.files.internal("data/products.json")
+        val productJson = productsFile.readString()
+        val productInfos = json.fromJson(ProductInfos::class.java, productJson)
+        for (info in productInfos.products!!) {
             products.add(Product(info))
+        }
+
+        val upgradesFile = Gdx.files.internal("data/upgrades.json")
+        val upgradeJson = upgradesFile.readString()
+        val upgradeInfos = json.fromJson(UpgradeInfos::class.java, upgradeJson)
+        for (info in upgradeInfos.upgrades!!) {
+            upgrades.add(Upgrade(info))
         }
     }
 
@@ -40,14 +49,33 @@ class Game {
         biscuits += 1
     }
 
-    fun buy(productId: Int) {
+    fun buyProduct(productId: Int): Boolean {
         if (productId >= products.size) {
-            return
+            return false
         }
+
         val product = products[productId]
         if (biscuits >= product.price) {
             biscuits -= product.price
             product.owned += 1
         }
+        return true
     }
+
+    fun buyUpgrade(upgradeId: Int): Boolean {
+        if (upgradeId >= upgrades.size) {
+            return false
+        }
+
+        val upgrade = upgrades[upgradeId]
+        if (biscuits >= upgrade.price) {
+            biscuits -= upgrade.price
+            upgrade.purchased = true
+        }
+        return true
+    }
+
+    // TODO: implement
+    //fun save() {
+    //}
 }

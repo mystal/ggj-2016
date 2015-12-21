@@ -1,0 +1,12 @@
+{
+  "upgrades": [
+    {
+      "name": "Reinforced index finger",
+      "price": 100,
+      "requirements": {
+      },
+      "effects": {
+      }
+    }
+  ]
+}
