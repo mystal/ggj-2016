@@ -13,8 +13,8 @@ class Ui(game: Game) {
     internal val WIDTH: Float = 800f
     internal val HEIGHT: Float = 600f
 
-    internal var skin: Skin = Skin(Gdx.files.internal("ui/uiskin.json"))
-    internal var stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
+    internal val skin: Skin = Skin(Gdx.files.internal("ui/uiskin.json"))
+    internal val stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
 
     internal var biscuitsOwned: Label
     internal var biscuitsPerSecond: Label
@@ -28,31 +28,33 @@ class Ui(game: Game) {
     init {
         Gdx.input.inputProcessor = stage
 
-        var table = Table()
+        val table = Table()
         table.setFillParent(true)
-        table.debug()
+        table.debug = true
 
-        var bakeryName = TextField("My Bakery", skin)
+        val bakeryName = TextField("My Bakery", skin)
         bakeryName.setAlignment(Align.center)
         biscuitsOwned = Label("%.0f biscuits".format(game.biscuits), skin)
         biscuitsPerSecond = Label("%.0f biscuits per second".format(game.bps), skin)
-        var biscuitButton = TextButton("Biscuit Get", skin)
+        val biscuitButton = TextButton("Biscuit Get", skin)
         biscuitButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 game.click()
             }
         })
 
-        var biscuitColumn = VerticalGroup()
+        val biscuitColumn = VerticalGroup()
         //biscuitColumn.align(Align.center)
         biscuitColumn.addActor(bakeryName)
         biscuitColumn.addActor(biscuitsOwned)
         biscuitColumn.addActor(biscuitsPerSecond)
         biscuitColumn.addActor(biscuitButton)
 
-        var centerColumn = VerticalGroup()
+        val centerColumn = VerticalGroup()
 
-        var storeColumn = VerticalGroup()
+        // TODO: Show producer tiles
+
+        val storeColumn = VerticalGroup()
 
         val storeLabel = Label("Store", skin)
         storeColumn.addActor(storeLabel)
@@ -64,8 +66,8 @@ class Ui(game: Game) {
 
         game.upgrades.forEachIndexed { i, upgrade ->
             val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
-            var upgradeStatus = Label("%s: %s".format(upgrade.name, purchasedStatus), skin)
-            var upgradeButton = TextButton("Buy %s: %d biscuits".format(upgrade.name, upgrade.price), skin)
+            val upgradeStatus = Label("%s: %s".format(upgrade.name, purchasedStatus), skin)
+            val upgradeButton = TextButton("Buy %s: %d biscuits".format(upgrade.name, upgrade.price), skin)
             upgradeButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                     game.buyUpgrade(i)
@@ -84,8 +86,8 @@ class Ui(game: Game) {
         storeColumn.addActor(productsLabel)
 
         game.products.forEachIndexed { i, product ->
-            var productStatus = Label("%s: %d".format(product.name, product.owned), skin)
-            var productButton = TextButton("Buy %s: %d biscuits".format(product.name, product.price), skin)
+            val productStatus = Label("%s: %d".format(product.name, product.owned), skin)
+            val productButton = TextButton("Buy %s: %d biscuits".format(product.name, product.price), skin)
             productButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                     game.buyProduct(i)
@@ -114,8 +116,8 @@ class Ui(game: Game) {
         biscuitsPerSecond.setText("%.1f biscuits per second".format(game.bps))
 
         game.upgrades.forEachIndexed { i, upgrade ->
-            var upgradeStatus = upgradeStatuses[i]
-            var upgradeButton = upgradeButtons[i]
+            val upgradeStatus = upgradeStatuses[i]
+            val upgradeButton = upgradeButtons[i]
             if (upgrade.isVisible(game)) {
                 val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
                 upgradeStatus.isVisible = true
@@ -133,8 +135,8 @@ class Ui(game: Game) {
         }
 
         game.products.forEachIndexed { i, product ->
-            var productStatus = productStatuses[i]
-            var productButton = productButtons[i]
+            val productStatus = productStatuses[i]
+            val productButton = productButtons[i]
             if (product.isVisible(game)) {
                 productStatus.isVisible = true
                 //productStatus.setLayoutEnabled(false)
