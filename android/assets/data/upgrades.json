@@ -4,12 +4,33 @@
       "name": "Reinforced index finger",
       "price": 100,
       "requirements": {
+        "productCount": {
+          "product": "Cursor",
+          "count": 1
+        }
       },
       "effects": {
         "clickBonus": 1,
         "productBpsBonus": {
           "product": "Cursor",
           "value": 0.1
+        }
+      }
+    },
+    {
+      "name": "Carpal tunnel prevention cream",
+      "price": 400,
+      "requirements": {
+        "productCount": {
+          "product": "Cursor",
+          "count": 1
+        }
+      },
+      "effects": {
+        "clickMultiplier": 1.0,
+        "productBpsMultiplier": {
+          "product": "Cursor",
+          "value": 1.0
         }
       }
     }

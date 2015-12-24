@@ -2,15 +2,20 @@
   "products": [
     {
       "name": "Cursor",
-      "price": 10,
+      "price": 15,
       "bps": 0.1
     },
     {
       "name": "Grandma",
       "price": 100,
-      "bps": 5,
+      "bps": 0.5
+    },
+    {
+      "name": "Farm",
+      "price": 500,
+      "bps": 4,
       "requirements": {
-        "biscuits": 70
+        "biscuits": 15
       }
     }
   ]

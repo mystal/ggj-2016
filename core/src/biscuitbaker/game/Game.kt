@@ -42,6 +42,7 @@ class Game(val debug: Boolean) {
             return;
         }
 
+        // TODO: Don't update every frame. Update when buying an item or on some effect (or on a timer?)
         // Update biscuits per second
         bps = products.map {it.totalBps}.reduce {x, y -> x + y}
 

@@ -35,6 +35,8 @@ class Product(info: ProductInfo) {
     public val totalBps: Double
         get() = bps * owned
 
+    public var totalBiscuits: Double = 0.0
+
     // Whether to display this product in the store. Once visible, it
     // will always be visible.
     private var visible: Boolean = false

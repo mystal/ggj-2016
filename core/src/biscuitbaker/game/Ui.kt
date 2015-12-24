@@ -109,7 +109,7 @@ class Ui(game: Game) {
         game.upgrades.forEachIndexed { i, upgrade ->
             val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
             val upgradeStatus = Label("%s: %s".format(upgrade.name, purchasedStatus), skin)
-            val upgradeButton = TextButton("Buy %s: %d biscuits".format(upgrade.name, upgrade.price), skin)
+            val upgradeButton = TextButton("Buy: %d biscuits".format(upgrade.price), skin)
             upgradeButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                     game.buyUpgrade(i)
@@ -130,7 +130,7 @@ class Ui(game: Game) {
         game.products.forEachIndexed { i, product ->
             val productStatus = Label("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
                     product.name, product.owned, product.bps, product.totalBps), skin)
-            val productButton = TextButton("Buy %s: %d biscuits".format(product.name, product.price), skin)
+            val productButton = TextButton("Buy: %d biscuits".format(product.price), skin)
             productButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                     game.buyProduct(i)
@@ -165,6 +165,8 @@ class Ui(game: Game) {
         game.upgrades.forEachIndexed { i, upgrade ->
             val upgradeStatus = upgradeStatuses[i]
             val upgradeButton = upgradeButtons[i]
+
+            // TODO: Don't update visibility every frame, it can be expensive
             if (upgrade.isVisible(game)) {
                 val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
                 upgradeStatus.isVisible = true
@@ -184,6 +186,8 @@ class Ui(game: Game) {
         game.products.forEachIndexed { i, product ->
             val productStatus = productStatuses[i]
             val productButton = productButtons[i]
+
+            // TODO: Don't update visibility every frame, it can be expensive
             if (product.isVisible(game)) {
                 productStatus.isVisible = true
                 //productStatus.setLayoutEnabled(false)
