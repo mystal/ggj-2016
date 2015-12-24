@@ -7,9 +7,7 @@ class ProductRequirements() {
 
     public fun isSatisfied(game: Game): Boolean {
         var satisfied = true
-        if (biscuits != null) {
-            // TODO: Any cleaner way to handle the potential null?
-            val biscuits = biscuits as Long
+        biscuits?.let { biscuits ->
             satisfied = satisfied && (game.biscuits >= biscuits)
         }
         return satisfied
