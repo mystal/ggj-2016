@@ -9,6 +9,6 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Biscuit Baker";
-		new LwjglApplication(new BiscuitBaker(), config);
+		new LwjglApplication(new BiscuitBaker(true), config);
 	}
 }

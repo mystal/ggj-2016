@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
 import java.util.*
 
-class Game {
+class Game(val debug: Boolean) {
     // TODO: Maybe make this a Long that is tenths of cookies owned?
     public var biscuits: Double = 0.0
         private set

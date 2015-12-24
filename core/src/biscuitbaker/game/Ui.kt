@@ -30,12 +30,14 @@ class Ui(game: Game) {
 
         val table = Table()
         table.setFillParent(true)
-        table.debug = true
+        if (game.debug) {
+            table.debug = true
+        }
 
         val bakeryName = TextField("My Bakery", skin)
         bakeryName.setAlignment(Align.center)
         biscuitsOwned = Label("%.0f biscuits".format(game.biscuits), skin)
-        biscuitsPerSecond = Label("%.0f biscuits per second".format(game.bps), skin)
+        biscuitsPerSecond = Label("%.1f biscuits per second".format(game.bps), skin)
         val biscuitButton = TextButton("Biscuit Get", skin)
         biscuitButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {

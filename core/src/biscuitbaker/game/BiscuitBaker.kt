@@ -4,12 +4,12 @@ import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 
-class BiscuitBaker : ApplicationAdapter() {
+class BiscuitBaker(val debug: Boolean) : ApplicationAdapter() {
     internal lateinit var game: Game
     internal lateinit var ui: Ui
 
     override fun create() {
-        game = Game()
+        game = Game(debug)
         ui = Ui(game)
     }
 
