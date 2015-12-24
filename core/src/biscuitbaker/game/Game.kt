@@ -6,11 +6,25 @@ import java.util.*
 
 class Game(val debug: Boolean) {
     // TODO: Maybe make this a Long that is tenths of cookies owned?
+    // Number of biscuits
     public var biscuits: Double = 0.0
-        private set
 
+    // Total number of biscuits ever earned
+    public var biscuitsEarned: Double = 0.0
+
+    // Biscuits per second
     public var bps: Double = 0.0
         private set
+
+    // Biscuits per click
+    public val baseBpc: Double = 1.0
+
+    public var bpcBonus: Double = 0.0
+    public var bpcMultiplier: Double = 1.0
+
+    // Biscuits per click
+    public val bpc: Double
+        get() = (baseBpc + bpcBonus) * bpcMultiplier
 
     public var products: ArrayList<Product> = ArrayList()
         private set
@@ -19,8 +33,67 @@ class Game(val debug: Boolean) {
         private set
 
     init {
+        loadStock()
+        loadState()
+    }
+
+    fun update(dt: Float) {
+        if (products.isEmpty()) {
+            return;
+        }
+
+        // Update biscuits per second
+        bps = products.map {it.totalBps}.reduce {x, y -> x + y}
+
+        // Earn those biscuits!
+        earnBiscuits(bps * dt)
+    }
+
+    fun click() {
+        earnBiscuits(bpc)
+    }
+
+    fun earnBiscuits(amount: Double) {
+        biscuits += amount
+        biscuitsEarned += amount
+    }
+
+    fun spendBiscuits(amount: Double) {
+        biscuits -= amount
+    }
+
+    fun buyProduct(productId: Int): Boolean {
+        if (productId >= products.size) {
+            return false
+        }
+
+        val product = products[productId]
+        if (biscuits >= product.price) {
+            spendBiscuits(product.price.toDouble())
+            product.owned += 1
+        }
+        return true
+    }
+
+    fun buyUpgrade(upgradeId: Int): Boolean {
+        if (upgradeId >= upgrades.size) {
+            return false
+        }
+
+        val upgrade = upgrades[upgradeId]
+        if (biscuits >= upgrade.price) {
+            spendBiscuits(upgrade.price.toDouble())
+            upgrade.purchased = true
+
+            // Apply upgrade's effects
+            upgrade.applyEffects(this)
+        }
+        return true
+    }
+
+    fun loadStock() {
         // Load products and upgrades
-        var json = Json()
+        val json = Json()
 
         val productsFile = Gdx.files.internal("data/products.json")
         val productJson = productsFile.readString()
@@ -37,45 +110,13 @@ class Game(val debug: Boolean) {
         }
     }
 
-    fun update(dt: Float) {
-        if (products.isEmpty()) {
-            return;
-        }
-        bps = products.map {it.bps * it.owned}.reduce {x, y -> x + y}
-        biscuits += bps * dt
-    }
-
-    fun click() {
-        biscuits += 1
-    }
-
-    fun buyProduct(productId: Int): Boolean {
-        if (productId >= products.size) {
-            return false
-        }
-
-        val product = products[productId]
-        if (biscuits >= product.price) {
-            biscuits -= product.price
-            product.owned += 1
-        }
-        return true
-    }
-
-    fun buyUpgrade(upgradeId: Int): Boolean {
-        if (upgradeId >= upgrades.size) {
-            return false
-        }
-
-        val upgrade = upgrades[upgradeId]
-        if (biscuits >= upgrade.price) {
-            biscuits -= upgrade.price
-            upgrade.purchased = true
-        }
-        return true
+    // TODO: implement
+    fun saveState() {
     }
 
     // TODO: implement
-    //fun save() {
-    //}
+    fun loadState() {
+        // TODO: Save state of products and upgrades
+        // Ignore data that loaded from JSON
+    }
 }

@@ -25,6 +25,10 @@ class Ui(game: Game) {
     internal var upgradeStatuses: ArrayList<Label> = ArrayList()
     internal var upgradeButtons: ArrayList<TextButton> = ArrayList()
 
+    // Debug UI
+
+    internal var biscuitsEarned: Label = Label("", skin)
+
     init {
         Gdx.input.inputProcessor = stage
 
@@ -53,6 +57,42 @@ class Ui(game: Game) {
         biscuitColumn.addActor(biscuitButton)
 
         val centerColumn = VerticalGroup()
+
+        // Add a debug menu!
+        if (game.debug) {
+            val debugLabel = Label("Debug", skin)
+            centerColumn.addActor(debugLabel)
+
+            // Add button to add/set biscuit count
+            val biscuitModRow = HorizontalGroup()
+            val biscuitModLabel = TextField("100", skin)
+            biscuitModRow.addActor(biscuitModLabel)
+            val biscuitAddButton = TextButton("Add", skin)
+            biscuitAddButton.addListener(object : ClickListener() {
+                override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                    val amount = biscuitModLabel.text.toDouble()
+                    if (amount >= 0) {
+                        game.biscuits += amount
+                    }
+                }
+            })
+            biscuitModRow.addActor(biscuitAddButton)
+            val biscuitSetButton = TextButton("Set", skin)
+            biscuitSetButton.addListener(object : ClickListener() {
+                override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                    val amount = biscuitModLabel.text.toDouble()
+                    if (amount >= 0) {
+                        game.biscuits = amount
+                    }
+                }
+            })
+            biscuitModRow.addActor(biscuitSetButton)
+            centerColumn.addActor(biscuitModRow)
+
+            centerColumn.addActor(biscuitsEarned)
+
+            // TODO: Add separator
+        }
 
         // TODO: Show producer tiles
 
@@ -88,7 +128,8 @@ class Ui(game: Game) {
         storeColumn.addActor(productsLabel)
 
         game.products.forEachIndexed { i, product ->
-            val productStatus = Label("%s: %d".format(product.name, product.owned), skin)
+            val productStatus = Label("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
+                    product.name, product.owned, product.bps, product.totalBps), skin)
             val productButton = TextButton("Buy %s: %d biscuits".format(product.name, product.price), skin)
             productButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
@@ -117,6 +158,10 @@ class Ui(game: Game) {
         biscuitsOwned.setText("%.0f biscuits".format(game.biscuits))
         biscuitsPerSecond.setText("%.1f biscuits per second".format(game.bps))
 
+        if (game.debug) {
+            biscuitsEarned.setText("Total biscuits earned: %.1f".format(game.biscuitsEarned))
+        }
+
         game.upgrades.forEachIndexed { i, upgrade ->
             val upgradeStatus = upgradeStatuses[i]
             val upgradeButton = upgradeButtons[i]
@@ -142,7 +187,8 @@ class Ui(game: Game) {
             if (product.isVisible(game)) {
                 productStatus.isVisible = true
                 //productStatus.setLayoutEnabled(false)
-                productStatus.setText("%s: %d".format(product.name, product.owned))
+                productStatus.setText("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
+                        product.name, product.owned, product.bps, product.totalBps))
                 productButton.isVisible = true
                 //productButton.setLayoutEnabled(false)
                 productButton.isDisabled = game.biscuits < product.price

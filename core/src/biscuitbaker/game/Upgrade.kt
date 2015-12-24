@@ -10,8 +10,20 @@ class UpgradeInfo() {
     public var effects: UpgradeEffects? = null
 }
 
+class ProductModifier() {
+    public var product: String = ""
+    public var value: Double = 0.0
+}
+
 class UpgradeEffects() {
-    // TODO: What goes here? How do?!
+    public var globalBpsBonus: Double = 0.0
+    public var globalBpsMultiplier: Double = 0.0
+
+    public var clickBonus: Double = 0.0
+    public var clickMultiplier: Double = 0.0
+
+    public var productBpsBonus: ProductModifier? = null
+    public var productBpsMultiplier: ProductModifier? = null
 }
 
 class Upgrade(info: UpgradeInfo) {
@@ -38,6 +50,37 @@ class Upgrade(info: UpgradeInfo) {
             visible = info.requirements?.isSatisfied(game) ?: true
         }
         return visible
+    }
+
+    public fun applyEffects(game: Game) {
+        info.effects?.let { effects ->
+            // TODO: Apply global BPS effects?
+
+            game.bpcBonus += effects.clickBonus
+            game.bpcMultiplier += effects.clickMultiplier
+
+            effects.productBpsBonus?.let { productBpsBonus ->
+                val product = game.products.find { product ->
+                    product.name == productBpsBonus.product
+                }
+                if (product != null) {
+                    product.bpsBonus += productBpsBonus.value
+                } else {
+                    // TODO: Log error
+                }
+            }
+
+            effects.productBpsMultiplier?.let { productBpsMultiplier ->
+                val product = game.products.find { product ->
+                    product.name == productBpsMultiplier.product
+                }
+                if (product != null) {
+                    product.bpsMultiplier += productBpsMultiplier.value
+                } else {
+                    // TODO: Log error
+                }
+            }
+        }
     }
 }
 

@@ -2,7 +2,6 @@ package biscuitbaker.game
 
 import java.util.*
 
-//data class ProductInfo(val name: String, val price: Long, val bps: Double)
 // NOTE: Can't use a data class since JsonBeans expects a default constructor
 class ProductInfo() {
     public var name: String = ""
@@ -20,11 +19,21 @@ class Product(info: ProductInfo) {
     public val name: String
         get() = info.name
 
+    // TODO: Make this increase with owned amount
     public val price: Long
         get() = info.price
 
-    public val bps: Double
+    public val baseBps: Double
         get() = info.bps
+
+    public var bpsBonus: Double = 0.0
+    public var bpsMultiplier: Double = 1.0
+
+    public val bps: Double
+        get() = (baseBps + bpsBonus) * bpsMultiplier
+
+    public val totalBps: Double
+        get() = bps * owned
 
     // Whether to display this product in the store. Once visible, it
     // will always be visible.

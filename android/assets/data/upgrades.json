@@ -6,6 +6,11 @@
       "requirements": {
       },
       "effects": {
+        "clickBonus": 1,
+        "productBpsBonus": {
+          "product": "Cursor",
+          "value": 0.1
+        }
       }
     }
   ]
