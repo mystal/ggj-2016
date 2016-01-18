@@ -2,9 +2,8 @@ buildscript {
     ext {
         appName = "biscuit-baker"
         gdxVersion = '1.7.1'
-        roboVMVersion = '1.9.0'
-        ashleyVersion = '1.6.0'
-        kotlinVersion = '1.0.0-beta-2423'
+        kotlinVersion = '1.0.0-beta-4584'
+        visuiVersion = '0.9.5'
     }
     repositories {
         mavenCentral()
@@ -66,5 +65,6 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        compile "com.kotcrab.vis:vis-ui:$visuiVersion"
     }
 }

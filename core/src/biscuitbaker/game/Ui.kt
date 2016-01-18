@@ -7,13 +7,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.viewport.FitViewport
+import com.kotcrab.vis.ui.VisUI
 import java.util.*
 
 class Ui(game: Game) {
     internal val WIDTH: Float = 800f
     internal val HEIGHT: Float = 600f
 
-    internal val skin: Skin = Skin(Gdx.files.internal("ui/uiskin.json"))
+    internal var skin: Skin
     internal val stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
 
     internal var biscuitsOwned: Label
@@ -27,10 +28,13 @@ class Ui(game: Game) {
 
     // Debug UI
 
-    internal var biscuitsEarned: Label = Label("", skin)
+    internal lateinit var biscuitsEarned: Label
 
     init {
         Gdx.input.inputProcessor = stage
+
+        VisUI.load()
+        skin = VisUI.getSkin()
 
         val table = Table()
         table.setFillParent(true)
@@ -89,12 +93,13 @@ class Ui(game: Game) {
             biscuitModRow.addActor(biscuitSetButton)
             centerColumn.addActor(biscuitModRow)
 
+            biscuitsEarned = Label("", skin)
             centerColumn.addActor(biscuitsEarned)
 
             // TODO: Add separator
         }
 
-        // TODO: Show producer tiles
+        // TODO: Add producer tiles
 
         val storeColumn = VerticalGroup()
 
