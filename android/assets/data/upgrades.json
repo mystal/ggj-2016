@@ -117,7 +117,7 @@
     },
     {
       "name": "Baking Powder",
-      "price": 100000,
+      "price": 1000000,
       "costs": {
         "eclairs": 50,
         "cupcakes": 30,
@@ -132,7 +132,7 @@
       "effects": {
         "productBpsMultiplier": {
           "product": "Alchemical Kitchen",
-          "value": 10.0
+          "value": 5.0
         },
         "productEpsBonus": {
           "product": "Alchemical Kitchen",
@@ -146,6 +146,230 @@
           "product": "Alchemical Kitchen",
           "value": 3.0
         }
+      }
+    },
+    {
+      "name": "Socks",
+      "price": 10000,
+      "costs": {
+        "eclairs": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "House Elves",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productEpsBonus": {
+          "product": "House Elves",
+          "value": 1.0
+        },
+        "productCpsBonus": {
+          "product": "Alchemical Kitchen",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "name": "Shackles",
+      "price": 50000,
+      "costs": {
+        "eclairs": 15,
+        "cupcakes": 5
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Fruit Pie Trees",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productEpsBonus": {
+          "product": "House Elves",
+          "value": 1.0
+        },
+        "productCpsBonus": {
+          "product": "House Elves",
+          "value": 0.5
+        },
+        "productPpsBonus": {
+          "product": "House Elves",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "name": "Transmutation Circle",
+      "price": 50000,
+      "costs": {
+        "eclairs": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Marble Slab",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productEpsBonus": {
+          "product": "House Elves",
+          "value": 1.0
+        },
+        "productCpsBonus": {
+          "product": "Cupcake Wand",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "name": "Necronomicon",
+      "price": 100000,
+      "costs": {
+        "eclairs": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Marble Slab",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productEpsBonus": {
+          "product": "House Elves",
+          "value": 2.0
+        },
+        "productCpsBonus": {
+          "product": "Cupcake Wand",
+          "value": 1.0
+        },
+        "productPpsBonus": {
+          "product": "Fruit Pie Trees",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "name": "Double Ended",
+      "price": 100000,
+      "costs": {
+        "eclairs": 100,
+        "cupcakes": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Cupcake Wand",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productCpsMultiplier": {
+          "product": "Cupcake Wand",
+          "value": 2.0
+        }
+      }
+    },
+    {
+      "name": "Frosting",
+      "price": 200000,
+      "costs": {
+        "eclairs": 100,
+        "cupcakes": 20
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Fruit Pie Trees",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productCpsBonus": {
+          "product": "Cupcake Wand",
+          "value": 2.0
+        },
+        "productPpsBonus":{
+          "product": "Cupcake Wand",
+          "value": 1.0
+        }
+      }
+    },
+    {
+      "name": "Ritual Sacrifice",
+      "price": 300000,
+      "costs": {
+        "eclairs": 110,
+        "cupcakes": 30
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Fruit Pie Trees",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productCpsBonus": {
+          "product": "Spirit Gate",
+          "value": 5.0
+        },
+        "productPpsBonus":{
+          "product": "Spirit Gate",
+          "value": 1.0
+        }
+      }
+    },
+    {
+      "name": "GMO",
+      "price": 400000,
+      "costs": {
+        "eclairs": 110,
+        "cupcakes": 30,
+        "pies": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Fruit Pie Trees",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productPpsBonus":{
+          "product": "Fruit Pie Trees",
+          "value": 3.0
+        }
+      }
+    },
+    {
+      "name": "Gates of Hell",
+      "price": 100000000,
+      "costs": {
+        "eclairs": 110,
+        "cupcakes": 30,
+        "pies": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Oven",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productBpsMultiplier":{
+          "product": "Oven",
+          "value": 5.0
+        },
+        "productEpsMultiplier":{
+          "product": "Oven",
+          "value": 5.0
+        },
+        "productCpsMultiplier":{
+          "product": "Oven",
+          "value": 5.0
+        },
+        "productPpsMultiplier":{
+          "product": "Oven",
+          "value": 5.0
+        }
+      }
     }
   ]
 }
