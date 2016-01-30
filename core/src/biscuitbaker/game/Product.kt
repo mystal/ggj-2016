@@ -7,7 +7,8 @@ class ProductInfo() {
     public var name: String = ""
     public var price: Long = 0
     public var bps: Double = 0.0
-    public var requirements: ProductRequirements? = null
+    // TODO: Add field for secondary productions
+    public var prereqs: Prerequisites? = null
 }
 
 class Product(info: ProductInfo) {
@@ -46,7 +47,7 @@ class Product(info: ProductInfo) {
     public fun isVisible(game: Game): Boolean {
         // Once visible, always visible
         if (!visible) {
-            visible = info.requirements?.isSatisfied(game) ?: true
+            visible = info.prereqs?.isSatisfied(game) ?: true
         }
         return visible
     }

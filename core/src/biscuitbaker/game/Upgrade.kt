@@ -6,7 +6,7 @@ class UpgradeInfo() {
     public var name: String = ""
     public var price: Long = 0
     //public var effect: Effect
-    public var requirements: ProductRequirements? = null
+    public var prereqs: Prerequisites? = null
     public var effects: UpgradeEffects? = null
 }
 
@@ -47,7 +47,7 @@ class Upgrade(info: UpgradeInfo) {
     public fun isVisible(game: Game): Boolean {
         // Once visible, always visible
         if (!visible) {
-            visible = info.requirements?.isSatisfied(game) ?: true
+            visible = info.prereqs?.isSatisfied(game) ?: true
         }
         return visible
     }

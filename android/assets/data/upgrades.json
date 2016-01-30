@@ -3,7 +3,7 @@
     {
       "name": "Reinforced index finger",
       "price": 100,
-      "requirements": {
+      "prereqs": {
         "productCount": {
           "product": "Cursor",
           "count": 1
@@ -20,7 +20,7 @@
     {
       "name": "Carpal tunnel prevention cream",
       "price": 400,
-      "requirements": {
+      "prereqs": {
         "productCount": {
           "product": "Cursor",
           "count": 1

@@ -26,6 +26,8 @@ class Game(val debug: Boolean) {
     public val bpc: Double
         get() = (baseBpc + bpcBonus) * bpcMultiplier
 
+    // TODO: Keep a HashMap of Proucts and Upgrades for quick lookup
+
     public var products: ArrayList<Product> = ArrayList()
         private set
 
@@ -95,6 +97,8 @@ class Game(val debug: Boolean) {
     fun loadStock() {
         // Load products and upgrades
         val json = Json()
+
+        // TODO: Validate loaded data to ensure they meet certain requirements
 
         val productsFile = Gdx.files.internal("data/products.json")
         val productJson = productsFile.readString()

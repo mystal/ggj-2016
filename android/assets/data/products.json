@@ -14,7 +14,7 @@
       "name": "Farm",
       "price": 500,
       "bps": 4,
-      "requirements": {
+      "prereqs": {
         "biscuits": 15
       }
     }
