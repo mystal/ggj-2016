@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.kotcrab.vis.ui.VisUI
+import com.kotcrab.vis.ui.widget.Separator
+import com.kotcrab.vis.ui.widget.VisTable
 import java.util.*
 
 class Ui(game: Game) {
@@ -36,7 +38,7 @@ class Ui(game: Game) {
         VisUI.load()
         skin = VisUI.getSkin()
 
-        val table = Table()
+        val table = VisTable()
         table.setFillParent(true)
         if (game.debug) {
             table.debug = true
@@ -60,12 +62,14 @@ class Ui(game: Game) {
         biscuitColumn.addActor(biscuitsPerSecond)
         biscuitColumn.addActor(biscuitButton)
 
-        val centerColumn = VerticalGroup()
+        val centerColumn = VisTable()
 
         // Add a debug menu!
         if (game.debug) {
             val debugLabel = Label("Debug", skin)
-            centerColumn.addActor(debugLabel)
+            centerColumn.add(debugLabel)
+
+            centerColumn.row()
 
             // Add button to add/set biscuit count
             val biscuitModRow = HorizontalGroup()
@@ -91,25 +95,35 @@ class Ui(game: Game) {
                 }
             })
             biscuitModRow.addActor(biscuitSetButton)
-            centerColumn.addActor(biscuitModRow)
+            centerColumn.add(biscuitModRow)
+
+            centerColumn.row()
 
             biscuitsEarned = Label("", skin)
-            centerColumn.addActor(biscuitsEarned)
+            centerColumn.add(biscuitsEarned)
 
-            // TODO: Add separator
+            centerColumn.row()
+
+            centerColumn.addSeparator()
         }
 
         // TODO: Add producer tiles
 
-        val storeColumn = VerticalGroup()
+        val storeColumn = VisTable()
 
         val storeLabel = Label("Store", skin)
-        storeColumn.addActor(storeLabel)
+        storeColumn.add(storeLabel)
+
+        storeColumn.row()
 
         val upgradesLabel = Label("Upgrades", skin)
-        storeColumn.addActor(upgradesLabel)
+        storeColumn.add(upgradesLabel)
 
-        // TODO: Add separator
+        storeColumn.row()
+
+        storeColumn.addSeparator()
+
+        storeColumn.row()
 
         game.upgrades.forEachIndexed { i, upgrade ->
             val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
@@ -121,16 +135,22 @@ class Ui(game: Game) {
                 }
             })
 
-            storeColumn.addActor(upgradeStatus)
-            storeColumn.addActor(upgradeButton)
+            storeColumn.add(upgradeStatus)
+            storeColumn.row()
+            storeColumn.add(upgradeButton)
+            storeColumn.row()
             upgradeStatuses.add(upgradeStatus)
             upgradeButtons.add(upgradeButton)
         }
 
-        // TODO: Add separator
+        storeColumn.row()
+
+        storeColumn.addSeparator()
 
         val productsLabel = Label("Products", skin)
-        storeColumn.addActor(productsLabel)
+        storeColumn.add(productsLabel)
+
+        storeColumn.row()
 
         game.products.forEachIndexed { i, product ->
             val productStatus = Label("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
@@ -142,15 +162,19 @@ class Ui(game: Game) {
                 }
             })
 
-            storeColumn.addActor(productStatus)
-            storeColumn.addActor(productButton)
+            storeColumn.add(productStatus)
+            storeColumn.row()
+            storeColumn.add(productButton)
+            storeColumn.row()
             productStatuses.add(productStatus)
             productButtons.add(productButton)
         }
 
-        table.add(biscuitColumn).width(250f).expandY().top()
-        table.add(centerColumn).width(350f).expandY().top()
-        table.add(storeColumn).width(300f).expandY().top()
+        table.add(biscuitColumn).width(250f).top()
+        table.addSeparator(true)
+        table.add(centerColumn).expandX().top()
+        table.addSeparator(true)
+        table.add(storeColumn).width(250f).top()
 
         stage.addActor(table)
     }
