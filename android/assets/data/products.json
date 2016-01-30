@@ -23,12 +23,12 @@
       "price": 1000,
       "bps": 50,
       "secondary":{
-        "eclair": 0.5,
-        "cupcake": 0,
-        "pie": 0
+        "eps": 0.5,
+        "cps": 0,
+        "pps": 0
       },
       "prereqs": {
-        "biscuits": 15
+        "level": 1
       }
     },
     {
@@ -36,12 +36,13 @@
       "price": 5000,
       "bps": 100,
       "secondary":{
-        "eclair": 3,
-        "cupcake": 0,
-        "pie": 0
+        "eps": 3,
+        "cps": 0,
+        "pps": 0
       },
       "prereqs": {
-        "biscuits": 15
+        "level": 1,
+        "eclairs": 15
       }
     },
     {
@@ -49,12 +50,12 @@
       "price": 50000,
       "bps": 1000,
       "secondary":{
-        "eclair": 0,
-        "cupcake": 0.2,
-        "pie": 0
+        "eps": 0,
+        "cps": 0.2,
+        "pps": 0
       },
       "prereqs": {
-        "biscuits": 15
+        "level": 2
       }
     },
     {
@@ -62,25 +63,26 @@
       "price": 100000,
       "bps": 4000,
       "secondary":{
-        "eclair": 0,
-        "cupcake": 2,
-        "pie": 0
+        "eps": 0,
+        "cps": 2,
+        "pps": 0
       },
       "prereqs": {
-        "biscuits": 15
+        "level": 2,
+        "cupcakes": 10
       }
     },
     {
-      "name": "Fruit Pie Trees",
+      "name": "Fruit pps Trees",
       "price": 1000000,
       "bps": 15000,
       "secondary":{
-        "eclair": 0,
-        "cupcake": 0,
-        "pie": 0.1
+        "eps": 0,
+        "cps": 0,
+        "pps": 0.1
       },
       "prereqs": {
-        "biscuits": 15
+        "level": 3
       }
     },
     {
@@ -88,12 +90,13 @@
       "price": 1500000,
       "bps": 50000,
       "secondary":{
-        "eclair": 0,
-        "cupcake": 0,
-        "pie": 1
+        "eps": 0,
+        "cps": 0,
+        "pps": 1
       },
       "prereqs": {
-        "biscuits": 15
+        "level": 3,
+        "pies": 5
       }
     }
   ]
