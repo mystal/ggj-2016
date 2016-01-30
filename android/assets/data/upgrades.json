@@ -11,9 +11,9 @@
       },
       "effects": {
         "clickBonus": 1,
-        "productBpsBonus": {
+        "productBpsMultiplier": {
           "product": "Bread Boy",
-          "value": 0.1
+          "value": 2
         }
       }
     },
@@ -117,7 +117,7 @@
     },
     {
       "name": "Baking Powder",
-      "price": 1000000,
+      "price": 10000000,
       "costs": {
         "eclairs": 50,
         "cupcakes": 30,
@@ -125,26 +125,26 @@
       },
       "prereqs": {
         "productCount": {
-          "product": "Fruit Pie Trees",
+          "product": "Oven",
           "count": 1
         }
       },
       "effects": {
         "productBpsMultiplier": {
           "product": "Alchemical Kitchen",
-          "value": 5.0
-        },
-        "productEpsBonus": {
-          "product": "Alchemical Kitchen",
-          "value": 5.0
-        },
-        "productCpsBonus": {
-          "product": "Alchemical Kitchen",
-          "value": 4.0
-        },
-        "productPpsBonus": {
-          "product": "Alchemical Kitchen",
           "value": 3.0
+        },
+        "productEpsMultiplier": {
+          "product": "Alchemical Kitchen",
+          "value": 2.0
+        },
+        "productCpsMultiplier": {
+          "product": "Alchemical Kitchen",
+          "value": 2.0
+        },
+        "productPpsMultiplier": {
+          "product": "Alchemical Kitchen",
+          "value": 2.0
         }
       }
     },
@@ -161,13 +161,9 @@
         }
       },
       "effects": {
-        "productEpsBonus": {
+        "productEpsMultiplier": {
           "product": "House Elves",
-          "value": 1.0
-        },
-        "productCpsBonus": {
-          "product": "Alchemical Kitchen",
-          "value": 0.5
+          "value": 3.0
         }
       }
     },
@@ -185,13 +181,9 @@
         }
       },
       "effects": {
-        "productEpsBonus": {
+        "productEpsMultiplier": {
           "product": "House Elves",
-          "value": 1.0
-        },
-        "productCpsBonus": {
-          "product": "House Elves",
-          "value": 0.5
+          "value": 2.0
         },
         "productPpsBonus": {
           "product": "House Elves",
@@ -213,7 +205,7 @@
       },
       "effects": {
         "productEpsBonus": {
-          "product": "House Elves",
+          "product": "Marble Slab",
           "value": 1.0
         },
         "productCpsBonus": {
@@ -235,11 +227,11 @@
         }
       },
       "effects": {
-        "productEpsBonus": {
+        "productEpsMultiplier": {
           "product": "House Elves",
           "value": 2.0
         },
-        "productCpsBonus": {
+        "productCpsMultiplier": {
           "product": "Cupcake Wand",
           "value": 1.0
         },
@@ -283,7 +275,7 @@
         }
       },
       "effects": {
-        "productCpsBonus": {
+        "productCpsMultiplier": {
           "product": "Cupcake Wand",
           "value": 2.0
         },
@@ -332,7 +324,7 @@
         }
       },
       "effects": {
-        "productPpsBonus":{
+        "productPpsMultiplier":{
           "product": "Fruit Pie Trees",
           "value": 3.0
         }
