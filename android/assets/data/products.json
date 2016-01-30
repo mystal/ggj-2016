@@ -3,17 +3,32 @@
     {
       "name": "Bread Boy",
       "price": 15,
-      "bps": 0.1
+      "bps": 0.1,
+      "secondary":{
+        "eps": 0,
+        "cps": 0,
+        "pps": 0
+      },
     },
     {
       "name": "Alchemical Kitchen",
       "price": 100,
-      "bps": 0.5
+      "bps": 0.5,
+      "secondary":{
+        "eps": 0,
+        "cps": 0,
+        "pps": 0
+      },
     },
     {
       "name": "Flower Mine",
       "price": 300,
       "bps": 10,
+      "secondary":{
+        "eps": 0,
+        "cps": 0,
+        "pps": 0
+      },
       "prereqs": {
         "biscuits": 15
       }

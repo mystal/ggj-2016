@@ -1,36 +1,39 @@
 {
   "upgrades": [
     {
-      "name": "Reinforced index finger",
+      "name": "Apprentice Boulanger",
       "price": 100,
       "prereqs": {
         "productCount": {
-          "product": "Cursor",
+          "product": "Bread Boy",
           "count": 1
         }
       },
       "effects": {
         "clickBonus": 1,
         "productBpsBonus": {
-          "product": "Cursor",
+          "product": "Bread Boy",
           "value": 0.1
         }
       }
     },
     {
-      "name": "Carpal tunnel prevention cream",
-      "price": 400,
+      "name": "Journeyman Patissier",
+      "price": 5000,
+      "costs": {
+        "eclairs": 10
+      },
       "prereqs": {
         "productCount": {
-          "product": "Cursor",
-          "count": 1
+          "product": "Bread Boy",
+          "count": 5
         }
       },
       "effects": {
         "clickMultiplier": 1.0,
         "productBpsMultiplier": {
-          "product": "Cursor",
-          "value": 1.0
+          "product": "Bread Boy",
+          "value": 2.0
         }
       }
     }
