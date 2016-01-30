@@ -17,7 +17,7 @@
       "prereqs": {
         "biscuits": 15
       }
-    }
+    },
     {
       "name": "House Elves",
       "price": 1000,
@@ -25,12 +25,12 @@
       "secondary":{
         "eclair": 0.5,
         "cupcake": 0,
-        "pie": 0,
-      }
+        "pie": 0
+      },
       "prereqs": {
         "biscuits": 15
       }
-    }
+    },
     {
       "name": "Marble Slab",
       "price": 5000,
@@ -38,12 +38,12 @@
       "secondary":{
         "eclair": 3,
         "cupcake": 0,
-        "pie": 0,
-      }
+        "pie": 0
+      },
       "prereqs": {
         "biscuits": 15
       }
-    }
+    },
     {
       "name": "Cupcake Wand",
       "price": 50000,
@@ -51,12 +51,12 @@
       "secondary":{
         "eclair": 0,
         "cupcake": 0.2,
-        "pie": 0,
-      }
+        "pie": 0
+      },
       "prereqs": {
         "biscuits": 15
       }
-    }
+    },
     {
       "name": "Oven",
       "price": 100000,
@@ -64,12 +64,12 @@
       "secondary":{
         "eclair": 0,
         "cupcake": 2,
-        "pie": 0,
-      }
+        "pie": 0
+      },
       "prereqs": {
         "biscuits": 15
       }
-    }
+    },
     {
       "name": "Fruit Pie Trees",
       "price": 1000000,
@@ -77,12 +77,12 @@
       "secondary":{
         "eclair": 0,
         "cupcake": 0,
-        "pie": 0.1,
-      }
+        "pie": 0.1
+      },
       "prereqs": {
         "biscuits": 15
       }
-    }
+    },
     {
       "name": "Spirit Gate",
       "price": 1500000,
@@ -90,8 +90,8 @@
       "secondary":{
         "eclair": 0,
         "cupcake": 0,
-        "pie": 1,
-      }
+        "pie": 1
+      },
       "prereqs": {
         "biscuits": 15
       }
