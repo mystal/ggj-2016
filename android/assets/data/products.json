@@ -1,19 +1,97 @@
 {
   "products": [
     {
-      "name": "Cursor",
+      "name": "Bread Boy",
       "price": 15,
       "bps": 0.1
     },
     {
-      "name": "Grandma",
+      "name": "Alchemical Kitchen",
       "price": 100,
       "bps": 0.5
     },
     {
-      "name": "Farm",
-      "price": 500,
-      "bps": 4,
+      "name": "Flower Mine",
+      "price": 300,
+      "bps": 10,
+      "prereqs": {
+        "biscuits": 15
+      }
+    }
+    {
+      "name": "House Elves",
+      "price": 1000,
+      "bps": 50,
+      "secondary":{
+        "eclair": 0.5,
+        "cupcake": 0,
+        "pie": 0,
+      }
+      "prereqs": {
+        "biscuits": 15
+      }
+    }
+    {
+      "name": "Marble Slab",
+      "price": 5000,
+      "bps": 100,
+      "secondary":{
+        "eclair": 3,
+        "cupcake": 0,
+        "pie": 0,
+      }
+      "prereqs": {
+        "biscuits": 15
+      }
+    }
+    {
+      "name": "Cupcake Wand",
+      "price": 50000,
+      "bps": 1000,
+      "secondary":{
+        "eclair": 0,
+        "cupcake": 0.2,
+        "pie": 0,
+      }
+      "prereqs": {
+        "biscuits": 15
+      }
+    }
+    {
+      "name": "Oven",
+      "price": 100000,
+      "bps": 4000,
+      "secondary":{
+        "eclair": 0,
+        "cupcake": 2,
+        "pie": 0,
+      }
+      "prereqs": {
+        "biscuits": 15
+      }
+    }
+    {
+      "name": "Fruit Pie Trees",
+      "price": 1000000,
+      "bps": 15000,
+      "secondary":{
+        "eclair": 0,
+        "cupcake": 0,
+        "pie": 0.1,
+      }
+      "prereqs": {
+        "biscuits": 15
+      }
+    }
+    {
+      "name": "Spirit Gate",
+      "price": 1500000,
+      "bps": 50000,
+      "secondary":{
+        "eclair": 0,
+        "cupcake": 0,
+        "pie": 1,
+      }
       "prereqs": {
         "biscuits": 15
       }
