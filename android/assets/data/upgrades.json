@@ -26,16 +26,126 @@
       "prereqs": {
         "productCount": {
           "product": "Bread Boy",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productBpsMultiplier": {
+          "product": "Bread Boy",
+          "value": 2.0
+        },
+        "productEpsBonus": {
+          "product": "Bread Boy",
+          "value": 0.1
+        }
+      }
+    },
+    {
+      "name": "Sous Alchemist",
+      "price": 30000,
+      "costs": {
+        "eclairs": 100,
+        "cupcakes": 5
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Bread Boy",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productBpsBonus": {
+          "product": "Bread Boy",
+          "value": 2.0
+        },
+        "productEpsBonus": {
+          "product": "Bread Boy",
+          "value": 1.0
+        },
+        "productCpsBonus":{
+          "product": "Bread Boy",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "name": "Young Bakers",
+      "price": 6000,
+      "costs": {
+        "eclairs": 15
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Alchemical Kitchen",
           "count": 5
         }
       },
       "effects": {
-        "clickMultiplier": 1.0,
         "productBpsMultiplier": {
-          "product": "Bread Boy",
+          "product": "Alchemical Kitchen",
           "value": 2.0
+        },
+        "productEpsBonus": {
+          "product": "Alchemical Kitchen",
+          "value": 0.4
         }
       }
+    },
+    {
+      "name": "Rat Milk",
+      "price": 10000,
+      "costs": {
+        "eclairs": 10,
+        "cupcakes": 20
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Alchemical Kitchen",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productBpsBonus": {
+          "product": "Alchemical Kitchen",
+          "value": 10.0
+        },
+        "productEpsBonus": {
+          "product": "Bread Boy",
+          "value": 0.5
+        }
+      }
+    },
+    {
+      "name": "Baking Powder",
+      "price": 100000,
+      "costs": {
+        "eclairs": 50,
+        "cupcakes": 30,
+        "pies": 10
+      },
+      "prereqs": {
+        "productCount": {
+          "product": "Fruit Pie Trees",
+          "count": 1
+        }
+      },
+      "effects": {
+        "productBpsMultiplier": {
+          "product": "Alchemical Kitchen",
+          "value": 10.0
+        },
+        "productEpsBonus": {
+          "product": "Alchemical Kitchen",
+          "value": 5.0
+        },
+        "productCpsBonus": {
+          "product": "Alchemical Kitchen",
+          "value": 4.0
+        },
+        "productPpsBonus": {
+          "product": "Alchemical Kitchen",
+          "value": 3.0
+        }
     }
   ]
 }
