@@ -73,13 +73,13 @@ class Ui(game: Game) {
         centerColumn.row()
 
         val contentTable = VisTable()
-        centerColumn.add(contentTable)
+        centerColumn.add(contentTable).expand().fill()
 
         mainPane.addListener(object : TabbedPaneAdapter() {
             override fun switchedTab(tab: Tab) {
                 print("Switched tabs!")
                 contentTable.clearChildren()
-                contentTable.add(tab.contentTable).expand().fill()
+                contentTable.add(tab.contentTable).expandX().fillX()
             }
         })
         storeTab = StoreTab(game, skin)

@@ -12,6 +12,8 @@ import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 import java.util.*
 
 class StoreTab(game: Game, skin: Skin): Tab() {
+    internal val MAX_COLUMNS: Int = 4
+
     internal val content: VisTable = VisTable()
 
     internal var productStatuses: ArrayList<Label> = ArrayList()
@@ -21,18 +23,19 @@ class StoreTab(game: Game, skin: Skin): Tab() {
     internal var upgradeButtons: ArrayList<TextButton> = ArrayList()
 
     init {
+        //content.debug = true
         val upgradesLabel = Label("Upgrades", skin)
-        content.add(upgradesLabel)
+        content.add(upgradesLabel).colspan(MAX_COLUMNS)
 
         content.row()
 
-        content.addSeparator()
+        content.addSeparator().colspan(MAX_COLUMNS)
 
         var col = 0
         game.upgrades.forEachIndexed { i, upgrade ->
-            val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
-            val upgradeStatus = Label("%s: %s".format(upgrade.name, purchasedStatus), skin)
-            val upgradeButton = TextButton("Buy: %d biscuits".format(upgrade.price), skin)
+            val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
+            val upgradeStatus = Label(upgrade.name, skin)
+            val upgradeButton = TextButton(buttonText, skin)
             upgradeButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                     game.buyUpgrade(i)
@@ -47,7 +50,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
             content.add(t)
             col += 1
-            if (col == 4) {
+            if (col == MAX_COLUMNS) {
                 content.row()
                 col = 0
             }
@@ -58,12 +61,14 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         content.row()
 
-        content.addSeparator()
+        content.addSeparator().colspan(MAX_COLUMNS)
 
         val productsLabel = Label("Products", skin)
-        content.add(productsLabel)
+        content.add(productsLabel).colspan(MAX_COLUMNS)
 
         content.row()
+
+        content.addSeparator().colspan(MAX_COLUMNS)
 
         col = 0
         game.products.forEachIndexed { i, product ->
@@ -84,7 +89,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
             content.add(t)
             col += 1
-            if (col == 4) {
+            if (col == MAX_COLUMNS) {
                 content.row()
                 col = 0
             }
