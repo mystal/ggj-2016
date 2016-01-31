@@ -12,6 +12,7 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
 
     internal var biscuitsEarned: Label = Label("", skin)
     internal var nextEvent: Label = Label("", skin)
+    internal var level: Label = Label("", skin)
 
     init {
         val debugLabel = Label("Debug", skin)
@@ -64,10 +65,26 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
             }
         })
         table.add(activateEventButton)
+
+        table.row()
+
+        val levelRow = HorizontalGroup()
+
+        levelRow.addActor(level)
+
+        val levelUpButton = TextButton("Level Up", skin)
+        levelUpButton.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                game.levelUp()
+            }
+        })
+        levelRow.addActor(levelUpButton)
+        table.add(levelRow)
     }
 
     public fun render(dt: Float, game: Game) {
         biscuitsEarned.setText("Total biscuits earned: %.1f".format(game.biscuitsEarned))
         nextEvent.setText("Next event: %.1f".format(game.eventManager.eventTimer))
+        level.setText("Level: %d".format(game.level))
     }
 }

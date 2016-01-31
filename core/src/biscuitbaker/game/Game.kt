@@ -5,8 +5,13 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
 import java.util.*
 
+public const val MAX_LEVEL: Int = 3
+
 class Game(val debug: Boolean) {
     // TODO: Maybe make this a Long that is tenths of cookies owned?
+
+    public var level: Int = 0
+        private set
 
     // Biscuits
     public var biscuits: Double = 0.0
@@ -95,6 +100,12 @@ class Game(val debug: Boolean) {
         earnPies(pps * dt)
 
         eventManager.update(dt, this, ui)
+    }
+
+    fun levelUp() {
+        if (level < MAX_LEVEL) {
+            level += 1
+        }
     }
 
     fun click() {
