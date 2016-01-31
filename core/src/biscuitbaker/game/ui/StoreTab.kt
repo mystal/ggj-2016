@@ -1,11 +1,10 @@
 package biscuitbaker.game.ui
 
 import biscuitbaker.game.Game
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.scenes.scene2d.InputEvent
-import com.badlogic.gdx.scenes.scene2d.ui.Label
-import com.badlogic.gdx.scenes.scene2d.ui.Skin
-import com.badlogic.gdx.scenes.scene2d.ui.Table
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton
+import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
@@ -19,6 +18,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
     internal var productStatuses: ArrayList<Label> = ArrayList()
     internal var productButtons: ArrayList<TextButton> = ArrayList()
 
+    internal var upgradeImages: ArrayList<Image> = ArrayList()
     internal var upgradeStatuses: ArrayList<Label> = ArrayList()
     internal var upgradeButtons: ArrayList<TextButton> = ArrayList()
 
@@ -33,6 +33,8 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         var col = 0
         game.upgrades.forEachIndexed { i, upgrade ->
+            val upgradeImage = Image(Texture(Gdx.files.internal("img/placeholder.jpg")))
+            // TODO: Scale image
             val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
             val upgradeStatus = Label(upgrade.name, skin)
             val upgradeButton = TextButton(buttonText, skin)
@@ -43,6 +45,8 @@ class StoreTab(game: Game, skin: Skin): Tab() {
             })
 
             val t = VisTable()
+            t.add(upgradeImage)
+            t.row()
             t.add(upgradeStatus)
             t.row()
             t.add(upgradeButton)
@@ -55,6 +59,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 col = 0
             }
 
+            upgradeImages.add(upgradeImage)
             upgradeStatuses.add(upgradeStatus)
             upgradeButtons.add(upgradeButton)
         }
@@ -113,11 +118,13 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
     fun render(dt: Float, game: Game) {
         game.upgrades.forEachIndexed { i, upgrade ->
+            val upgradeImage = upgradeImages[i]
             val upgradeStatus = upgradeStatuses[i]
             val upgradeButton = upgradeButtons[i]
 
             // TODO: Don't update visibility every frame, it can be expensive
             if (upgrade.isVisible(game)) {
+                upgradeImage.isVisible = true
                 val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
                 upgradeStatus.isVisible = true
                 //upgradeStatus.setLayoutEnabled(false)
@@ -126,6 +133,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 upgradeButton.setText(buttonText)
                 upgradeButton.isDisabled = upgrade.purchased || (game.biscuits < upgrade.price)
             } else {
+                upgradeImage.isVisible = false
                 upgradeStatus.isVisible = false
                 //upgradeStatus.setLayoutEnabled(true)
                 upgradeButton.isVisible = false
