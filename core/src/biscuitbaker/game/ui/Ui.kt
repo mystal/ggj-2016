@@ -153,7 +153,7 @@ class Ui(game: Game) {
         rightColumn.addSeparator()
 
         // TODO: Store event cards in scrollable widget
-        rightColumn.add(eventCards.table)
+        rightColumn.add(eventCards.cardGroup)
         // TODO: Event cards!
 
         rightColumn.row()
@@ -179,21 +179,13 @@ class Ui(game: Game) {
         stage.addActor(table)
     }
 
-    fun updateEvents(events: List<Event>) {
-        eventCards.clear()
-
-        for (event in events) {
-            eventCards.addEvent(event)
-        }
+    fun addEvent(event: Event, index: Int) {
+        eventCards.addEvent(event, index)
     }
 
-    //fun addEvent(event: Event) {
-    //    // TODO: Implement
-    //}
-
-    //fun removeEvent(event: Event) {
-    //    // TODO: Implement
-    //}
+    fun removeEvent(event: Event) {
+        eventCards.removeEvent(event)
+    }
 
     fun update(dt: Float) {
         stage.act(dt)

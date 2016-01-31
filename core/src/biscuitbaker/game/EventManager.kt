@@ -39,13 +39,11 @@ class EventManager {
     fun update(dt: Float, game: Game, ui: Ui) {
         eventTimer -= dt
 
-        var updateEventCards = false
-
         // Check if we should try to activate a new event
         if (eventTimer <= 0f) {
             if (rand.nextFloat() >= EVENT_CHANCE) {
                 // Activate an available event
-                updateEventCards = tryActivateEvent(game, ui)
+                tryActivateEvent(game, ui)
             }
             eventTimer = EVENT_FREQUENCY
         }
@@ -54,25 +52,12 @@ class EventManager {
         activeEvents.removeIf { event ->
             event.tickTimer(dt)
             if (event.timeRemaining <= 0f) {
-                //ui.removeEvent(event)
-                updateEventCards = true
+                ui.removeEvent(event)
                 true
             } else {
                 false
             }
         }
-
-        if (updateEventCards) {
-            updateEvents(ui)
-        }
-    }
-
-    fun updateEvents(ui: Ui) {
-        activeEvents.sortBy { event ->
-            event.timeRemaining
-        }
-
-        ui.updateEvents(activeEvents)
     }
 
     fun tryActivateEvent(game: Game, ui: Ui): Boolean {
@@ -82,7 +67,13 @@ class EventManager {
             event.activate()
             activeEvents.add(event)
 
-            //ui.addEvent(event)
+            activeEvents.sortBy { event ->
+                event.timeRemaining
+            }
+
+            val index = activeEvents.indexOf(event)
+
+            ui.addEvent(event, index)
             return true
         }
         return false

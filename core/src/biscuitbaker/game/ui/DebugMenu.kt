@@ -58,9 +58,7 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
         val activateEventButton = TextButton("Activate Event", skin)
         activateEventButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                if (game.eventManager.tryActivateEvent(game, ui)) {
-                    game.eventManager.updateEvents(ui)
-                }
+                game.eventManager.tryActivateEvent(game, ui)
             }
         })
         table.add(activateEventButton)

@@ -4,6 +4,7 @@ import biscuitbaker.game.Event
 import biscuitbaker.game.GameTime
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.InputEvent
+import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisProgressBar
@@ -22,14 +23,6 @@ class EventCard(val event: Event, val manager: EventCards) {
         table.row()
         timeRemainingBar.setValue(event.timeRemaining)
         table.add(timeRemainingBar)
-
-        val card = this
-
-        table.addListener(object : ClickListener() {
-            override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                manager.select(card)
-            }
-        })
     }
 
     fun update(dt: Float, selected: Boolean) {
@@ -44,17 +37,37 @@ class EventCard(val event: Event, val manager: EventCards) {
 }
 
 class EventCards(val ui: Ui) {
-    public val table: VisTable = VisTable()
+    public val cardGroup: VerticalGroup = VerticalGroup()
 
     public val eventCards: ArrayList<EventCard> = ArrayList()
 
     public var selected: EventCard? = null
 
-    fun addEvent(event: Event) {
+    fun addEvent(event: Event, index: Int) {
         val card = EventCard(event, this)
-        eventCards.add(card)
-        table.add(card.table)
-        table.row()
+        card.table.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                select(card)
+            }
+        })
+        eventCards.add(index, card)
+        cardGroup.addActorAt(index, card.table)
+    }
+
+    fun removeEvent(event: Event) {
+        val card = eventCards.find { card ->
+            card.event == event
+        }
+        if (card != null) {
+            cardGroup.removeActor(card.table)
+            eventCards.remove(card)
+
+            if (selected == card) {
+                deselect()
+            }
+        } else {
+            // TODO: Error
+        }
     }
 
     fun select(card: EventCard) {
@@ -64,12 +77,6 @@ class EventCards(val ui: Ui) {
 
     fun deselect() {
         selected = null
-    }
-
-    fun clear() {
-        deselect()
-        table.clearChildren()
-        eventCards.clear()
     }
 
     fun update(dt: Float) {
