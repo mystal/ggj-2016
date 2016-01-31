@@ -4,6 +4,7 @@ import biscuitbaker.game.Config
 import biscuitbaker.game.Event
 import biscuitbaker.game.Game
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
@@ -76,7 +77,7 @@ class Ui(game: Game) {
 
         val bakeryName = TextField("My Bakery", skin)
         bakeryName.setAlignment(Align.center)
-        biscuitsOwned = Label("%.0f biscuits".format(game.biscuits), skin)
+        biscuitsOwned = Label("%.0f  ".format(game.biscuits), skin)
         biscuitsPerSecond = Label("%.1f biscuits per second".format(game.bps), skin)
         val biscuitButton = TextButton("Biscuit Get", skin)
         biscuitButton.addListener(object : ClickListener() {
@@ -84,15 +85,20 @@ class Ui(game: Game) {
                 game.click()
             }
         })
+        val biscuitsImage = Image(Texture(Gdx.files.internal("img/biscuit.png")))
 
-        eclairsOwned = Label("%.0f eclairs".format(game.eclairs), skin)
+        eclairsOwned = Label("%.0f".format(game.eclairs), skin)
         eclairsPerSecond = Label("%.1f eclairs per second".format(game.eps), skin)
+        val eclairsImage = Image(Texture(Gdx.files.internal("img/eclair.png")))
 
         cupcakesOwned = Label("%.0f cupcakes".format(game.cupcakes), skin)
         cupcakesPerSecond = Label("%.1f cupcakes per second".format(game.cps), skin)
+        val cupcakesImage = Image(Texture(Gdx.files.internal("img/chocolate_cupcake.png")))
+        cupcakesImage.scaleBy(-0.25f)
 
         piesOwned = Label("%.0f pies".format(game.pies), skin)
         piesPerSecond = Label("%.1f pies per second".format(game.pps), skin)
+        val piesImage = Image(Texture(Gdx.files.internal("img/pie.png")))
 
         level = Label("Level: %d".format(game.level), skin)
         expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
@@ -101,25 +107,41 @@ class Ui(game: Game) {
         //leftColumn.add(bakeryName)
         //leftColumn.row()
 
-        leftColumn.add(biscuitsOwned)
+        val bT = VisTable()
+        leftColumn.add(bT)
+        bT.add(biscuitsOwned).expandX()
+        bT.add(biscuitsImage).expandX()
         leftColumn.row()
         leftColumn.add(biscuitsPerSecond)
         leftColumn.row()
         leftColumn.add(biscuitButton)
         leftColumn.row()
         leftColumn.addSeparator()
-        leftColumn.add(eclairsOwned)
+
+        val eT = VisTable()
+        leftColumn.add(eT)
+        eT.add(eclairsOwned).expandX()
+        eT.add(eclairsImage).expandX()
         leftColumn.row()
         leftColumn.add(eclairsPerSecond)
         leftColumn.row()
-        leftColumn.add(cupcakesOwned)
+
+        val cT = VisTable()
+        leftColumn.add(cT)
+        cT.add(cupcakesOwned).expandX()
+        cT.add(cupcakesImage).expandX()
         leftColumn.row()
         leftColumn.add(cupcakesPerSecond)
         leftColumn.row()
-        leftColumn.add(piesOwned)
+
+        val pT = VisTable()
+        leftColumn.add(pT)
+        pT.add(piesOwned).expandX()
+        pT.add(piesImage).expandX()
         leftColumn.row()
         leftColumn.add(piesPerSecond)
         leftColumn.row()
+
         leftColumn.addSeparator()
         leftColumn.add(level)
         leftColumn.row()
@@ -193,16 +215,16 @@ class Ui(game: Game) {
     }
 
     fun render(dt: Float, game: Game) {
-        biscuitsOwned.setText("%.0f biscuits".format(game.biscuits))
+        biscuitsOwned.setText("%.0f  ".format(game.biscuits))
         biscuitsPerSecond.setText("%.1f biscuits per second".format(game.bps))
 
-        eclairsOwned.setText("%.0f eclairs".format(game.eclairs))
+        eclairsOwned.setText("%.0f  ".format(game.eclairs))
         eclairsPerSecond.setText("%.1f eclairs per second".format(game.eps))
 
-        cupcakesOwned.setText("%.0f cupcakes".format(game.cupcakes))
+        cupcakesOwned.setText("%.0f  ".format(game.cupcakes))
         cupcakesPerSecond.setText("%.1f cupcakes per second".format(game.cps))
 
-        piesOwned.setText("%.0f pies".format(game.pies))
+        piesOwned.setText("%.0f  ".format(game.pies))
         piesPerSecond.setText("%.1f pies per second".format(game.pps))
 
         level.setText("Level: %d".format(game.level))
