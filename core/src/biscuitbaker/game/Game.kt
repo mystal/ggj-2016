@@ -5,13 +5,28 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
 import java.util.*
 
-public const val MAX_LEVEL: Int = 3
-
 class Game(val debug: Boolean) {
     // TODO: Maybe make this a Long that is tenths of cookies owned?
 
     public var level: Int = 0
         private set
+
+    public var exp: Int = 0
+        private set
+
+    public var expToLevel: ExpToLevel = ExpToLevel()
+        private set
+
+    public val maxLevel: Int
+        get() = expToLevel.numLevels
+
+    public val expToNextLevel: Int
+        get() {
+            if (level >= maxLevel) {
+                return 0
+            }
+            return expToLevel.get(level) - exp
+        }
 
     // Biscuits
     public var biscuits: Double = 0.0
@@ -102,8 +117,23 @@ class Game(val debug: Boolean) {
         eventManager.update(dt, this, ui)
     }
 
+    fun addExp(amount: Int) {
+        var remaining = amount
+        // TODO: Don't allow negative values
+        while (level < maxLevel && remaining > 0) {
+            if (remaining < expToNextLevel) {
+                exp += remaining
+                remaining = 0
+            } else {
+                remaining -= expToNextLevel
+                levelUp()
+            }
+        }
+    }
+
     fun levelUp() {
-        if (level < MAX_LEVEL) {
+        if (level < maxLevel) {
+            exp = 0
             level += 1
         }
     }
@@ -183,6 +213,10 @@ class Game(val debug: Boolean) {
 
         // TODO: Validate loaded data to ensure they meet certain requirements
 
+        val expFile = Gdx.files.internal("data/exp.json")
+        val expJson = expFile.readString()
+        expToLevel = json.fromJson(ExpToLevel::class.java, expJson)
+
         val productsFile = Gdx.files.internal("data/products.json")
         val productJson = productsFile.readString()
         val productInfos = json.fromJson(ProductInfos::class.java, productJson)
@@ -206,5 +240,17 @@ class Game(val debug: Boolean) {
     fun loadState() {
         // TODO: Save state of products and upgrades
         // Ignore data that loaded from JSON
+    }
+}
+
+class ExpToLevel {
+    public var expToLevel: ArrayList<Int> = ArrayList()
+        private set
+
+    public val numLevels: Int
+        get() = expToLevel.size
+
+    fun get(level: Int): Int {
+        return expToLevel[level]
     }
 }

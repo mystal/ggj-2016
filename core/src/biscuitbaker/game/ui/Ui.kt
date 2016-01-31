@@ -23,9 +23,9 @@ class Ui(game: Game) {
     internal var skin: Skin
     internal val stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
 
-    internal lateinit var leftColumn: VisTable
-    internal lateinit var centerColumn: VisTable
-    internal lateinit var rightColumn: VisTable
+    internal var leftColumn: VisTable
+    internal var centerColumn: VisTable
+    internal var rightColumn: VisTable
 
     // Biscuits
     internal var biscuitsOwned: Label
@@ -43,6 +43,13 @@ class Ui(game: Game) {
     internal var piesOwned: Label
     internal var piesPerSecond: Label
 
+    // Level and Exp
+    internal var level: Label
+    internal var expToNextLevel: Label
+
+    // Tabs
+    internal var mainPane: TabbedPane
+
     internal var storeTab: StoreTab
     internal var eventsTab: EventsTab
 
@@ -59,7 +66,7 @@ class Ui(game: Game) {
         leftColumn = VisTable()
         centerColumn = VisTable()
         rightColumn = VisTable()
-        eventCards = EventCards()
+        eventCards = EventCards(this)
 
         val table = VisTable()
         table.setFillParent(true)
@@ -87,6 +94,9 @@ class Ui(game: Game) {
         piesOwned = Label("%.0f pies".format(game.pies), skin)
         piesPerSecond = Label("%.1f pies per second".format(game.pps), skin)
 
+        level = Label("Level: %d".format(game.level), skin)
+        expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
+
         // Left Column
         leftColumn.add(bakeryName)
         leftColumn.row()
@@ -108,9 +118,14 @@ class Ui(game: Game) {
         leftColumn.add(piesOwned)
         leftColumn.row()
         leftColumn.add(piesPerSecond)
+        leftColumn.row()
+        leftColumn.addSeparator()
+        leftColumn.add(level)
+        leftColumn.row()
+        leftColumn.add(expToNextLevel)
 
         // Center Column
-        val mainPane = TabbedPane()
+        mainPane = TabbedPane()
         centerColumn.add(mainPane.table).expandX().fillX()
 
         centerColumn.row()
@@ -198,6 +213,9 @@ class Ui(game: Game) {
 
         piesOwned.setText("%.0f pies".format(game.pies))
         piesPerSecond.setText("%.1f pies per second".format(game.pps))
+
+        level.setText("Level: %d".format(game.level))
+        expToNextLevel.setText("%d to next level".format(game.expToNextLevel))
 
         storeTab.render(dt, game)
 
