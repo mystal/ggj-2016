@@ -1,7 +1,7 @@
 {
   "upgrades": [
     {
-      "name": "Apprentice\n Boulanger",
+      "name": "Apprentice\nBoulanger",
       "costs": {
         "biscuits": 100
       },
@@ -20,7 +20,7 @@
       }
     },
     {
-      "name": "Journeyman Patissier",
+      "name": "Journeyman\nPatissier",
       "costs": {
         "biscuits": 5000,
         "eclairs": 10
@@ -44,7 +44,7 @@
       }
     },
     {
-      "name": "Sous Alchemist",
+      "name": "Sous\nAlchemist",
       "costs": {
         "biscuits": 30000,
         "eclairs": 100,
@@ -200,7 +200,7 @@
       }
     },
     {
-      "name": "Transmutation Circle",
+      "name": "Transmutation\nCircle",
       "costs": {
         "biscuits": 50000,
         "eclairs": 10
