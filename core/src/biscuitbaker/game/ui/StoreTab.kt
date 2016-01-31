@@ -118,13 +118,13 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
             // TODO: Don't update visibility every frame, it can be expensive
             if (upgrade.isVisible(game)) {
-                val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
+                val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
                 upgradeStatus.isVisible = true
                 //upgradeStatus.setLayoutEnabled(false)
-                upgradeStatus.setText("%s: %s".format(upgrade.name, purchasedStatus))
-                upgradeButton.isVisible = !upgrade.purchased
+                upgradeButton.isVisible = true
                 //upgradeButton.setLayoutEnabled(false)
-                upgradeButton.isDisabled = game.biscuits < upgrade.price
+                upgradeButton.setText(buttonText)
+                upgradeButton.isDisabled = upgrade.purchased || (game.biscuits < upgrade.price)
             } else {
                 upgradeStatus.isVisible = false
                 //upgradeStatus.setLayoutEnabled(true)
