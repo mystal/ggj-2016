@@ -1,9 +1,10 @@
 package biscuitbaker.game
 
-import java.util.*
-
 class Prerequisites() {
     public var biscuits: Long = 0
+    public var eclairs: Long = 0
+    public var cupcakes: Long = 0
+    public var pies: Long = 0
 
     // TODO: Support multiple products
     public var productCount: ProductCount? = null
@@ -11,11 +12,15 @@ class Prerequisites() {
     // TODO: Support multiple upgrades
     public var upgrade: String? = null
 
+    public var level: Int = 0
+
     public fun isSatisfied(game: Game): Boolean {
         // Check biscuit count
         if (game.biscuits < biscuits) {
             return false
         }
+
+        // TODO: Check count for other resources
 
         // Check product count
         productCount?.let { productCount ->
@@ -44,6 +49,8 @@ class Prerequisites() {
                 // TODO: Log error
             }
         }
+
+        // TODO: Check level
 
         return true
     }

@@ -151,7 +151,7 @@ class Ui(game: Game) {
         biscuitsOwned.setText("%.0f biscuits".format(game.biscuits))
         biscuitsPerSecond.setText("%.1f biscuits per second".format(game.bps))
 
-        storeTab.render(dt, game)
+        //storeTab.render(dt, game)
 
         if (game.debug) {
             biscuitsEarned.setText("Total biscuits earned: %.1f".format(game.biscuitsEarned))

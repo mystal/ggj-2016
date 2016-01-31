@@ -2,7 +2,9 @@
   "upgrades": [
     {
       "name": "Apprentice Boulanger",
-      "price": 100,
+      "costs": {
+        "biscuits": 100
+      },
       "prereqs": {
         "productCount": {
           "product": "Bread Boy",
@@ -19,8 +21,8 @@
     },
     {
       "name": "Journeyman Patissier",
-      "price": 5000,
       "costs": {
+        "biscuits": 5000,
         "eclairs": 10
       },
       "prereqs": {
@@ -42,8 +44,8 @@
     },
     {
       "name": "Sous Alchemist",
-      "price": 30000,
       "costs": {
+        "biscuits": 30000,
         "eclairs": 100,
         "cupcakes": 5
       },
@@ -70,8 +72,8 @@
     },
     {
       "name": "Young Bakers",
-      "price": 6000,
       "costs": {
+        "biscuits": 6000,
         "eclairs": 15
       },
       "prereqs": {
@@ -93,8 +95,8 @@
     },
     {
       "name": "Rat Milk",
-      "price": 10000,
       "costs": {
+        "biscuits": 10000,
         "eclairs": 10,
         "cupcakes": 20
       },
@@ -117,8 +119,8 @@
     },
     {
       "name": "Baking Powder",
-      "price": 10000000,
       "costs": {
+        "biscuits": 10000000,
         "eclairs": 50,
         "cupcakes": 30,
         "pies": 10
@@ -150,8 +152,8 @@
     },
     {
       "name": "Socks",
-      "price": 10000,
       "costs": {
+        "biscuits": 10000,
         "eclairs": 10
       },
       "prereqs": {
@@ -169,8 +171,8 @@
     },
     {
       "name": "Shackles",
-      "price": 50000,
       "costs": {
+        "biscuits": 50000,
         "eclairs": 15,
         "cupcakes": 5
       },
@@ -193,8 +195,8 @@
     },
     {
       "name": "Transmutation Circle",
-      "price": 50000,
       "costs": {
+        "biscuits": 50000,
         "eclairs": 10
       },
       "prereqs": {
@@ -216,8 +218,8 @@
     },
     {
       "name": "Necronomicon",
-      "price": 100000,
       "costs": {
+        "biscuits": 100000,
         "eclairs": 10
       },
       "prereqs": {
@@ -243,8 +245,8 @@
     },
     {
       "name": "Double Ended",
-      "price": 100000,
       "costs": {
+        "biscuits": 100000,
         "eclairs": 100,
         "cupcakes": 10
       },
@@ -263,8 +265,8 @@
     },
     {
       "name": "Frosting",
-      "price": 200000,
       "costs": {
+        "biscuits": 200000,
         "eclairs": 100,
         "cupcakes": 20
       },
@@ -287,8 +289,8 @@
     },
     {
       "name": "Ritual Sacrifice",
-      "price": 300000,
       "costs": {
+        "biscuits": 300000,
         "eclairs": 110,
         "cupcakes": 30
       },
@@ -311,8 +313,8 @@
     },
     {
       "name": "GMO",
-      "price": 400000,
       "costs": {
+        "biscuits": 400000,
         "eclairs": 110,
         "cupcakes": 30,
         "pies": 10
@@ -332,8 +334,8 @@
     },
     {
       "name": "Gates of Hell",
-      "price": 100000000,
       "costs": {
+        "biscuits": 100000000,
         "eclairs": 110,
         "cupcakes": 30,
         "pies": 10

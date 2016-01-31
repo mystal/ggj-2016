@@ -4,7 +4,7 @@ import java.util.*
 
 class UpgradeInfo() {
     public var name: String = ""
-    public var price: Long = 0
+    public var costs: Costs? = null
     //public var effect: Effect
     public var prereqs: Prerequisites? = null
     public var effects: UpgradeEffects? = null
@@ -24,6 +24,15 @@ class UpgradeEffects() {
 
     public var productBpsBonus: ProductModifier? = null
     public var productBpsMultiplier: ProductModifier? = null
+
+    public var productEpsBonus: ProductModifier? = null
+    public var productEpsMultiplier: ProductModifier? = null
+
+    public var productCpsBonus: ProductModifier? = null
+    public var productCpsMultiplier: ProductModifier? = null
+
+    public var productPpsBonus: ProductModifier? = null
+    public var productPpsMultiplier: ProductModifier? = null
 }
 
 class Upgrade(info: UpgradeInfo) {
@@ -35,8 +44,9 @@ class Upgrade(info: UpgradeInfo) {
     public val name: String
         get() = info.name
 
+    // TODO: Fix prices to include other costs
     public val price: Long
-        get() = info.price
+        get() = info.costs?.biscuits ?: 0
 
     // Whether to display this product in the store. Once visible, it
     // will always be visible.

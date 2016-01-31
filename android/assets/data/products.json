@@ -4,31 +4,25 @@
       "name": "Bread Boy",
       "price": 15,
       "bps": 0.1,
-      "secondary":{
-        "eps": 0,
-        "cps": 0,
-        "pps": 0
-      },
+      "eps": 0,
+      "cps": 0,
+      "pps": 0
     },
     {
       "name": "Alchemical Kitchen",
       "price": 100,
       "bps": 0.5,
-      "secondary":{
-        "eps": 0,
-        "cps": 0,
-        "pps": 0
-      },
+      "eps": 0,
+      "cps": 0,
+      "pps": 0
     },
     {
       "name": "House Elves",
       "price": 1000,
       "bps": 50,
-      "secondary":{
-        "eps": 0.5,
-        "cps": 0,
-        "pps": 0
-      },
+      "eps": 0.5,
+      "cps": 0,
+      "pps": 0,
       "prereqs": {
         "level": 1
       }
@@ -37,11 +31,9 @@
       "name": "Marble Slab",
       "price": 5000,
       "bps": 100,
-      "secondary":{
-        "eps": 3,
-        "cps": 0,
-        "pps": 0
-      },
+      "eps": 3,
+      "cps": 0,
+      "pps": 0,
       "prereqs": {
         "level": 1,
         "eclairs": 15
@@ -51,11 +43,9 @@
       "name": "Cupcake Wand",
       "price": 50000,
       "bps": 1000,
-      "secondary":{
-        "eps": 0,
-        "cps": 0.5,
-        "pps": 0
-      },
+      "eps": 0,
+      "cps": 0.5,
+      "pps": 0,
       "prereqs": {
         "level": 2
       }
@@ -64,11 +54,9 @@
       "name": "Spirit Gate",
       "price": 100000,
       "bps": 4000,
-      "secondary":{
-        "eps": 0,
-        "cps": 2,
-        "pps": 0
-      },
+      "eps": 0,
+      "cps": 2,
+      "pps": 0,
       "prereqs": {
         "level": 2,
         "cupcakes": 10
@@ -78,11 +66,9 @@
       "name": "Fruit Pie Trees",
       "price": 1000000,
       "bps": 15000,
-      "secondary":{
-        "eps": 0,
-        "cps": 0,
-        "pps": 0.5
-      },
+      "eps": 0,
+      "cps": 0,
+      "pps": 0.5,
       "prereqs": {
         "level": 3
       }
@@ -91,11 +77,9 @@
       "name": "Oven",
       "price": 1500000,
       "bps": 50000,
-      "secondary":{
-        "eps": 0,
-        "cps": 0,
-        "pps": 1.5
-      },
+      "eps": 0,
+      "cps": 0,
+      "pps": 1.5,
       "prereqs": {
         "level": 3,
         "pies": 5

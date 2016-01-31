@@ -21,11 +21,6 @@ class StoreTab(game: Game, skin: Skin): Tab() {
     internal var upgradeButtons: ArrayList<TextButton> = ArrayList()
 
     init {
-        val storeLabel = Label("Store", skin)
-        content.add(storeLabel)
-
-        content.row()
-
         val upgradesLabel = Label("Upgrades", skin)
         content.add(upgradesLabel)
 
@@ -33,6 +28,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         content.addSeparator()
 
+        var col = 0
         game.upgrades.forEachIndexed { i, upgrade ->
             val purchasedStatus = if (upgrade.purchased) "purchased" else "available"
             val upgradeStatus = Label("%s: %s".format(upgrade.name, purchasedStatus), skin)
@@ -43,10 +39,19 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 }
             })
 
-            content.add(upgradeStatus)
-            content.row()
-            content.add(upgradeButton)
-            content.row()
+            val t = VisTable()
+            t.add(upgradeStatus)
+            t.row()
+            t.add(upgradeButton)
+            t.row()
+
+            content.add(t)
+            col += 1
+            if (col == 4) {
+                content.row()
+                col = 0
+            }
+
             upgradeStatuses.add(upgradeStatus)
             upgradeButtons.add(upgradeButton)
         }
@@ -60,6 +65,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         content.row()
 
+        col = 0
         game.products.forEachIndexed { i, product ->
             val productStatus = Label("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
                     product.name, product.owned, product.bps, product.totalBps), skin)
@@ -70,10 +76,19 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 }
             })
 
-            content.add(productStatus)
-            content.row()
-            content.add(productButton)
-            content.row()
+            val t = VisTable()
+            t.add(productStatus)
+            t.row()
+            t.add(productButton)
+            t.row()
+
+            content.add(t)
+            col += 1
+            if (col == 4) {
+                content.row()
+                col = 0
+            }
+
             productStatuses.add(productStatus)
             productButtons.add(productButton)
         }

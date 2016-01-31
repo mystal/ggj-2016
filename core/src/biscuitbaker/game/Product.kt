@@ -7,7 +7,9 @@ class ProductInfo() {
     public var name: String = ""
     public var price: Long = 0
     public var bps: Double = 0.0
-    // TODO: Add field for secondary productions
+    public var eps: Double = 0.0
+    public var cps: Double = 0.0
+    public var pps: Double = 0.0
     public var prereqs: Prerequisites? = null
 }
 
