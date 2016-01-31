@@ -26,6 +26,7 @@ class Product(info: ProductInfo) {
     public val price: Long
         get() = info.price
 
+    // Biscuits
     public val baseBps: Double
         get() = info.bps
 
@@ -39,6 +40,51 @@ class Product(info: ProductInfo) {
         get() = bps * owned
 
     public var totalBiscuits: Double = 0.0
+
+    // Eclairs
+    public val baseEps: Double
+        get() = info.eps
+
+    public var epsBonus: Double = 0.0
+    public var epsMultiplier: Double = 1.0
+
+    public val eps: Double
+        get() = (baseEps + epsBonus) * epsMultiplier
+
+    public val totalEps: Double
+        get() = eps * owned
+
+    public var totalEclairs: Double = 0.0
+
+    // Cupcakes
+    public val baseCps: Double
+        get() = info.cps
+
+    public var cpsBonus: Double = 0.0
+    public var cpsMultiplier: Double = 1.0
+
+    public val cps: Double
+        get() = (baseCps + cpsBonus) * cpsMultiplier
+
+    public val totalCps: Double
+        get() = cps * owned
+
+    public var totalCupcakes: Double = 0.0
+
+    // Pies
+    public val basePps: Double
+        get() = info.pps
+
+    public var ppsBonus: Double = 0.0
+    public var ppsMultiplier: Double = 1.0
+
+    public val pps: Double
+        get() = (basePps + ppsBonus) * ppsMultiplier
+
+    public val totalPps: Double
+        get() = pps * owned
+
+    public var totalPies: Double = 0.0
 
     // Whether to display this product in the store. Once visible, it
     // will always be visible.

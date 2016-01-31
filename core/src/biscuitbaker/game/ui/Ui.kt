@@ -27,8 +27,13 @@ class Ui(game: Game) {
     internal lateinit var centerColumn: VisTable
     internal lateinit var rightColumn: VisTable
 
+    // Biscuits
     internal var biscuitsOwned: Label
     internal var biscuitsPerSecond: Label
+
+    // Eclairs
+    internal var eclairsOwned: Label
+    internal var eclairsPerSecond: Label
 
     internal var storeTab: StoreTab
     internal var eventsTab: EventsTab
@@ -64,6 +69,8 @@ class Ui(game: Game) {
                 game.click()
             }
         })
+        eclairsOwned = Label("%.0f eclairs".format(game.eclairs), skin)
+        eclairsPerSecond = Label("%.1f eclairs per second".format(game.eps), skin)
 
         // Left Column
         leftColumn.add(bakeryName)
@@ -73,6 +80,11 @@ class Ui(game: Game) {
         leftColumn.add(biscuitsPerSecond)
         leftColumn.row()
         leftColumn.add(biscuitButton)
+        leftColumn.row()
+        leftColumn.addSeparator()
+        leftColumn.add(eclairsOwned)
+        leftColumn.row()
+        leftColumn.add(eclairsPerSecond)
 
         // Center Column
         val mainPane = TabbedPane()
@@ -154,6 +166,9 @@ class Ui(game: Game) {
     fun render(dt: Float, game: Game) {
         biscuitsOwned.setText("%.0f biscuits".format(game.biscuits))
         biscuitsPerSecond.setText("%.1f biscuits per second".format(game.bps))
+
+        eclairsOwned.setText("%.0f eclairs".format(game.eclairs))
+        eclairsPerSecond.setText("%.1f eclairs per second".format(game.eps))
 
         storeTab.render(dt, game)
 

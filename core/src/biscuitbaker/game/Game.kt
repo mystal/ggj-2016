@@ -7,7 +7,8 @@ import java.util.*
 
 class Game(val debug: Boolean) {
     // TODO: Maybe make this a Long that is tenths of cookies owned?
-    // Number of biscuits
+
+    // Biscuits
     public var biscuits: Double = 0.0
 
     // Total number of biscuits ever earned
@@ -26,6 +27,36 @@ class Game(val debug: Boolean) {
     // Biscuits per click
     public val bpc: Double
         get() = (baseBpc + bpcBonus) * bpcMultiplier
+
+    // Eclairs
+    public var eclairs: Double = 0.0
+
+    // Total number of eclairs ever earned
+    public var eclairsEarned: Double = 0.0
+
+    // Eclairs per second
+    public var eps: Double = 0.0
+        private set
+
+    // Cupcakes
+    public var cupcakes: Double = 0.0
+
+    // Total number of cupcakes ever earned
+    public var cupcakesEarned: Double = 0.0
+
+    // Cupcakes per second
+    public var cps: Double = 0.0
+        private set
+
+    // Pies
+    public var pies: Double = 0.0
+
+    // Total number of pies ever earned
+    public var piesEarned: Double = 0.0
+
+    // Pies per second
+    public var pps: Double = 0.0
+        private set
 
     // TODO: Keep a HashMap of Products, Upgrades, and Events for quick lookup
 
@@ -50,9 +81,18 @@ class Game(val debug: Boolean) {
         // TODO: Don't update every frame. Update when buying an item or on some effect (or on a timer?)
         // Update biscuits per second
         bps = products.map {it.totalBps}.reduce {x, y -> x + y}
+        // Update eclairs per second
+        eps = products.map {it.totalEps}.reduce {x, y -> x + y}
+        // Update cupcakes per second
+        cps = products.map {it.totalCps}.reduce {x, y -> x + y}
+        // Update pies per second
+        pps = products.map {it.totalPps}.reduce {x, y -> x + y}
 
         // Earn those biscuits!
         earnBiscuits(bps * dt)
+        earnEclairs(eps * dt)
+        earnCupcakes(cps * dt)
+        earnPies(pps * dt)
 
         eventManager.update(dt, this, ui)
     }
@@ -68,6 +108,33 @@ class Game(val debug: Boolean) {
 
     fun spendBiscuits(amount: Double) {
         biscuits -= amount
+    }
+
+    fun earnEclairs(amount: Double) {
+        eclairs += amount
+        eclairsEarned += amount
+    }
+
+    fun spendEclairs(amount: Double) {
+        eclairs -= amount
+    }
+
+    fun earnCupcakes(amount: Double) {
+        cupcakes += amount
+        cupcakesEarned += amount
+    }
+
+    fun spendCupcakes(amount: Double) {
+        cupcakes -= amount
+    }
+
+    fun earnPies(amount: Double) {
+        pies += amount
+        piesEarned += amount
+    }
+
+    fun spendPies(amount: Double) {
+        pies -= amount
     }
 
     fun buyProduct(productId: Int): Boolean {
