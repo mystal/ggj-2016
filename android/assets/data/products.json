@@ -19,7 +19,7 @@
     {
       "name": "House Elves",
       "price": 1000,
-      "bps": 50,
+      "bps": 10,
       "eps": 0.5,
       "cps": 0,
       "pps": 0,
@@ -42,7 +42,7 @@
     {
       "name": "Cupcake Wand",
       "price": 50000,
-      "bps": 1000,
+      "bps": 300,
       "eps": 0,
       "cps": 0.5,
       "pps": 0,
@@ -52,7 +52,7 @@
     },
     {
       "name": "Spirit Gate",
-      "price": 100000,
+      "price": 1000,
       "bps": 4000,
       "eps": 0,
       "cps": 2,
@@ -65,7 +65,7 @@
     {
       "name": "Fruit Pie Trees",
       "price": 1000000,
-      "bps": 15000,
+      "bps": 1500,
       "eps": 0,
       "cps": 0,
       "pps": 0.5,
@@ -76,7 +76,7 @@
     {
       "name": "Oven",
       "price": 1500000,
-      "bps": 50000,
+      "bps": 3000,
       "eps": 0,
       "cps": 0,
       "pps": 1.5,
