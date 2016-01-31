@@ -26,6 +26,12 @@ class Event(info: EventInfo) {
     public val duration: Int
         get() = info.duration
 
+    public val exp: Int
+        get() = info.rewards?.exp ?: 0
+
+    public val costs: Costs?
+        get() = info.costs
+
     public var timeRemaining: Float = 0f
         private set
 
@@ -55,6 +61,31 @@ class Event(info: EventInfo) {
             visible = info.prereqs?.isSatisfied(game) ?: true
         }
         return visible
+    }
+
+    public fun fulfill(game: Game) {
+        costs?.let { costs ->
+            game.spendBiscuits(costs.biscuits.toDouble())
+            game.spendEclairs(costs.eclairs.toDouble())
+            game.spendCupcakes(costs.cupcakes.toDouble())
+            game.spendPies(costs.pies.toDouble())
+        }
+
+        game.addExp(exp)
+
+        completedOnce = true
+    }
+
+    public fun canBeFulfilled(game: Game): Boolean {
+        val costs = costs
+        if (costs == null) {
+            return true
+        } else {
+            return game.biscuits >= costs.biscuits &&
+                   game.eclairs >= costs.eclairs &&
+                   game.cupcakes >= costs.cupcakes &&
+                   game.pies >= costs.pies
+        }
     }
 }
 

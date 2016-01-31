@@ -165,7 +165,7 @@ class Ui(game: Game) {
             }
         })
         storeTab = StoreTab(game, skin)
-        eventsTab = EventsTab(game, skin)
+        eventsTab = EventsTab(game, skin, eventCards)
         mainPane.add(storeTab)
         mainPane.add(eventsTab)
 
@@ -234,6 +234,7 @@ class Ui(game: Game) {
         expToNextLevel.setText("%d to next level".format(game.expToNextLevel))
 
         storeTab.render(dt, game)
+        eventsTab.render(dt, game)
 
         eventCards.update(dt)
 

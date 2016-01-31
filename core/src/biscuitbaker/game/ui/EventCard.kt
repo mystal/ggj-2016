@@ -42,6 +42,10 @@ class EventCards(val ui: Ui) {
     public val eventCards: ArrayList<EventCard> = ArrayList()
 
     public var selected: EventCard? = null
+        private set(value) {
+            ui.eventsTab.showEvent(value?.event)
+            field = value
+        }
 
     fun addEvent(event: Event, index: Int) {
         val card = EventCard(event, this)

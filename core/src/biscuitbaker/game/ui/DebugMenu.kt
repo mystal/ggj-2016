@@ -88,6 +88,15 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
         })
         levelRow.addActor(levelUpButton)
         table.add(levelRow)
+
+        val deselectEventButton = TextButton("Deselect Event", skin)
+        deselectEventButton.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                ui.eventCards.deselect()
+            }
+        })
+        table.row()
+        table.add(deselectEventButton)
     }
 
     public fun render(dt: Float, game: Game) {
