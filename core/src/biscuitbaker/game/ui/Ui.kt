@@ -75,8 +75,10 @@ class Ui(game: Game) {
             table.debug = true
         }
 
-        val bakeryName = TextField("My Bakery", skin)
-        bakeryName.setAlignment(Align.center)
+        //val bakeryName = TextField("My Bakery", skin)
+        //bakeryName.setAlignment(Align.center)
+        val logoImage = Image(Texture(Gdx.files.internal("img/logo.png")))
+
         biscuitsOwned = Label("%.0f  ".format(game.biscuits), skin)
         biscuitsPerSecond = Label("%.1f biscuits per second".format(game.bps), skin)
         val biscuitButton = TextButton("Biscuit Get", skin)
@@ -104,8 +106,9 @@ class Ui(game: Game) {
         expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
 
         // Left Column
-        //leftColumn.add(bakeryName)
-        //leftColumn.row()
+        leftColumn.add(logoImage).expandX()
+        leftColumn.row()
+        leftColumn.addSeparator()
 
         val bT = VisTable()
         leftColumn.add(bT)
