@@ -108,6 +108,8 @@ class Ui(game: Game) {
         rightColumn.add(eventCards.table)
         // TODO: Event cards!
 
+        rightColumn.row()
+
         // Add a debug menu!
         if (game.debug) {
             // TOOD: Add spacer
