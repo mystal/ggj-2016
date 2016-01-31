@@ -4,9 +4,11 @@ import biscuitbaker.game.Event
 import biscuitbaker.game.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 
@@ -71,6 +73,9 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
         if (event == null) {
             content.add(noEventSelected)
         } else {
+            if (event.info.factionImage != "") {
+                factionImage.drawable = TextureRegionDrawable(TextureRegion(Texture(Gdx.files.internal(event.info.factionImage))))
+            }
             eventName.setText(event.name)
             expLabel.setText("%d exp".format(event.exp))
 

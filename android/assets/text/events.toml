@@ -1,41 +1,48 @@
 ["Random 1"]
 faction = "corporate"
+name = "Catering Opportunity!"
 flavor = "We like your agile workflow environment"
 description = """Our co-working space is hosting a meetup this week. We're big fans and want to purchase some of your artisanal snacks."""
 completed = "We love supporting local business."
 
 ["Random 2"]
 faction = "scouts"
+name = "Girl Scout Relief"
 flavor = "Comrade! We must speak."
 description = """Our insubordinate Brownies keep eating the cookies! Deliver us something for them to munch before they consume all our wares"""
 completed = "You have our gratitude."
 
 ["Random 3"]
 faction = "grandmother"
+name = "A favor"
 flavor = "Oh sweetie, I need a favor."
 description = """My weekly Alchemical Knitting Circle needs some snacks. I've told them yours are the best. I'm not interrupting, am I?"""
 completed = "The girls'll love these."
 
 ["Biscuit 1"]
 faction = "scouts"
+name = "Heist"
 flavor = "A word, comrade."
 description = """Last night, a shipment of our cookies was stolen from our warehouse. We think we know the capitalist pigs who did it, and we're gonna make them pay... but we need something to give our customers in the meantime. Bake us a peace offering."""
 completed = "You helped us out, comrade. We'll remember you."
 
 ["Eclair 1"]
 faction = "corporate"
+name = "Product Launch"
 flavor = "Are you a thought leader?"
 description = """We have an exciting project launch coming up! Some big investors are getting in on the front line of our disruptive technology startup. We're offering you the exclusive chance to cater our event and catch the eye of the movers and shakers of our industry."""
 completed = "Thanks for being part of this innovative project."
 
 ["Cupcake 1"]
 faction = "grandmother"
+name = "A Birthday Party"
 flavor = "Happy birthday to me!"
 description = """I'm turning one hundred and sixteen and throwing a party for all my favorite people. I need you to spell out "Sweet 116!" in cupcakes. What? No, you're not invited. Maybe when you're older."""
 completed = "I'm so proud of you. You're just like my second cousin Belinda."
 
 ["Pie 1"]
 faction = "world"
+name = "The Hero We Need"
 flavor = "Alchemist!"
 description = """The World Baking Organization has noticed your exceptional alchemical performance. It is for this reason we are calling upon you. We have... a situation.
 

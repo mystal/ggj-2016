@@ -142,7 +142,7 @@
       "name": "Pie 1",
       "duration": 10,
       "repeatable": false,
-      "image": "img/scouts_big.png",
+      "image": "img/WBO.png",
       "costs": {
         "pies": 10
       },

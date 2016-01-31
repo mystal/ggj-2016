@@ -10,7 +10,7 @@ class EventInfo() {
     public var prereqs: Prerequisites? = null
     public var costs: Costs? = null
     public var rewards: Rewards? = null
-    public var image: String = ""
+    public var factionImage: String = ""
 }
 
 class Event(info: EventInfo) {
