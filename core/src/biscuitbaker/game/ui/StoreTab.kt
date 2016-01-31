@@ -11,9 +11,9 @@ import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 import java.util.*
 
-class StoreTab(game: Game, skin: Skin): Tab() {
-    internal val MAX_COLUMNS: Int = 4
+internal const val MAX_COLUMNS: Int = 4
 
+class StoreTab(game: Game, skin: Skin): Tab() {
     internal val content: VisTable = VisTable()
 
     internal var productStatuses: ArrayList<Label> = ArrayList()

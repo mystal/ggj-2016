@@ -1,5 +1,6 @@
 package biscuitbaker.game.ui
 
+import biscuitbaker.game.Config
 import biscuitbaker.game.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.scenes.scene2d.InputEvent
@@ -9,17 +10,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.kotcrab.vis.ui.VisUI
-import com.kotcrab.vis.ui.widget.Separator
 import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPane
 import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPaneAdapter
-import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPaneListener
-import java.util.*
 
 class Ui(game: Game) {
-    internal val WIDTH: Float = 1280f
-    internal val HEIGHT: Float = 720f
+    internal val WIDTH: Float = Config.SCREEN_WIDTH.toFloat()
+    internal val HEIGHT: Float = Config.SCREEN_HEIGHT.toFloat()
 
     internal var skin: Skin
     internal val stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
@@ -28,6 +26,7 @@ class Ui(game: Game) {
     internal var biscuitsPerSecond: Label
 
     internal var storeTab: StoreTab
+    internal var eventsTab: EventsTab
 
     // Debug UI
 
@@ -84,7 +83,11 @@ class Ui(game: Game) {
             }
         })
         storeTab = StoreTab(game, skin)
+        eventsTab = EventsTab(game, skin)
         mainPane.add(storeTab)
+        mainPane.add(eventsTab)
+
+        mainPane.switchTab(0)
 
         // Right Column
         val rightColumn = VisTable()
