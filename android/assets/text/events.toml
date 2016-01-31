@@ -1,0 +1,43 @@
+["Random 1"]
+faction = "corporate"
+flavor = "We like your agile workflow environment"
+long_description = """Our co-working space is hosting a meetup this week. We're big fans and want to purchase some of your artisanal snacks."""
+completed = "We love supporting local business."
+
+["Random 2"]
+faction = "scouts"
+flavor = "Comrade! We must speak."
+long_description = """Our insubordinate Brownies keep eating the cookies! Deliver us something for them to munch before they consume all our wares"""
+completed = "You have our gratitude."
+
+["Random 3"]
+faction = "grandmother"
+flavor = "Oh sweetie, I need a favor."
+long_description = """My weekly Alchemical Knitting Circle needs some snacks. I've told them yours are the best. I'm not interrupting, am I?"""
+completed = "The girls'll love these."
+
+["Biscuit 1"]
+faction = "scouts"
+flavor = "A word, comrade."
+long_description = """Last night, a shipment of our cookies was stolen from our warehouse. We think we know the capitalist pigs who did it, and we're gonna make them pay... but we need something to give our customers in the meantime. Bake us a peace offering."""
+completed = "You helped us out, comrade. We'll remember you."
+
+["Eclair 1"]
+faction = "corporate"
+flavor = "Are you a thought leader?"
+long_description = """We have an exciting project launch coming up! Some big investors are getting in on the front line of our disruptive technology startup. We're offering you the exclusive chance to cater our event and catch the eye of the movers and shakers of our industry."""
+completed = "Thanks for being part of this innovative project."
+
+["Cupcake 1"]
+faction = "grandmother"
+flavor = "Happy birthday to me!"
+long_description = """I'm turning one hundred and sixteen and throwing a party for all my favorite people. I need you to spell out "Sweet 116!" in cupcakes. What? No, you're not invited. Maybe when you're older."""
+completed = "I'm so proud of you. You're just like my second cousin Belinda."
+
+["Pie 1"]
+faction = "world"
+flavor = "Alchemist!"
+long_description = """The World Baking Organization has noticed your exceptional alchemical performance. It is for this reason we are calling upon you. We have... a situation.
+
+All around the world, we have noticed a general uptick in pie thefts off of windowsills and display cases. We fear... it might be clowns. Help us replace the stolen pies while we track down the criminals responsible."""
+completed = "Good work, Alchemist. Truly you are an exemplary member of our ranks."
