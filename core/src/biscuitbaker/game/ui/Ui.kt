@@ -130,14 +130,12 @@ class Ui(game: Game) {
 
         centerColumn.row()
 
-        // TODO: Make contentTable scrollable
-        val contentTable = VisTable()
-        centerColumn.add(contentTable).expand().fill()
+        val contentPane = ScrollPane(null)
+        centerColumn.add(contentPane).expand().fill()
 
         mainPane.addListener(object : TabbedPaneAdapter() {
             override fun switchedTab(tab: Tab) {
-                contentTable.clearChildren()
-                contentTable.add(tab.contentTable).expand().fillX().top()
+                contentPane.widget = tab.contentTable
             }
         })
         storeTab = StoreTab(game, skin)
