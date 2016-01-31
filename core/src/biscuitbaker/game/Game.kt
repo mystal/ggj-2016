@@ -26,12 +26,15 @@ class Game(val debug: Boolean) {
     public val bpc: Double
         get() = (baseBpc + bpcBonus) * bpcMultiplier
 
-    // TODO: Keep a HashMap of Proucts and Upgrades for quick lookup
+    // TODO: Keep a HashMap of Products, Upgrades, and Events for quick lookup
 
     public var products: ArrayList<Product> = ArrayList()
         private set
 
     public var upgrades: ArrayList<Upgrade> = ArrayList()
+        private set
+
+    public var events: ArrayList<Event> = ArrayList()
         private set
 
     init {
@@ -112,6 +115,13 @@ class Game(val debug: Boolean) {
         val upgradeInfos = json.fromJson(UpgradeInfos::class.java, upgradeJson)
         for (info in upgradeInfos.upgrades!!) {
             upgrades.add(Upgrade(info))
+        }
+
+        val eventsFile = Gdx.files.internal("data/events.json")
+        val eventJson = eventsFile.readString()
+        val eventInfos = json.fromJson(EventInfos::class.java, eventJson)
+        for (info in eventInfos.events!!) {
+            events.add(Event(info))
         }
     }
 
