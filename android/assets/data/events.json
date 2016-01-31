@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "name": "Biscuit 1"
+    },
+    {
+      "name": "Biscuit 2"
+    },
+    {
+      "name": "Eclair 1"
+    },
+    {
+      "name": "Eclair 2"
+    },
+    {
+      "name": "Cupcake 1"
+    },
+    {
+      "name": "Cupcake 2"
+    },
+    {
+      "name": "Pie 1"
+    },
+    {
+      "name": "Pie 2"
+    }
+  ]
+}
