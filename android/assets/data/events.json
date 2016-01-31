@@ -1,8 +1,51 @@
 {
   "events": [
     {
+      "name": "Random 1",
+      "duration": 5,
+      "repeatable": true,
+      "costs": {
+        "biscuits": 1000
+      },
+      "prereqs": {
+        "level": 0
+      },
+      "rewards":{
+        "exp": 100
+      }
+    },
+    {
+      "name": "Random 2",
+      "duration": 5,
+      "repeatable": true,
+      "costs": {
+        "biscuits": 1000
+      },
+      "prereqs": {
+        "level": 0
+      },
+      "rewards":{
+        "exp": 100
+      }
+    },
+    {
+      "name": "Random 3",
+      "duration": 5,
+      "repeatable": true,
+      "costs": {
+        "biscuits": 1000
+      },
+      "prereqs": {
+        "level": 0
+      },
+      "rewards":{
+        "exp": 100
+      }
+    },
+    {
       "name": "Biscuit 1",
       "duration": 5,
+      "repeatable": false,
       "costs": {
         "biscuits": 1000
       },
@@ -16,6 +59,7 @@
     {
       "name": "Biscuit 2",
       "duration": 8,
+      "repeatable": false,
       "costs": {
         "biscuits": 2000
       },
@@ -29,6 +73,7 @@
     {
       "name": "Eclair 1",
       "duration": 3,
+      "repeatable": false,
       "costs": {
         "biscuits": 1500,
         "eclairs": 10
@@ -43,6 +88,7 @@
     {
       "name": "Eclair 2",
       "duration": 10,
+      "repeatable": false,
       "costs": {
         "biscuits": 3000,
         "eclairs": 20
@@ -57,6 +103,7 @@
     {
       "name": "Cupcake 1",
       "duration": 4,
+      "repeatable": false,
       "costs": {
         "eclairs": 25,
         "cupcakes": 10
@@ -71,6 +118,7 @@
     {
       "name": "Cupcake 2",
       "duration": 5,
+      "repeatable": false,
       "costs": {
         "cupcakes": 30
       },
@@ -84,6 +132,7 @@
     {
       "name": "Pie 1",
       "duration": 10,
+      "repeatable": false,
       "costs": {
         "pies": 10
       },
@@ -97,6 +146,7 @@
     {
       "name": "Pie 2",
       "duration": 15,
+      "repeatable": false,
       "costs": {
         "pies": 20
       },
