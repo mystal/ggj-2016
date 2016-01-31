@@ -1,6 +1,7 @@
 package biscuitbaker.game.ui
 
 import biscuitbaker.game.Config
+import biscuitbaker.game.Event
 import biscuitbaker.game.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.scenes.scene2d.InputEvent
@@ -22,21 +23,30 @@ class Ui(game: Game) {
     internal var skin: Skin
     internal val stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
 
+    internal lateinit var leftColumn: VisTable
+    internal lateinit var centerColumn: VisTable
+    internal lateinit var rightColumn: VisTable
+
     internal var biscuitsOwned: Label
     internal var biscuitsPerSecond: Label
 
     internal var storeTab: StoreTab
     internal var eventsTab: EventsTab
 
-    // Debug UI
+    internal lateinit var eventCards: EventCards
 
-    internal lateinit var biscuitsEarned: Label
+    internal var debugMenu: DebugMenu? = null
 
     init {
         Gdx.input.inputProcessor = stage
 
         VisUI.load()
         skin = VisUI.getSkin()
+
+        leftColumn = VisTable()
+        centerColumn = VisTable()
+        rightColumn = VisTable()
+        eventCards = EventCards()
 
         val table = VisTable()
         table.setFillParent(true)
@@ -56,16 +66,15 @@ class Ui(game: Game) {
         })
 
         // Left Column
-        val leftColumn = VerticalGroup()
-        //leftColumn.align(Align.center)
-        leftColumn.addActor(bakeryName)
-        leftColumn.addActor(biscuitsOwned)
-        leftColumn.addActor(biscuitsPerSecond)
-        leftColumn.addActor(biscuitButton)
+        leftColumn.add(bakeryName)
+        leftColumn.row()
+        leftColumn.add(biscuitsOwned)
+        leftColumn.row()
+        leftColumn.add(biscuitsPerSecond)
+        leftColumn.row()
+        leftColumn.add(biscuitButton)
 
         // Center Column
-        val centerColumn = VisTable()
-
         val mainPane = TabbedPane()
         centerColumn.add(mainPane.table).expandX().fillX()
 
@@ -77,9 +86,8 @@ class Ui(game: Game) {
 
         mainPane.addListener(object : TabbedPaneAdapter() {
             override fun switchedTab(tab: Tab) {
-                print("Switched tabs!")
                 contentTable.clearChildren()
-                contentTable.add(tab.contentTable).expandX().fillX()
+                contentTable.add(tab.contentTable).expand().fill()
             }
         })
         storeTab = StoreTab(game, skin)
@@ -90,62 +98,52 @@ class Ui(game: Game) {
         mainPane.switchTab(0)
 
         // Right Column
-        val rightColumn = VisTable()
+        // Events overview
+        val eventsLabel = Label("Events", skin)
+        rightColumn.add(eventsLabel)
+        rightColumn.row()
+        rightColumn.addSeparator()
 
-        // TODO: Events overview
-        // TODO: Add scrollable
+        // TODO: Store event cards in scrollable widget
+        rightColumn.add(eventCards.table)
+        // TODO: Event cards!
 
         // Add a debug menu!
         if (game.debug) {
-            // TOOD: Add expander
+            // TOOD: Add spacer
 
             rightColumn.addSeparator()
 
-            val debugLabel = Label("Debug", skin)
-            rightColumn.add(debugLabel)
+            val newDebugMenu = DebugMenu(game, this, skin)
+            rightColumn.add(newDebugMenu.table)
 
-            rightColumn.row()
-
-            // Add button to add/set biscuit count
-            val biscuitModRow = HorizontalGroup()
-            val biscuitModLabel = TextField("100", skin)
-            biscuitModRow.addActor(biscuitModLabel)
-            val biscuitAddButton = TextButton("Add", skin)
-            biscuitAddButton.addListener(object : ClickListener() {
-                override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                    val amount = biscuitModLabel.text.toDouble()
-                    if (amount >= 0) {
-                        game.biscuits += amount
-                    }
-                }
-            })
-            biscuitModRow.addActor(biscuitAddButton)
-            val biscuitSetButton = TextButton("Set", skin)
-            biscuitSetButton.addListener(object : ClickListener() {
-                override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                    val amount = biscuitModLabel.text.toDouble()
-                    if (amount >= 0) {
-                        game.biscuits = amount
-                    }
-                }
-            })
-            biscuitModRow.addActor(biscuitSetButton)
-            rightColumn.add(biscuitModRow)
-
-            rightColumn.row()
-
-            biscuitsEarned = Label("", skin)
-            rightColumn.add(biscuitsEarned)
+            debugMenu = newDebugMenu
         }
 
         table.add(leftColumn).width(250f).top()
         table.addSeparator(true)
-        table.add(centerColumn).expandX().fillX().top()
+        table.add(centerColumn).expand().fill()
         table.addSeparator(true)
         table.add(rightColumn).width(250f).top()
 
         stage.addActor(table)
     }
+
+    fun updateEvents(events: List<Event>) {
+        eventCards.clear()
+
+        for (event in events) {
+            eventCards.addEvent(event)
+        }
+    }
+
+    //fun addEvent(event: Event) {
+    //    // TODO: Implement
+    //}
+
+    //fun removeEvent(event: Event) {
+    //    // TODO: Implement
+    //}
 
     fun update(dt: Float) {
         stage.act(dt)
@@ -157,9 +155,9 @@ class Ui(game: Game) {
 
         storeTab.render(dt, game)
 
-        if (game.debug) {
-            biscuitsEarned.setText("Total biscuits earned: %.1f".format(game.biscuitsEarned))
-        }
+        eventCards.update(dt)
+
+        debugMenu?.render(dt, game)
 
         stage.draw()
     }

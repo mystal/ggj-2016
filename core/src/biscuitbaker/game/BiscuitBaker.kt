@@ -24,7 +24,7 @@ class BiscuitBaker(val debug: Boolean) : ApplicationAdapter() {
 
         val dt = Gdx.graphics.deltaTime
         ui.update(dt)
-        game.update(dt)
+        game.update(dt, ui)
         ui.render(dt, game)
     }
 }

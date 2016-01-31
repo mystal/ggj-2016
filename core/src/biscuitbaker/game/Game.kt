@@ -1,5 +1,6 @@
 package biscuitbaker.game
 
+import biscuitbaker.game.ui.Ui
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
 import java.util.*
@@ -34,15 +35,14 @@ class Game(val debug: Boolean) {
     public var upgrades: ArrayList<Upgrade> = ArrayList()
         private set
 
-    public var events: ArrayList<Event> = ArrayList()
-        private set
+    public var eventManager: EventManager = EventManager()
 
     init {
-        loadStock()
+        loadData()
         loadState()
     }
 
-    fun update(dt: Float) {
+    fun update(dt: Float, ui: Ui) {
         if (products.isEmpty()) {
             return;
         }
@@ -53,6 +53,8 @@ class Game(val debug: Boolean) {
 
         // Earn those biscuits!
         earnBiscuits(bps * dt)
+
+        eventManager.update(dt, this, ui)
     }
 
     fun click() {
@@ -97,7 +99,7 @@ class Game(val debug: Boolean) {
         return true
     }
 
-    fun loadStock() {
+    fun loadData() {
         // Load products and upgrades
         val json = Json()
 
@@ -115,13 +117,6 @@ class Game(val debug: Boolean) {
         val upgradeInfos = json.fromJson(UpgradeInfos::class.java, upgradeJson)
         for (info in upgradeInfos.upgrades!!) {
             upgrades.add(Upgrade(info))
-        }
-
-        val eventsFile = Gdx.files.internal("data/events.json")
-        val eventJson = eventsFile.readString()
-        val eventInfos = json.fromJson(EventInfos::class.java, eventJson)
-        for (info in eventInfos.events!!) {
-            events.add(Event(info))
         }
     }
 
