@@ -15,8 +15,10 @@ internal const val MAX_COLUMNS: Int = 4
 class StoreTab(game: Game, skin: Skin): Tab() {
     internal val content: VisTable = VisTable()
 
+    internal var productImages: ArrayList<Image> = ArrayList()
     internal var productStatuses: ArrayList<Label> = ArrayList()
     internal var productButtons: ArrayList<TextButton> = ArrayList()
+
 
     internal var upgradeImages: ArrayList<Image> = ArrayList()
     internal var upgradeStatuses: ArrayList<Label> = ArrayList()
@@ -34,7 +36,8 @@ class StoreTab(game: Game, skin: Skin): Tab() {
         var col = 0
         game.upgrades.forEachIndexed { i, upgrade ->
             val upgradeImage = Image(Texture(Gdx.files.internal("img/placeholder.jpg")))
-            // TODO: Scale image
+            upgradeImage.scaleBy(-0.35f)
+
             val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
             val upgradeStatus = Label(upgrade.name, skin)
             val upgradeButton = TextButton(buttonText, skin)
@@ -45,9 +48,10 @@ class StoreTab(game: Game, skin: Skin): Tab() {
             })
 
             val t = VisTable()
-            t.add(upgradeImage)
-            t.row()
-            t.add(upgradeStatus)
+            val nt = VisTable()
+            t.add(nt)
+            nt.add(upgradeImage).expandX()
+            nt.add(upgradeStatus).expandX()
             t.row()
             t.add(upgradeButton)
             t.row()
@@ -77,8 +81,11 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         col = 0
         game.products.forEachIndexed { i, product ->
-            val productStatus = Label("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
-                    product.name, product.owned, product.bps, product.totalBps), skin)
+            //val productStatus = Label("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
+              //      product.name, product.owned, product.bps, product.totalBps), skin)
+
+            val productStatus = Label("%s: %d\nBPS: %.1f".format(product.name, product.owned, product.bps), skin)
+
             val productButton = TextButton("Buy: %d biscuits".format(product.price), skin)
             productButton.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
@@ -86,8 +93,14 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 }
             })
 
+            val productImage = Image(Texture(Gdx.files.internal("img/placeholder.jpg")))
+            productImage.scaleBy(-0.35f)
+
             val t = VisTable()
-            t.add(productStatus)
+            val nt = VisTable()
+            t.add(nt)
+            nt.add(productImage).expandX()
+            nt.add(productStatus).expandX()
             t.row()
             t.add(productButton)
             t.row()
@@ -99,6 +112,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 col = 0
             }
 
+            productImages.add(productImage)
             productStatuses.add(productStatus)
             productButtons.add(productButton)
         }
@@ -144,17 +158,22 @@ class StoreTab(game: Game, skin: Skin): Tab() {
         game.products.forEachIndexed { i, product ->
             val productStatus = productStatuses[i]
             val productButton = productButtons[i]
+            val productImage = productImages[i]
 
             // TODO: Don't update visibility every frame, it can be expensive
             if (product.isVisible(game)) {
+                productImage.isVisible = true
                 productStatus.isVisible = true
                 //productStatus.setLayoutEnabled(false)
-                productStatus.setText("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
-                        product.name, product.owned, product.bps, product.totalBps))
+               // productStatus.setText("%s: %d\nBpS: %.1f\nTotal BpS: %.1f".format(
+                 //       product.name, product.owned, product.bps, product.totalBps))
+                productStatus.setText("%s: %d\nBPS: %.1f".format(product.name, product.owned, product.bps))
+
                 productButton.isVisible = true
                 //productButton.setLayoutEnabled(false)
                 productButton.isDisabled = game.biscuits < product.price
             } else {
+                productImage.isVisible = false
                 productStatus.isVisible = false
                 //productStatus.setLayoutEnabled(true)
                 productButton.isVisible = false

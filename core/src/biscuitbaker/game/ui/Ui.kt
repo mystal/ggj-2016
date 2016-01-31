@@ -98,8 +98,9 @@ class Ui(game: Game) {
         expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
 
         // Left Column
-        leftColumn.add(bakeryName)
-        leftColumn.row()
+        //leftColumn.add(bakeryName)
+        //leftColumn.row()
+
         leftColumn.add(biscuitsOwned)
         leftColumn.row()
         leftColumn.add(biscuitsPerSecond)
