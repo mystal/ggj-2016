@@ -1,28 +1,111 @@
 {
   "events": [
     {
-      "name": "Biscuit 1"
+      "name": "Biscuit 1",
+      "duration": 5,
+      "costs": {
+        "biscuits": 1000
+      },
+      "prereqs": {
+        "level": 0
+      },
+      "rewards":{
+        "exp": 100
+      }
     },
     {
-      "name": "Biscuit 2"
+      "name": "Biscuit 2",
+      "duration": 8,
+      "costs": {
+        "biscuits": 2000,
+      },
+      "prereqs": {
+        "level": 0
+      },
+      "rewards":{
+        "exp": 150
+      }
     },
     {
-      "name": "Eclair 1"
+      "name": "Eclair 1",
+      "duration": 3,
+      "costs": {
+        "biscuits": 1500,
+        "eclairs": 10,
+      },
+      "prereqs": {
+        "level": 1
+      },
+      "rewards":{
+        "exp": 300
+      }
     },
     {
-      "name": "Eclair 2"
+      "name": "Eclair 2",
+      "duration": 10,
+      "costs": {
+        "biscuits": 3000,
+        "eclairs": 20
+      },
+      "prereqs": {
+        "level": 1
+      },
+      "rewards":{
+        "exp": 500
+      }
     },
     {
-      "name": "Cupcake 1"
+      "name": "Cupcake 1",
+      "duration": 4,
+      "costs": {
+        "eclairs": 25,
+        "cupcakes": 10,
+      },
+      "prereqs": {
+        "level": 2
+      },
+      "rewards":{
+        "exp": 1000
+      }
     },
     {
-      "name": "Cupcake 2"
+      "name": "Cupcake 2",
+      "duration": 5,
+      "costs": {
+        "cupcakes": 30,
+      },
+      "prereqs": {
+        "level": 2
+      },
+      "rewards":{
+        "exp": 2000
+      }
     },
     {
-      "name": "Pie 1"
+      "name": "Pie 1",
+      "duration": 10,
+      "costs": {
+        "pies": 10
+      },
+      "prereqs": {
+        "level": 1
+      },
+      "rewards":{
+        "exp": 3000
+      }
     },
     {
-      "name": "Pie 2"
+      "name": "Pie 2",
+      "duration": 15,
+      "costs": {
+        "pies": 20
+      },
+      "prereqs": {
+        "level": 1
+      },
+      "rewards":{
+        "exp": 4500
+      }
     }
   ]
 }
