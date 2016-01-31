@@ -14,7 +14,13 @@
       "bps": 0.5,
       "eps": 0,
       "cps": 0,
-      "pps": 0
+      "pps": 0,
+      "prereqs": {
+        "productCount": {
+          "product": "Bread Boy",
+          "count": 1
+        }
+      }
     },
     {
       "name": "House Elves",
@@ -52,7 +58,7 @@
     },
     {
       "name": "Spirit Gate",
-      "price": 1000,
+      "price": 70000,
       "bps": 4000,
       "eps": 0,
       "cps": 2,
@@ -64,7 +70,7 @@
     },
     {
       "name": "Fruit Pie Trees",
-      "price": 1000000,
+      "price": 110000,
       "bps": 1500,
       "eps": 0,
       "cps": 0,
@@ -75,7 +81,7 @@
     },
     {
       "name": "Oven",
-      "price": 1500000,
+      "price": 150000,
       "bps": 3000,
       "eps": 0,
       "cps": 0,

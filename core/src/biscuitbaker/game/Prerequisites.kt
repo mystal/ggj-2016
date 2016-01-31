@@ -20,6 +20,20 @@ class Prerequisites() {
             return false
         }
 
+        // Check eclair count
+        if (game.eclairs < eclairs) {
+            return false
+        }
+
+        // Check cupcakes count
+        if (game.cupcakes < cupcakes) {
+            return false
+        }
+
+        // Check pie count
+        if (game.pies < pies) {
+            return false
+        }
         // TODO: Check count for other resources
 
         // Check product count
