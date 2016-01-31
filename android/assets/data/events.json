@@ -4,6 +4,7 @@
       "name": "Random 1",
       "duration": 5,
       "repeatable": true,
+      "image": "img/corp_big.png",
       "costs": {
         "biscuits": 1000
       },
@@ -18,6 +19,7 @@
       "name": "Random 2",
       "duration": 5,
       "repeatable": true,
+      "image": "img/scouts_big.png",
       "costs": {
         "biscuits": 1000
       },
@@ -32,6 +34,7 @@
       "name": "Random 3",
       "duration": 5,
       "repeatable": true,
+      "image": "img/grandmother_big.png",
       "costs": {
         "biscuits": 1000
       },
@@ -46,6 +49,7 @@
       "name": "Biscuit 1",
       "duration": 5,
       "repeatable": false,
+      "image": "img/scouts.png",
       "costs": {
         "biscuits": 1000
       },
@@ -60,6 +64,7 @@
       "name": "Biscuit 2",
       "duration": 8,
       "repeatable": false,
+      "image": "img/corp_big.png",
       "costs": {
         "biscuits": 2000
       },
@@ -74,6 +79,7 @@
       "name": "Eclair 1",
       "duration": 3,
       "repeatable": false,
+      "image": "img/corp_big.png",
       "costs": {
         "biscuits": 1500,
         "eclairs": 10
@@ -89,6 +95,7 @@
       "name": "Eclair 2",
       "duration": 10,
       "repeatable": false,
+      "image": "img/scouts_big.png",
       "costs": {
         "biscuits": 3000,
         "eclairs": 20
@@ -104,6 +111,7 @@
       "name": "Cupcake 1",
       "duration": 4,
       "repeatable": false,
+      "image": "img/grandmother_big.png",
       "costs": {
         "eclairs": 25,
         "cupcakes": 10
@@ -119,6 +127,7 @@
       "name": "Cupcake 2",
       "duration": 5,
       "repeatable": false,
+      "image": "img/scouts_big.png",
       "costs": {
         "cupcakes": 30
       },
@@ -133,6 +142,7 @@
       "name": "Pie 1",
       "duration": 10,
       "repeatable": false,
+      "image": "img/scouts_big.png",
       "costs": {
         "pies": 10
       },
@@ -147,6 +157,7 @@
       "name": "Pie 2",
       "duration": 15,
       "repeatable": false,
+      "image": "img/corp_big.png",
       "costs": {
         "pies": 20
       },
