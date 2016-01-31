@@ -15,6 +15,11 @@ class Prerequisites() {
     public var level: Int = 0
 
     public fun isSatisfied(game: Game): Boolean {
+        // Check Level
+        if (game.level < level){
+            return false
+        }
+
         // Check biscuit count
         if (game.biscuits < biscuits) {
             return false

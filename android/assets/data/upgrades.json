@@ -105,6 +105,7 @@
         "cupcakes": 20
       },
       "prereqs": {
+        "eclairs": 30,
         "productCount": {
           "product": "Alchemical Kitchen",
           "count": 1
@@ -138,7 +139,7 @@
       "effects": {
         "productBpsMultiplier": {
           "product": "Alchemical Kitchen",
-          "value": 3.0
+          "value": 6.0
         },
         "productEpsMultiplier": {
           "product": "Alchemical Kitchen",
@@ -161,6 +162,7 @@
         "eclairs": 10
       },
       "prereqs": {
+        "eclairs": 5,
         "productCount": {
           "product": "House Elves",
           "count": 1
@@ -204,6 +206,7 @@
         "eclairs": 10
       },
       "prereqs": {
+        "cupcakes": 1,
         "productCount": {
           "product": "Marble Slab",
           "count": 1
@@ -227,6 +230,7 @@
         "eclairs": 10
       },
       "prereqs": {
+        "pies": 1,
         "productCount": {
           "product": "Marble Slab",
           "count": 1
@@ -353,7 +357,7 @@
       "effects": {
         "productBpsMultiplier":{
           "product": "Oven",
-          "value": 5.0
+          "value": 10.0
         },
         "productEpsMultiplier":{
           "product": "Oven",
