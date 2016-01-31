@@ -35,6 +35,14 @@ class Ui(game: Game) {
     internal var eclairsOwned: Label
     internal var eclairsPerSecond: Label
 
+    // Cupcakes
+    internal var cupcakesOwned: Label
+    internal var cupcakesPerSecond: Label
+
+    // Pies
+    internal var piesOwned: Label
+    internal var piesPerSecond: Label
+
     internal var storeTab: StoreTab
     internal var eventsTab: EventsTab
 
@@ -69,8 +77,15 @@ class Ui(game: Game) {
                 game.click()
             }
         })
+
         eclairsOwned = Label("%.0f eclairs".format(game.eclairs), skin)
         eclairsPerSecond = Label("%.1f eclairs per second".format(game.eps), skin)
+
+        cupcakesOwned = Label("%.0f cupcakes".format(game.cupcakes), skin)
+        cupcakesPerSecond = Label("%.1f cupcakes per second".format(game.cps), skin)
+
+        piesOwned = Label("%.0f pies".format(game.pies), skin)
+        piesPerSecond = Label("%.1f pies per second".format(game.pps), skin)
 
         // Left Column
         leftColumn.add(bakeryName)
@@ -85,6 +100,14 @@ class Ui(game: Game) {
         leftColumn.add(eclairsOwned)
         leftColumn.row()
         leftColumn.add(eclairsPerSecond)
+        leftColumn.row()
+        leftColumn.add(cupcakesOwned)
+        leftColumn.row()
+        leftColumn.add(cupcakesPerSecond)
+        leftColumn.row()
+        leftColumn.add(piesOwned)
+        leftColumn.row()
+        leftColumn.add(piesPerSecond)
 
         // Center Column
         val mainPane = TabbedPane()
@@ -169,6 +192,12 @@ class Ui(game: Game) {
 
         eclairsOwned.setText("%.0f eclairs".format(game.eclairs))
         eclairsPerSecond.setText("%.1f eclairs per second".format(game.eps))
+
+        cupcakesOwned.setText("%.0f cupcakes".format(game.cupcakes))
+        cupcakesPerSecond.setText("%.1f cupcakes per second".format(game.cps))
+
+        piesOwned.setText("%.0f pies".format(game.pies))
+        piesPerSecond.setText("%.1f pies per second".format(game.pps))
 
         storeTab.render(dt, game)
 
