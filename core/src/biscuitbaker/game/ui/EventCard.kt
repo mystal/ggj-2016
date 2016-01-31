@@ -43,7 +43,7 @@ class EventCard(val event: Event, val manager: EventCards) {
     }
 }
 
-class EventCards() {
+class EventCards(val ui: Ui) {
     public val table: VisTable = VisTable()
 
     public val eventCards: ArrayList<EventCard> = ArrayList()
@@ -59,6 +59,7 @@ class EventCards() {
 
     fun select(card: EventCard) {
         selected = card
+        ui.mainPane.switchTab(ui.eventsTab)
     }
 
     fun deselect() {
