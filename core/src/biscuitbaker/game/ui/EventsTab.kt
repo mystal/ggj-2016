@@ -17,7 +17,7 @@ class EventsTab(game: Game, skin: Skin): Tab() {
         val eventDetails = Label("Event Details", skin)
 
         content.add(factionImage).width(380f).expandY()
-        content.add(eventDetails).expandX().expandY()
+        content.add(eventDetails).expand()
     }
 
     override fun isCloseableByUser(): Boolean {

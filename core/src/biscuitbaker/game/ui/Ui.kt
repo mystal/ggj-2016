@@ -87,7 +87,7 @@ class Ui(game: Game) {
         mainPane.addListener(object : TabbedPaneAdapter() {
             override fun switchedTab(tab: Tab) {
                 contentTable.clearChildren()
-                contentTable.add(tab.contentTable).expand().fill()
+                contentTable.add(tab.contentTable).expand().fillX().top()
             }
         })
         storeTab = StoreTab(game, skin)
