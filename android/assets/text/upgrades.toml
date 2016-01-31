@@ -1,0 +1,59 @@
+["Apprentice Boulanger"]
+flavor = "Now that he's stopped trying to eat the biscuits he's twice as productive."
+description = "Doubles biscuit output."
+
+["Journeyman Patissier"]
+flavor = "He's learned the ways of French pastry magic. For you."
+description = "Makes twice as many biscuits, and also makes eclairs."
+
+["Sous Alchemist"]
+flavor = "You might even let him run the shop sometimes."
+description = "Makes cupcakes, and makes more biscuits and eclairs."
+
+["Young Bakers"]
+flavor = "Their little hands make such cute pastries. And you don't have to pay them much."
+description = "Doubles output of the kitchen and now produces eclairs."
+
+["Rat Milk"]
+flavor = "Tastes the same. Mostly."
+description = "Kitchen produces baked goods faster."
+
+["Baking Powder"]
+flavor = "Double-acting."
+description = "Doubles all your production."
+
+["Socks"]
+flavor = "They work harder if they're comfortable..."
+description = "Triples eclair production."
+
+["Shackles"]
+flavor = "...but not too comfortable."
+description = "Doubles eclair production. Now they make pie, too."
+
+["Transmutation Circle"]
+flavor = "Transmutes cupcakes from raw elf tears. You have plenty of those."
+description = "You can make cupcakes."
+
+["Necronomicon"]
+flavor = "The secrets of food alchemy at your fingertips!"
+description = "Doubles eclair and cupcake production."
+
+["Double Ended"]
+flavor = "Double the fun."
+description = "Doubles your Cupcake Wand's production."
+
+["Frosting"]
+flavor = "Keeps cupcakes moist."
+description = "Doubles your cupcakes, and now sometimes they're pie."
+
+["Ritual Sacrifice"]
+flavor = "You don't need that many elves, right?"
+description = "Summon pie from another plane."
+
+["GMO"]
+flavor = "Patented for the next 100 years!"
+description = "Triples your pie crop."
+
+["Gates of Hell"]
+flavor = "Comes preheated."
+description = "Bake everything five times faster."

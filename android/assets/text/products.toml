@@ -1,0 +1,31 @@
+["Bread Boy"]
+flavor = "Your second-in-command. Probably not a street urchin."
+description = "Makes biscuits for you."
+
+["Alchemical Kitchen"]
+flavor = "Everything you need to bake up some magic! Mixers, rollers, trays, and lots of candles."
+description = "Makes five times more biscuits than the bread boy."
+
+["House Elves"]
+flavor = "Humane work conditions only matter if you're human"
+description = "They make eclairs. Good ones."
+
+["Marble Slab"]
+flavor = "For pastry dough. Right?"
+description = "Creates eclairs."
+
+["Cupcake Wand"]
+flavor = "Transforms your eagerness directly into cupcakes."
+description = "You can make cupcakes."
+
+["Spirit Gate"]
+flavor = "Summon angelic cupcakes from a higher plane."
+description = "You conjure extra cupcakes."
+
+["Fruit Pie Trees"]
+flavor = "Pies didn't used to grow on tries. But we've been working on it."
+description = "Grows pies."
+
+["Oven"]
+flavor = "Definitely not stolen."
+description = "Makes pies."
