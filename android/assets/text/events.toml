@@ -14,7 +14,7 @@ completed = "You have our gratitude."
 
 ["Random 3"]
 faction = "grandmother"
-name = "A favor"
+name = "A Favor..."
 flavor = "Oh sweetie, I need a favor."
 description = """My weekly Alchemical Knitting Circle needs some snacks. I've told them yours are the best. I'm not interrupting, am I?"""
 completed = "The girls'll love these."

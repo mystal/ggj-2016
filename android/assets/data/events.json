@@ -1,7 +1,7 @@
 {
   "events": [
     {
-      "name": "Random 1",
+      "name": "Catering Opportunity!",
       "duration": 5,
       "repeatable": true,
       "factionImage": "img/corp_big.png",
@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "Random 2",
+      "name": "Girl Scout Relief",
       "duration": 5,
       "repeatable": true,
       "factionImage": "img/scouts_big.png",
@@ -31,7 +31,7 @@
       }
     },
     {
-      "name": "Random 3",
+      "name": "A Favor...",
       "duration": 5,
       "repeatable": true,
       "factionImage": "img/grandmother_big.png",
@@ -46,7 +46,7 @@
       }
     },
     {
-      "name": "Biscuit 1",
+      "name": "Heist",
       "duration": 5,
       "repeatable": false,
       "factionImage": "img/scouts_big.png",
@@ -76,7 +76,7 @@
       }
     },
     {
-      "name": "Eclair 1",
+      "name": "Product Launch",
       "duration": 3,
       "repeatable": false,
       "factionImage": "img/corp_big.png",
@@ -108,7 +108,7 @@
       }
     },
     {
-      "name": "Cupcake 1",
+      "name": "A Birthday Party",
       "duration": 4,
       "repeatable": false,
       "factionImage": "img/grandmother_big.png",
@@ -139,7 +139,7 @@
       }
     },
     {
-      "name": "Pie 1",
+      "name": "The Hero We Need",
       "duration": 10,
       "repeatable": false,
       "factionImage": "img/WBO.png",
