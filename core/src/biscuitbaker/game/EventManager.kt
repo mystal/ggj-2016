@@ -93,4 +93,8 @@ class EventManager {
 
         return availableEvents[index]
     }
+
+    fun deactivateEvent(event: Event) {
+        activeEvents.remove(event)
+    }
 }

@@ -75,6 +75,7 @@ class Event(info: EventInfo) {
         }
 
         game.addExp(exp)
+        game.eventManager.deactivateEvent(this)
 
         completedOnce = true
     }
