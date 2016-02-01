@@ -17,6 +17,9 @@ class Event(info: EventInfo) {
     public var info: EventInfo = info
         private set
 
+    public var strings: FlavorStrings = FlavorStrings()
+        private set
+
     public val name: String
         get() = info.name
 

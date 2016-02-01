@@ -39,6 +39,9 @@ class Upgrade(info: UpgradeInfo) {
     public var info: UpgradeInfo = info
         private set
 
+    public var strings: FlavorStrings = FlavorStrings()
+        private set
+
     public var purchased: Boolean = false
 
     public val name: String

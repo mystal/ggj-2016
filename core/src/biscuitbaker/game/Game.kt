@@ -3,6 +3,7 @@ package biscuitbaker.game
 import biscuitbaker.game.ui.Ui
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
+import com.moandjiezana.toml.Toml
 import java.util.*
 
 class Game(val debug: Boolean) {
@@ -208,6 +209,11 @@ class Game(val debug: Boolean) {
     }
 
     fun loadData() {
+        // Load in text TOML files
+        val productsToml = Toml().read(Gdx.files.internal("text/products.toml").readString());
+        val upgradesToml = Toml().read(Gdx.files.internal("text/upgrades.toml").readString());
+        val eventsToml = Toml().read(Gdx.files.internal("text/events.toml").readString());
+
         // Load products and upgrades
         val json = Json()
 
@@ -221,14 +227,22 @@ class Game(val debug: Boolean) {
         val productJson = productsFile.readString()
         val productInfos = json.fromJson(ProductInfos::class.java, productJson)
         for (info in productInfos.products!!) {
-            products.add(Product(info))
+            val product = Product(info)
+            val table = productsToml.getTable("\"${product.name}\"")
+            product.strings.flavor = table.getString("flavor")
+            product.strings.description = table.getString("description")
+            products.add(product)
         }
 
         val upgradesFile = Gdx.files.internal("data/upgrades.json")
         val upgradeJson = upgradesFile.readString()
         val upgradeInfos = json.fromJson(UpgradeInfos::class.java, upgradeJson)
         for (info in upgradeInfos.upgrades!!) {
-            upgrades.add(Upgrade(info))
+            val upgrade = Upgrade(info)
+            val table = upgradesToml.getTable("\"${upgrade.name}\"")
+            upgrade.strings.flavor = table.getString("flavor")
+            upgrade.strings.description = table.getString("description")
+            upgrades.add(upgrade)
         }
     }
 

@@ -13,8 +13,15 @@ class ProductInfo() {
     public var prereqs: Prerequisites? = null
 }
 
+class ProductText() {
+    public var flavor: String = ""
+}
+
 class Product(info: ProductInfo) {
     public var info: ProductInfo = info
+        private set
+
+    public var strings: FlavorStrings = FlavorStrings()
         private set
 
     public var owned: Int = 0
