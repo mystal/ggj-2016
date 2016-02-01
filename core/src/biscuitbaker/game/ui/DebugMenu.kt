@@ -21,7 +21,7 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
 
         // Add button to add/set biscuit count
         val biscuitModRow = HorizontalGroup()
-        val biscuitModLabel = TextField("100", skin)
+        val biscuitModLabel = TextField("10000", skin)
         biscuitModRow.addActor(biscuitModLabel)
         val biscuitAddButton = TextButton("Add", skin)
         biscuitAddButton.addListener(object : ClickListener() {
@@ -67,7 +67,7 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
 
         val levelRow = HorizontalGroup()
 
-        val expAddField = TextField("100", skin)
+        val expAddField = TextField("1000", skin)
         levelRow.addActor(expAddField)
         val expAddButton = TextButton("Add", skin)
         expAddButton.addListener(object : ClickListener() {

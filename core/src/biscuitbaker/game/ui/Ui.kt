@@ -75,8 +75,6 @@ class Ui(game: Game) {
             table.debug = true
         }
 
-        //val bakeryName = TextField("My Bakery", skin)
-        //bakeryName.setAlignment(Align.center)
         val logoImage = Image(Texture(Gdx.files.internal("img/logo.png")))
 
         biscuitsOwned = Label("%.0f  ".format(game.biscuits), skin)
@@ -105,55 +103,36 @@ class Ui(game: Game) {
         level = Label("Level: %d".format(game.level), skin)
         expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
 
-        // Left Column
+        // *** Left Column *** //
+        // Logo
         leftColumn.add(logoImage).expandX()
         leftColumn.row()
         leftColumn.addSeparator()
 
-        val bT = VisTable()
-        leftColumn.add(bT)
-        bT.add(biscuitsOwned).expandX()
-        bT.add(biscuitsImage).expandX()
-        leftColumn.row()
-        leftColumn.add(biscuitsPerSecond)
-        leftColumn.row()
+        // Biscuits
+        addCounterToLeft(biscuitsOwned, biscuitsPerSecond, biscuitsImage)
         leftColumn.add(biscuitButton)
         leftColumn.row()
         leftColumn.addSeparator()
 
-        val eT = VisTable()
-        leftColumn.add(eT)
-        eT.add(eclairsOwned).expandX()
-        eT.add(eclairsImage).expandX()
-        leftColumn.row()
-        leftColumn.add(eclairsPerSecond)
-        leftColumn.row()
+        // Eclairs
+        addCounterToLeft(eclairsOwned, eclairsPerSecond, eclairsImage)
 
-        val cT = VisTable()
-        leftColumn.add(cT)
-        cT.add(cupcakesOwned).expandX()
-        cT.add(cupcakesImage).expandX()
-        leftColumn.row()
-        leftColumn.add(cupcakesPerSecond)
-        leftColumn.row()
+        // Cupcakes
+        addCounterToLeft(cupcakesOwned, cupcakesPerSecond, cupcakesImage)
 
-        val pT = VisTable()
-        leftColumn.add(pT)
-        pT.add(piesOwned).expandX()
-        pT.add(piesImage).expandX()
-        leftColumn.row()
-        leftColumn.add(piesPerSecond)
-        leftColumn.row()
+        // Pies
+        addCounterToLeft(piesOwned, piesPerSecond, piesImage)
 
+        //Add Level info
         leftColumn.addSeparator()
         leftColumn.add(level)
         leftColumn.row()
         leftColumn.add(expToNextLevel)
 
-        // Center Column
+        // *** Center Column *** //
         mainPane = TabbedPane()
         centerColumn.add(mainPane.table).expandX().fillX()
-
         centerColumn.row()
 
         val contentPane = ScrollPane(null)
@@ -207,6 +186,8 @@ class Ui(game: Game) {
         val quoteLabel = Label("\"Bake those biscuits!\"", skin)
         rightColumn.add(quoteLabel)
 
+
+        // Add Columns
         table.add(leftColumn).width(250f).top()
         table.addSeparator(true)
         table.add(centerColumn).expand().fill()
@@ -214,6 +195,16 @@ class Ui(game: Game) {
         table.add(rightColumn).width(250f).top()
 
         stage.addActor(table)
+    }
+
+    fun addCounterToLeft(owned: Label, perSec: Label, image: Image){
+        val t = VisTable()
+        leftColumn.add(t)
+        t.add(owned).expandX()
+        t.add(image).expandX()
+        leftColumn.row()
+        leftColumn.add(perSec)
+        leftColumn.row()
     }
 
     fun addEvent(event: Event, index: Int) {
