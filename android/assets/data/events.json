@@ -61,21 +61,6 @@
       }
     },
     {
-      "name": "Biscuit 2",
-      "duration": 8,
-      "repeatable": false,
-      "factionImage": "img/corp_big.png",
-      "costs": {
-        "biscuits": 2000
-      },
-      "prereqs": {
-        "level": 0
-      },
-      "rewards":{
-        "exp": 150
-      }
-    },
-    {
       "name": "Product Launch",
       "duration": 3,
       "repeatable": false,
@@ -89,22 +74,6 @@
       },
       "rewards":{
         "exp": 300
-      }
-    },
-    {
-      "name": "Eclair 2",
-      "duration": 10,
-      "repeatable": false,
-      "factionImage": "img/scouts_big.png",
-      "costs": {
-        "biscuits": 3000,
-        "eclairs": 20
-      },
-      "prereqs": {
-        "level": 1
-      },
-      "rewards":{
-        "exp": 500
       }
     },
     {
@@ -124,21 +93,6 @@
       }
     },
     {
-      "name": "Cupcake 2",
-      "duration": 5,
-      "repeatable": false,
-      "factionImage": "img/scouts_big.png",
-      "costs": {
-        "cupcakes": 30
-      },
-      "prereqs": {
-        "level": 2
-      },
-      "rewards":{
-        "exp": 2000
-      }
-    },
-    {
       "name": "The Hero We Need",
       "duration": 10,
       "repeatable": false,
@@ -151,21 +105,6 @@
       },
       "rewards":{
         "exp": 3000
-      }
-    },
-    {
-      "name": "Pie 2",
-      "duration": 15,
-      "repeatable": false,
-      "factionImage": "img/corp_big.png",
-      "costs": {
-        "pies": 20
-      },
-      "prereqs": {
-        "level": 1
-      },
-      "rewards":{
-        "exp": 4500
       }
     }
   ]
