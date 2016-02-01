@@ -21,6 +21,8 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
 
     internal val factionImage: Image = Image(Texture(Gdx.files.internal("img/bread_boy.png")))
     internal val eventName: Label = Label("", skin)
+    internal val eventFlavor: Label = Label("", skin)
+    internal val eventDescription: Label = Label("", skin)
     internal val expLabel: Label = Label("", skin)
     internal val biscuitsLabel: Label = Label("", skin)
     internal val eclairsLabel: Label = Label("", skin)
@@ -46,13 +48,20 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
 
         eventTable.add(eventName)
         eventTable.row()
+        eventFlavor.setWrap(true)
+        eventTable.add(eventFlavor).fillX()
+        eventTable.row()
+        eventTable.addSeparator()
+        eventDescription.setWrap(true)
+        eventTable.add(eventDescription).fillX()
+        eventTable.row()
         eventTable.addSeparator()
         eventTable.add(expLabel)
         eventTable.row()
         eventTable.addSeparator()
 
-        val costs = Label("Costs", skin)
-        eventTable.add(costs)
+        val orderLabel = Label("Order Requires", skin)
+        eventTable.add(orderLabel)
 
         eventTable.row()
         eventTable.add(biscuitsLabel)
@@ -77,6 +86,8 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
                 factionImage.drawable = TextureRegionDrawable(TextureRegion(Texture(Gdx.files.internal(event.info.factionImage))))
             }
             eventName.setText(event.name)
+            eventFlavor.setText("\"${event.strings.flavor}\"")
+            eventDescription.setText("\"${event.strings.description}\"")
             expLabel.setText("%d exp".format(event.exp))
 
             content.add(factionImage).expand()

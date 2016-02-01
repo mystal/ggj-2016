@@ -203,6 +203,9 @@ class Ui(game: Game) {
         rightColumn.row()
         val assistantImage = Image(Texture(Gdx.files.internal("img/assistant.png")))
         rightColumn.add(assistantImage).expandY()
+        rightColumn.row()
+        val quoteLabel = Label("\"Bake those biscuits!\"", skin)
+        rightColumn.add(quoteLabel)
 
         table.add(leftColumn).width(250f).top()
         table.addSeparator(true)
