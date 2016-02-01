@@ -35,7 +35,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         var col = 0
         game.upgrades.forEachIndexed { i, upgrade ->
-            val upgradeImage = Image(Texture(Gdx.files.internal("img/placeholder.jpg")))
+            val upgradeImage = Image(Texture(Gdx.files.internal("img/bread_boy.png")))
             upgradeImage.scaleBy(-0.35f)
 
             val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
@@ -93,7 +93,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
                 }
             })
 
-            val productImage = Image(Texture(Gdx.files.internal("img/placeholder.jpg")))
+            val productImage = Image(Texture(Gdx.files.internal("img/bread_boy.png")))
             productImage.scaleBy(-0.35f)
 
             val t = VisTable()

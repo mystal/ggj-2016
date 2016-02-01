@@ -19,7 +19,7 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
 
     internal val eventTable: VisTable = VisTable()
 
-    internal val factionImage: Image = Image(Texture(Gdx.files.internal("img/placeholder.jpg")))
+    internal val factionImage: Image = Image(Texture(Gdx.files.internal("img/bread_boy.png")))
     internal val eventName: Label = Label("", skin)
     internal val expLabel: Label = Label("", skin)
     internal val biscuitsLabel: Label = Label("", skin)
