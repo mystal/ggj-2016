@@ -13,6 +13,10 @@ public class DesktopLauncher {
         config.width = Config.SCREEN_WIDTH;
         config.height = Config.SCREEN_HEIGHT;
         //config.samples = 2;
+<<<<<<< HEAD
         new LwjglApplication(new BiscuitBaker(Config.DEBUG), config);
+=======
+        new LwjglApplication(new BiscuitBaker(false), config);
+>>>>>>> Added assistant image
     }
 }

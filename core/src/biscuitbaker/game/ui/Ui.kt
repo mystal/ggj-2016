@@ -195,6 +195,14 @@ class Ui(game: Game) {
 
             debugMenu = newDebugMenu
         }
+        // label to fill space
+        val fillLabel = Label("Assistant Angie", skin)
+        rightColumn.add(fillLabel).expandY()
+
+        // add assistant image
+        rightColumn.row()
+        val assistantImage = Image(Texture(Gdx.files.internal("img/assistant.png")))
+        rightColumn.add(assistantImage).expandY()
 
         table.add(leftColumn).width(250f).top()
         table.addSeparator(true)
