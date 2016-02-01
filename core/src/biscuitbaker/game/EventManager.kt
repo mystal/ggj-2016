@@ -3,6 +3,7 @@ package biscuitbaker.game
 import biscuitbaker.game.ui.Ui
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
+import com.moandjiezana.toml.Toml
 import java.util.*
 
 const internal val EVENT_CHANCE: Float = 0.30f
@@ -25,13 +26,19 @@ class EventManager {
     }
 
     private fun loadData() {
+        val eventsToml = Toml().read(Gdx.files.internal("text/events.toml").readString());
+
         val json = Json()
 
         val eventsFile = Gdx.files.internal("data/events.json")
         val eventJson = eventsFile.readString()
         val eventInfos = json.fromJson(EventInfos::class.java, eventJson)
         for (info in eventInfos.events!!) {
-            events.add(Event(info))
+            val event = Event(info)
+            val table = eventsToml.getTable("\"${event.name}\"")
+            event.strings.flavor = table.getString("flavor")
+            event.strings.description = table.getString("description")
+            events.add(event)
         }
     }
 

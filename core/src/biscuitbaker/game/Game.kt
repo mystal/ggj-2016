@@ -212,7 +212,6 @@ class Game(val debug: Boolean) {
         // Load in text TOML files
         val productsToml = Toml().read(Gdx.files.internal("text/products.toml").readString());
         val upgradesToml = Toml().read(Gdx.files.internal("text/upgrades.toml").readString());
-        val eventsToml = Toml().read(Gdx.files.internal("text/events.toml").readString());
 
         // Load products and upgrades
         val json = Json()
