@@ -29,24 +29,24 @@ class Ui(game: Game) {
     internal var rightColumn: VisTable
 
     // Biscuits
-    internal var biscuitsOwned: Label
-    internal var biscuitsPerSecond: Label
+    internal lateinit var biscuitsOwned: Label
+    internal lateinit var biscuitsPerSecond: Label
 
     // Eclairs
-    internal var eclairsOwned: Label
-    internal var eclairsPerSecond: Label
+    internal lateinit var eclairsOwned: Label
+    internal lateinit var eclairsPerSecond: Label
 
     // Cupcakes
-    internal var cupcakesOwned: Label
-    internal var cupcakesPerSecond: Label
+    internal lateinit var cupcakesOwned: Label
+    internal lateinit var cupcakesPerSecond: Label
 
     // Pies
-    internal var piesOwned: Label
-    internal var piesPerSecond: Label
+    internal lateinit var piesOwned: Label
+    internal lateinit var piesPerSecond: Label
 
     // Level and Exp
-    internal var level: Label
-    internal var expToNextLevel: Label
+    internal lateinit var level: Label
+    internal lateinit var expToNextLevel: Label
 
     // Tabs
     internal var mainPane: TabbedPane
@@ -75,6 +75,83 @@ class Ui(game: Game) {
             table.debug = true
         }
 
+        // Left Column
+        createLeftColumn(game)
+
+        // Center Column
+        mainPane = TabbedPane()
+        centerColumn.add(mainPane.table).expandX().fillX()
+        centerColumn.row()
+
+        val contentPane = ScrollPane(null)
+        centerColumn.add(contentPane).expand().fill()
+
+        mainPane.addListener(object : TabbedPaneAdapter() {
+            override fun switchedTab(tab: Tab) {
+                contentPane.widget = tab.contentTable
+            }
+        })
+        storeTab = StoreTab(game, skin)
+        eventsTab = EventsTab(game, skin, eventCards)
+        mainPane.add(storeTab)
+        mainPane.add(eventsTab)
+
+        mainPane.switchTab(0)
+
+        // Right Column
+        createRightColumn(game)
+
+        // Add a debug menu!
+        if (game.debug) {
+            // TOOD: Add spacer
+
+            rightColumn.addSeparator()
+
+            val newDebugMenu = DebugMenu(game, this, skin)
+            rightColumn.add(newDebugMenu.table)
+
+            debugMenu = newDebugMenu
+        }
+
+        // Add Columns
+        table.add(leftColumn).width(250f).top()
+        table.addSeparator(true)
+        table.add(centerColumn).expand().fill()
+        table.addSeparator(true)
+        table.add(rightColumn).width(250f).top()
+
+
+        stage.addActor(table)
+    }
+
+    fun createRightColumn(game: Game) {
+        // Events overview
+        val eventsLabel = Label("Events", skin)
+        rightColumn.add(eventsLabel)
+        rightColumn.row()
+        rightColumn.addSeparator()
+
+        // TODO: Store event cards in scrollable widget
+        rightColumn.add(eventCards.cardGroup)
+        // TODO: Event cards!
+
+        rightColumn.row()
+
+
+        // label to fill space
+        val fillLabel = Label("Assistant Angie", skin)
+        rightColumn.add(fillLabel).expandY()
+
+        // add assistant image
+        rightColumn.row()
+        val assistantImage = Image(Texture(Gdx.files.internal("img/assistant.png")))
+        rightColumn.add(assistantImage).expandY()
+        rightColumn.row()
+        val quoteLabel = Label("\"Bake those biscuits!\"", skin)
+        rightColumn.add(quoteLabel)
+    }
+
+    fun createLeftColumn(game: Game) {
         val logoImage = Image(Texture(Gdx.files.internal("img/logo.png")))
 
         biscuitsOwned = Label("%.0f  ".format(game.biscuits), skin)
@@ -103,7 +180,6 @@ class Ui(game: Game) {
         level = Label("Level: %d".format(game.level), skin)
         expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
 
-        // *** Left Column *** //
         // Logo
         leftColumn.add(logoImage).expandX()
         leftColumn.row()
@@ -129,72 +205,6 @@ class Ui(game: Game) {
         leftColumn.add(level)
         leftColumn.row()
         leftColumn.add(expToNextLevel)
-
-        // *** Center Column *** //
-        mainPane = TabbedPane()
-        centerColumn.add(mainPane.table).expandX().fillX()
-        centerColumn.row()
-
-        val contentPane = ScrollPane(null)
-        centerColumn.add(contentPane).expand().fill()
-
-        mainPane.addListener(object : TabbedPaneAdapter() {
-            override fun switchedTab(tab: Tab) {
-                contentPane.widget = tab.contentTable
-            }
-        })
-        storeTab = StoreTab(game, skin)
-        eventsTab = EventsTab(game, skin, eventCards)
-        mainPane.add(storeTab)
-        mainPane.add(eventsTab)
-
-        mainPane.switchTab(0)
-
-        // Right Column
-        // Events overview
-        val eventsLabel = Label("Events", skin)
-        rightColumn.add(eventsLabel)
-        rightColumn.row()
-        rightColumn.addSeparator()
-
-        // TODO: Store event cards in scrollable widget
-        rightColumn.add(eventCards.cardGroup)
-        // TODO: Event cards!
-
-        rightColumn.row()
-
-        // Add a debug menu!
-        if (game.debug) {
-            // TOOD: Add spacer
-
-            rightColumn.addSeparator()
-
-            val newDebugMenu = DebugMenu(game, this, skin)
-            rightColumn.add(newDebugMenu.table)
-
-            debugMenu = newDebugMenu
-        }
-        // label to fill space
-        val fillLabel = Label("Assistant Angie", skin)
-        rightColumn.add(fillLabel).expandY()
-
-        // add assistant image
-        rightColumn.row()
-        val assistantImage = Image(Texture(Gdx.files.internal("img/assistant.png")))
-        rightColumn.add(assistantImage).expandY()
-        rightColumn.row()
-        val quoteLabel = Label("\"Bake those biscuits!\"", skin)
-        rightColumn.add(quoteLabel)
-
-
-        // Add Columns
-        table.add(leftColumn).width(250f).top()
-        table.addSeparator(true)
-        table.add(centerColumn).expand().fill()
-        table.addSeparator(true)
-        table.add(rightColumn).width(250f).top()
-
-        stage.addActor(table)
     }
 
     fun addCounterToLeft(owned: Label, perSec: Label, image: Image){
