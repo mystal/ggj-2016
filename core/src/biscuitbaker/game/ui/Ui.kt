@@ -81,7 +81,7 @@ class Ui(game: Game) {
 
         biscuitsOwned = Label("%.0f  ".format(game.biscuits), skin)
         biscuitsPerSecond = Label("%.1f biscuits per second".format(game.bps), skin)
-        val biscuitButton = TextButton("Biscuit Get", skin)
+        val biscuitButton = TextButton("Bake Biscuits!", skin)
         biscuitButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 game.click()

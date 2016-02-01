@@ -13,6 +13,6 @@ public class DesktopLauncher {
         config.width = Config.SCREEN_WIDTH;
         config.height = Config.SCREEN_HEIGHT;
         //config.samples = 2;
-        new LwjglApplication(new BiscuitBaker(true), config);
+        new LwjglApplication(new BiscuitBaker(Config.DEBUG), config);
     }
 }

@@ -31,7 +31,7 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
     internal var shownEvent: Event? = null
 
     init {
-        content.debug = true
+        //content.debug = true
         content.add(noEventSelected)
 
         fulfillButton.addListener(object : ClickListener() {
