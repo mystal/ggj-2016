@@ -39,9 +39,12 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
         fulfillButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 shownEvent?.let { event ->
-                    event.fulfill(game)
+                    if (event.canBeFulfilled(game)) {
+                        event.fulfill(game)
 
-                    eventCards.removeEvent(event)
+                        // TODO: Don't call this directly, register a callback with EventManager
+                        eventCards.removeEvent(event)
+                    }
                 }
             }
         })
