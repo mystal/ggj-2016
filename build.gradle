@@ -2,7 +2,7 @@ buildscript {
     ext {
         appName = "biscuit-baker"
         gdxVersion = '1.9.1'
-        kotlinVersion = '1.0.0-beta-4589'
+        kotlinVersion = '1.0.0'
         toml4jVersion = '0.5.1'
         visuiVersion = '0.9.5'
     }
