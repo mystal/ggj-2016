@@ -54,7 +54,7 @@ class Ui(game: Game) {
     internal var storeTab: StoreTab
     internal var eventsTab: EventsTab
 
-    internal lateinit var eventCards: EventCards
+    internal var eventCards: EventCards
 
     internal var debugMenu: DebugMenu? = null
 
