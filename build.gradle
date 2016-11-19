@@ -3,7 +3,7 @@ buildscript {
         appName = "biscuit-baker"
         gdxVersion = '1.9.4'
         kotlinVersion = '1.0.5'
-        toml4jVersion = '0.5.1'
+        toml4jVersion = '0.7.1'
         visuiVersion = '1.2.4'
     }
     repositories {
