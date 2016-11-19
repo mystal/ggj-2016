@@ -4,7 +4,7 @@ buildscript {
         gdxVersion = '1.9.4'
         kotlinVersion = '1.0.5'
         toml4jVersion = '0.5.1'
-        visuiVersion = '0.9.5'
+        visuiVersion = '1.2.4'
     }
     repositories {
         mavenCentral()
