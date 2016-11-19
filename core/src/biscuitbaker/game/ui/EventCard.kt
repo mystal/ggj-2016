@@ -37,11 +37,11 @@ class EventCard(val event: Event, val manager: EventCards) {
 }
 
 class EventCards(val ui: Ui) {
-    public val cardGroup: VerticalGroup = VerticalGroup()
+    val cardGroup: VerticalGroup = VerticalGroup()
 
-    public val eventCards: ArrayList<EventCard> = ArrayList()
+    val eventCards: ArrayList<EventCard> = ArrayList()
 
-    public var selected: EventCard? = null
+    var selected: EventCard? = null
         private set(value) {
             ui.eventsTab.showEvent(value?.event)
             field = value

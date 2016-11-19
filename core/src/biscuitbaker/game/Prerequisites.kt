@@ -1,20 +1,20 @@
 package biscuitbaker.game
 
 class Prerequisites() {
-    public var biscuits: Long = 0
-    public var eclairs: Long = 0
-    public var cupcakes: Long = 0
-    public var pies: Long = 0
+    var biscuits: Long = 0
+    var eclairs: Long = 0
+    var cupcakes: Long = 0
+    var pies: Long = 0
 
     // TODO: Support multiple products
-    public var productCount: ProductCount? = null
+    var productCount: ProductCount? = null
 
     // TODO: Support multiple upgrades
-    public var upgrade: String? = null
+    var upgrade: String? = null
 
-    public var level: Int = 0
+    var level: Int = 0
 
-    public fun isSatisfied(game: Game): Boolean {
+    fun isSatisfied(game: Game): Boolean {
         // Check Level
         if (game.level < level){
             return false
@@ -76,6 +76,6 @@ class Prerequisites() {
 }
 
 class ProductCount() {
-    public var product: String = ""
-    public var count: Int = 0
+    var product: String = ""
+    var count: Int = 0
 }

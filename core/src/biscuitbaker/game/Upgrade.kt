@@ -3,52 +3,52 @@ package biscuitbaker.game
 import java.util.*
 
 class UpgradeInfo() {
-    public var name: String = ""
-    public var costs: Costs? = null
-    //public var effect: Effect
-    public var prereqs: Prerequisites? = null
-    public var effects: UpgradeEffects? = null
+    var name: String = ""
+    var costs: Costs? = null
+    //var effect: Effect
+    var prereqs: Prerequisites? = null
+    var effects: UpgradeEffects? = null
 }
 
 class ProductModifier() {
-    public var product: String = ""
-    public var value: Double = 0.0
+    var product: String = ""
+    var value: Double = 0.0
 }
 
 class UpgradeEffects() {
-    public var globalBpsBonus: Double = 0.0
-    public var globalBpsMultiplier: Double = 0.0
+    var globalBpsBonus: Double = 0.0
+    var globalBpsMultiplier: Double = 0.0
 
-    public var clickBonus: Double = 0.0
-    public var clickMultiplier: Double = 0.0
+    var clickBonus: Double = 0.0
+    var clickMultiplier: Double = 0.0
 
-    public var productBpsBonus: ProductModifier? = null
-    public var productBpsMultiplier: ProductModifier? = null
+    var productBpsBonus: ProductModifier? = null
+    var productBpsMultiplier: ProductModifier? = null
 
-    public var productEpsBonus: ProductModifier? = null
-    public var productEpsMultiplier: ProductModifier? = null
+    var productEpsBonus: ProductModifier? = null
+    var productEpsMultiplier: ProductModifier? = null
 
-    public var productCpsBonus: ProductModifier? = null
-    public var productCpsMultiplier: ProductModifier? = null
+    var productCpsBonus: ProductModifier? = null
+    var productCpsMultiplier: ProductModifier? = null
 
-    public var productPpsBonus: ProductModifier? = null
-    public var productPpsMultiplier: ProductModifier? = null
+    var productPpsBonus: ProductModifier? = null
+    var productPpsMultiplier: ProductModifier? = null
 }
 
 class Upgrade(info: UpgradeInfo) {
-    public var info: UpgradeInfo = info
+    var info: UpgradeInfo = info
         private set
 
-    public var strings: FlavorStrings = FlavorStrings()
+    var strings: FlavorStrings = FlavorStrings()
         private set
 
-    public var purchased: Boolean = false
+    var purchased: Boolean = false
 
-    public val name: String
+    val name: String
         get() = info.name
 
     // TODO: Fix prices to include other costs
-    public val price: Long
+    val price: Long
         get() = info.costs?.biscuits ?: 0
 
     // Whether to display this product in the store. Once visible, it
@@ -57,7 +57,7 @@ class Upgrade(info: UpgradeInfo) {
 
     // TODO: Add several levels of visibility
     // e.g. show shadowed item first, then full item once it is affordable
-    public fun isVisible(game: Game): Boolean {
+    fun isVisible(game: Game): Boolean {
         // Once visible, always visible
         if (!visible) {
             visible = info.prereqs?.isSatisfied(game) ?: true
@@ -65,7 +65,7 @@ class Upgrade(info: UpgradeInfo) {
         return visible
     }
 
-    public fun applyEffects(game: Game) {
+    fun applyEffects(game: Game) {
         info.effects?.let { effects ->
             // TODO: Apply global BPS effects?
 
@@ -167,5 +167,5 @@ class Upgrade(info: UpgradeInfo) {
 }
 
 class UpgradeInfos() {
-    public var upgrades: ArrayList<UpgradeInfo>? = null
+    var upgrades: ArrayList<UpgradeInfo>? = null
 }

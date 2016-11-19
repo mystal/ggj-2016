@@ -9,19 +9,19 @@ import java.util.*
 class Game(val debug: Boolean) {
     // TODO: Maybe make this a Long that is tenths of cookies owned?
 
-    public var level: Int = 0
+    var level: Int = 0
         private set
 
-    public var exp: Int = 0
+    var exp: Int = 0
         private set
 
-    public var expToLevel: ExpToLevel = ExpToLevel()
+    var expToLevel: ExpToLevel = ExpToLevel()
         private set
 
-    public val maxLevel: Int
+    val maxLevel: Int
         get() = expToLevel.numLevels
 
-    public val expToNextLevel: Int
+    val expToNextLevel: Int
         get() {
             if (level >= maxLevel) {
                 return 0
@@ -30,64 +30,64 @@ class Game(val debug: Boolean) {
         }
 
     // Biscuits
-    public var biscuits: Double = 0.0
+    var biscuits: Double = 0.0
 
     // Total number of biscuits ever earned
-    public var biscuitsEarned: Double = 0.0
+    var biscuitsEarned: Double = 0.0
 
     // Biscuits per second
-    public var bps: Double = 0.0
+    var bps: Double = 0.0
         private set
 
     // Biscuits per click
-    public val baseBpc: Double = 1.0
+    val baseBpc: Double = 1.0
 
-    public var bpcBonus: Double = 0.0
-    public var bpcMultiplier: Double = 1.0
+    var bpcBonus: Double = 0.0
+    var bpcMultiplier: Double = 1.0
 
     // Biscuits per click
-    public val bpc: Double
+    val bpc: Double
         get() = (baseBpc + bpcBonus) * bpcMultiplier
 
     // Eclairs
-    public var eclairs: Double = 0.0
+    var eclairs: Double = 0.0
 
     // Total number of eclairs ever earned
-    public var eclairsEarned: Double = 0.0
+    var eclairsEarned: Double = 0.0
 
     // Eclairs per second
-    public var eps: Double = 0.0
+    var eps: Double = 0.0
         private set
 
     // Cupcakes
-    public var cupcakes: Double = 0.0
+    var cupcakes: Double = 0.0
 
     // Total number of cupcakes ever earned
-    public var cupcakesEarned: Double = 0.0
+    var cupcakesEarned: Double = 0.0
 
     // Cupcakes per second
-    public var cps: Double = 0.0
+    var cps: Double = 0.0
         private set
 
     // Pies
-    public var pies: Double = 0.0
+    var pies: Double = 0.0
 
     // Total number of pies ever earned
-    public var piesEarned: Double = 0.0
+    var piesEarned: Double = 0.0
 
     // Pies per second
-    public var pps: Double = 0.0
+    var pps: Double = 0.0
         private set
 
     // TODO: Keep a HashMap of Products, Upgrades, and Events for quick lookup
 
-    public var products: ArrayList<Product> = ArrayList()
+    var products: ArrayList<Product> = ArrayList()
         private set
 
-    public var upgrades: ArrayList<Upgrade> = ArrayList()
+    var upgrades: ArrayList<Upgrade> = ArrayList()
         private set
 
-    public var eventManager: EventManager = EventManager()
+    var eventManager: EventManager = EventManager()
 
     init {
         loadData()
@@ -95,6 +95,8 @@ class Game(val debug: Boolean) {
     }
 
     fun update(dt: Float, ui: Ui) {
+        // TODO: Save game state in the background.
+
         if (products.isEmpty()) {
             return;
         }
@@ -257,10 +259,10 @@ class Game(val debug: Boolean) {
 }
 
 class ExpToLevel {
-    public var expToLevel: ArrayList<Int> = ArrayList()
+    var expToLevel: ArrayList<Int> = ArrayList()
         private set
 
-    public val numLevels: Int
+    val numLevels: Int
         get() = expToLevel.size
 
     fun get(level: Int): Int {

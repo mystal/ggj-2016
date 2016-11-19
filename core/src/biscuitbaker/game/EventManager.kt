@@ -10,13 +10,13 @@ const internal val EVENT_CHANCE: Float = 0.30f
 const internal val EVENT_FREQUENCY: Float = GameTime.DAY
 
 class EventManager {
-    public var events: ArrayList<Event> = ArrayList()
+    var events: ArrayList<Event> = ArrayList()
         private set
 
-    public var activeEvents: ArrayList<Event> = ArrayList()
+    var activeEvents: ArrayList<Event> = ArrayList()
         private set
 
-    public var eventTimer: Float = EVENT_FREQUENCY
+    var eventTimer: Float = EVENT_FREQUENCY
         private set
 
     private val rand: Random = Random()

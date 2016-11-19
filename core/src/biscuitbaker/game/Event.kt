@@ -3,62 +3,62 @@ package biscuitbaker.game
 import java.util.*
 
 class EventInfo() {
-    public var name: String = ""
-    public var faction: String = ""
-    public var duration: Int = 0
-    public var repeatable: Boolean = false
-    public var prereqs: Prerequisites? = null
-    public var costs: Costs? = null
-    public var rewards: Rewards? = null
-    public var factionImage: String = ""
+    var name: String = ""
+    var faction: String = ""
+    var duration: Int = 0
+    var repeatable: Boolean = false
+    var prereqs: Prerequisites? = null
+    var costs: Costs? = null
+    var rewards: Rewards? = null
+    var factionImage: String = ""
 }
 
 class Event(info: EventInfo) {
-    public var info: EventInfo = info
+    var info: EventInfo = info
         private set
 
-    public var strings: FlavorStrings = FlavorStrings()
+    var strings: FlavorStrings = FlavorStrings()
         private set
 
-    public val name: String
+    val name: String
         get() = info.name
 
-    public val repeatable: Boolean
+    val repeatable: Boolean
         get() = info.repeatable
 
-    public val duration: Int
+    val duration: Int
         get() = info.duration
 
-    public val exp: Int
+    val exp: Int
         get() = info.rewards?.exp ?: 0
 
-    public val costs: Costs?
+    val costs: Costs?
         get() = info.costs
 
-    public var timeRemaining: Float = 0f
+    var timeRemaining: Float = 0f
         private set
 
-    public var completedOnce: Boolean = false
+    var completedOnce: Boolean = false
         private set
 
     // Whether this event can pop up. Once visible, it
     // will always be visible.
     private var visible: Boolean = false
 
-    public fun tickTimer(dt: Float) {
+    fun tickTimer(dt: Float) {
         timeRemaining -= dt
     }
 
-    public fun activate() {
+    fun activate() {
         timeRemaining = duration * GameTime.DAY
     }
 
-    public fun isAvailable(game: Game): Boolean {
+    fun isAvailable(game: Game): Boolean {
         return isVisible(game) && (!completedOnce || repeatable) && timeRemaining <= 0f
     }
 
     // TODO: Add several levels of visibility
-    public fun isVisible(game: Game): Boolean {
+    fun isVisible(game: Game): Boolean {
         // Once visible, always visible
         if (!visible) {
             visible = info.prereqs?.isSatisfied(game) ?: true
@@ -66,7 +66,7 @@ class Event(info: EventInfo) {
         return visible
     }
 
-    public fun fulfill(game: Game) {
+    fun fulfill(game: Game) {
         costs?.let { costs ->
             game.spendBiscuits(costs.biscuits.toDouble())
             game.spendEclairs(costs.eclairs.toDouble())
@@ -80,7 +80,7 @@ class Event(info: EventInfo) {
         completedOnce = true
     }
 
-    public fun canBeFulfilled(game: Game): Boolean {
+    fun canBeFulfilled(game: Game): Boolean {
         val costs = costs
         if (costs == null) {
             return true
@@ -94,5 +94,5 @@ class Event(info: EventInfo) {
 }
 
 class EventInfos() {
-    public var events: ArrayList<EventInfo>? = null
+    var events: ArrayList<EventInfo>? = null
 }

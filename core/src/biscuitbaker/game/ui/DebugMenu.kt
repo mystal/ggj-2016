@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.kotcrab.vis.ui.widget.VisTable
 
 class DebugMenu(game: Game, ui: Ui, skin: Skin) {
-    public var table: VisTable = VisTable()
+    var table: VisTable = VisTable()
         private set
 
     internal var biscuitsEarned: Label = Label("", skin)
@@ -99,7 +99,7 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
         table.add(deselectEventButton)
     }
 
-    public fun render(dt: Float, game: Game) {
+    fun render(dt: Float, game: Game) {
         biscuitsEarned.setText("Total biscuits earned: %.1f".format(game.biscuitsEarned))
         nextEvent.setText("Next event: %.1f".format(game.eventManager.eventTimer))
     }

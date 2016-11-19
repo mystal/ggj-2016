@@ -1,8 +1,8 @@
 package biscuitbaker.game
 
 class Costs() {
-    public var biscuits: Long = 0
-    public var eclairs: Long = 0
-    public var cupcakes: Long = 0
-    public var pies: Long = 0
+    var biscuits: Long = 0
+    var eclairs: Long = 0
+    var cupcakes: Long = 0
+    var pies: Long = 0
 }
