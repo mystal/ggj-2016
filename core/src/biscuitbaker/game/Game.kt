@@ -1,14 +1,14 @@
 package biscuitbaker.game
 
 import biscuitbaker.game.ui.Ui
+import com.badlogic.gdx.Application.ApplicationType
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
 import com.moandjiezana.toml.Toml
 import java.util.*
 
-class Game(val debug: Boolean) {
-    // TODO: Maybe make this a Long that is tenths of cookies owned?
 
+class Game(val debug: Boolean) {
     var level: Int = 0
         private set
 
@@ -28,6 +28,9 @@ class Game(val debug: Boolean) {
             }
             return expToLevel.get(level) - exp
         }
+
+    // TODO: Maybe make this a Long that is tenths of cookies owned?
+    // TODO: Abstract away resources into a class so we can store those in data as well.
 
     // Biscuits
     var biscuits: Double = 0.0
@@ -91,7 +94,6 @@ class Game(val debug: Boolean) {
 
     init {
         loadData()
-        loadState()
     }
 
     fun update(dt: Float, ui: Ui) {
@@ -247,14 +249,25 @@ class Game(val debug: Boolean) {
         }
     }
 
-    // TODO: implement
     fun saveState() {
+        // Save game state.
+        val saveData = GameSaveData(this)
+        val json = Json()
+        val saveDataString = json.prettyPrint(saveData)
+        val saveDataFile = when (Gdx.app.type) {
+            // On Android, put files in app private storage.
+            ApplicationType.Android -> Gdx.files.local("profiles/profile1.json")
+            // On Desktop, put files in home dir.
+            ApplicationType.Desktop -> Gdx.files.external("profiles/profile1.json")
+            else -> throw RuntimeException("Unsupported platform!")
+        }
+        saveDataFile.writeString(saveDataString, false)
     }
 
     // TODO: implement
     fun loadState() {
-        // TODO: Save state of products and upgrades
         // Ignore data that loaded from JSON
+        // TODO: Load save file.
     }
 }
 

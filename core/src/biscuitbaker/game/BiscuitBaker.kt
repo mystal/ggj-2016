@@ -10,8 +10,13 @@ class BiscuitBaker(val debug: Boolean) : ApplicationAdapter() {
     internal lateinit var ui: Ui
 
     override fun create() {
+        // TODO: Show a screen to pick which profile to play.
+
         game = Game(debug)
         ui = Ui(game)
+
+        // TODO: Load state when aprofile is picked.
+        game.loadState()
     }
 
     override fun resize(width: Int, height: Int) {
