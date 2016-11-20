@@ -54,9 +54,9 @@ class Ui(game: Game) {
     internal var storeTab: StoreTab
     internal var eventsTab: EventsTab
 
-    internal var eventCards: EventCards
+    internal var debugTab: DebugTab? = null
 
-    internal var debugMenu: DebugMenu? = null
+    internal var eventCards: EventCards
 
     init {
         Gdx.input.inputProcessor = stage
@@ -96,22 +96,18 @@ class Ui(game: Game) {
         mainPane.add(storeTab)
         mainPane.add(eventsTab)
 
+        // Add a debug menu in a separate tab.
+        if (game.debug) {
+            val newDebugTab = DebugTab(game, this, skin)
+            mainPane.add(newDebugTab)
+
+            debugTab = newDebugTab
+        }
+
         mainPane.switchTab(0)
 
         // Right Column
         createRightColumn(game)
-
-        // Add a debug menu!
-        if (game.debug) {
-            // TOOD: Add spacer
-
-            rightColumn.addSeparator()
-
-            val newDebugMenu = DebugMenu(game, this, skin)
-            rightColumn.add(newDebugMenu.table)
-
-            debugMenu = newDebugMenu
-        }
 
         // Add Columns
         table.add(leftColumn).width(250f).top()
@@ -119,7 +115,6 @@ class Ui(game: Game) {
         table.add(centerColumn).expand().fill()
         table.addSeparator(true)
         table.add(rightColumn).width(250f).top()
-
 
         stage.addActor(table)
     }
@@ -248,9 +243,9 @@ class Ui(game: Game) {
         storeTab.render(dt, game)
         eventsTab.render(dt, game)
 
-        eventCards.update(dt)
+        debugTab?.render(dt, game)
 
-        debugMenu?.render(dt, game)
+        eventCards.update(dt)
 
         stage.draw()
     }

@@ -5,20 +5,17 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.kotcrab.vis.ui.widget.VisTable
+import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 
-class DebugMenu(game: Game, ui: Ui, skin: Skin) {
-    var table: VisTable = VisTable()
+
+class DebugTab(game: Game, ui: Ui, skin: Skin) : Tab() {
+    var content: VisTable = VisTable()
         private set
 
     internal var biscuitsEarned: Label = Label("", skin)
     internal var nextEvent: Label = Label("", skin)
 
     init {
-        val debugLabel = Label("Debug", skin)
-        table.add(debugLabel)
-
-        table.row()
-
         // Add button to add/set biscuit count
         val biscuitModRow = HorizontalGroup()
         val biscuitModLabel = TextField("10000", skin)
@@ -43,17 +40,17 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
             }
         })
         biscuitModRow.addActor(biscuitSetButton)
-        table.add(biscuitModRow)
+        content.add(biscuitModRow)
 
-        table.row()
+        content.row()
 
-        table.add(biscuitsEarned)
+        content.add(biscuitsEarned)
 
-        table.row()
+        content.row()
 
-        table.add(nextEvent)
+        content.add(nextEvent)
 
-        table.row()
+        content.row()
 
         val activateEventButton = TextButton("Activate Event", skin)
         activateEventButton.addListener(object : ClickListener() {
@@ -61,9 +58,9 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
                 game.eventManager.tryActivateEvent(game, ui)
             }
         })
-        table.add(activateEventButton)
+        content.add(activateEventButton)
 
-        table.row()
+        content.row()
 
         val levelRow = HorizontalGroup()
 
@@ -87,7 +84,7 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
             }
         })
         levelRow.addActor(levelUpButton)
-        table.add(levelRow)
+        content.add(levelRow)
 
         val deselectEventButton = TextButton("Deselect Event", skin)
         deselectEventButton.addListener(object : ClickListener() {
@@ -95,8 +92,20 @@ class DebugMenu(game: Game, ui: Ui, skin: Skin) {
                 ui.eventCards.deselect()
             }
         })
-        table.row()
-        table.add(deselectEventButton)
+        content.row()
+        content.add(deselectEventButton)
+    }
+
+    override fun isCloseableByUser(): Boolean {
+        return false
+    }
+
+    override fun getTabTitle(): String? {
+        return "Debug"
+    }
+
+    override fun getContentTable(): Table? {
+        return content
     }
 
     fun render(dt: Float, game: Game) {

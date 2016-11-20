@@ -12,13 +12,13 @@ import java.util.*
 
 internal const val MAX_COLUMNS: Int = 4
 
+
 class StoreTab(game: Game, skin: Skin): Tab() {
     internal val content: VisTable = VisTable()
 
     internal var productImages: ArrayList<Image> = ArrayList()
     internal var productStatuses: ArrayList<Label> = ArrayList()
     internal var productButtons: ArrayList<TextButton> = ArrayList()
-
 
     internal var upgradeImages: ArrayList<Image> = ArrayList()
     internal var upgradeStatuses: ArrayList<Label> = ArrayList()
