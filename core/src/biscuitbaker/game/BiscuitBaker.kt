@@ -5,18 +5,24 @@ import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 
+
 class BiscuitBaker(val debug: Boolean) : ApplicationAdapter() {
+    internal lateinit var profileManager: ProfileManager
     internal lateinit var game: Game
     internal lateinit var ui: Ui
 
     override fun create() {
         // TODO: Show a screen to pick which profile to play.
 
+        profileManager = ProfileManager()
         game = Game(debug)
         ui = Ui(game)
 
-        // TODO: Load state when aprofile is picked.
-        game.loadState()
+        // TODO: Load state when a profile is picked.
+        val saveData = profileManager.getProfileData(profileManager.lastPlayedProfile)
+        if (saveData != null) {
+            game.loadState(saveData)
+        }
     }
 
     override fun resize(width: Int, height: Int) {
@@ -37,6 +43,7 @@ class BiscuitBaker(val debug: Boolean) : ApplicationAdapter() {
 
     override fun pause() {
         // Save out the game state.
-        game.saveState()
+        val saveData = game.saveState()
+        profileManager.setProfileData(profileManager.lastPlayedProfile, saveData)
     }
 }

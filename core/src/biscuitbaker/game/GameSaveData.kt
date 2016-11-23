@@ -3,7 +3,7 @@ package biscuitbaker.game
 import java.util.*
 
 
-class GameSaveData(game: Game) {
+class GameSaveData() {
     var level: Int = 0
 
     var exp: Int = 0
@@ -23,11 +23,15 @@ class GameSaveData(game: Game) {
     var ownedProducts: HashMap<String, Int> = HashMap()
     var purchasedUpgrades: ArrayList<String> = ArrayList()
 
-    init {
-        // Store resource, product, and upgrade info.
+    var activeEvents: ArrayList<String> = ArrayList()
+    var eventTimer: Float = 0.0f
+
+    constructor(game: Game) : this() {
+        // Save level and experience.
         level = game.level
         exp = game.exp
 
+        // Save resources.
         biscuits = game.biscuits
         biscuitsEarned = game.biscuitsEarned
         eclairs = game.eclairs
@@ -37,6 +41,7 @@ class GameSaveData(game: Game) {
         pies = game.pies
         piesEarned = game.piesEarned
 
+        // Save owned products and upgrades.
         for (product in game.products) {
             if (product.owned > 0) {
                 ownedProducts[product.name] = product.owned
@@ -47,5 +52,16 @@ class GameSaveData(game: Game) {
                 purchasedUpgrades.add(upgrade.name)
             }
         }
+
+        // Save event info.
+        // TODO: Save active events, names, how long they have left.
+        // TODO: Save which events have been completedOnce.
+        for (event in game.eventManager.activeEvents) {
+            activeEvents.add(event.name)
+        }
+        eventTimer = game.eventManager.eventTimer
+    }
+
+    fun applyTo(game: Game) {
     }
 }

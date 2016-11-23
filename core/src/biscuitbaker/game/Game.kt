@@ -249,25 +249,41 @@ class Game(val debug: Boolean) {
         }
     }
 
-    fun saveState() {
+    fun saveState(): GameSaveData {
         // Save game state.
         val saveData = GameSaveData(this)
-        val json = Json()
-        val saveDataString = json.prettyPrint(saveData)
-        val saveDataFile = when (Gdx.app.type) {
-            // On Android, put files in app private storage.
-            ApplicationType.Android -> Gdx.files.local("profiles/profile1.json")
-            // On Desktop, put files in home dir.
-            ApplicationType.Desktop -> Gdx.files.external("profiles/profile1.json")
-            else -> throw RuntimeException("Unsupported platform!")
-        }
-        saveDataFile.writeString(saveDataString, false)
+        return saveData
     }
 
-    // TODO: implement
-    fun loadState() {
-        // Ignore data that loaded from JSON
-        // TODO: Load save file.
+    fun loadState(saveData: GameSaveData) {
+        // Load game state.
+        //saveData.applyTo(this)
+        // Store resource, product, and upgrade info.
+        level = saveData.level
+        exp = saveData.exp
+
+        biscuits = saveData.biscuits
+        biscuitsEarned = saveData.biscuitsEarned
+        eclairs = saveData.eclairs
+        eclairsEarned = saveData.eclairsEarned
+        cupcakes = saveData.cupcakes
+        cupcakesEarned = saveData.cupcakesEarned
+        pies = saveData.pies
+        piesEarned = saveData.piesEarned
+
+        for ((name, amount) in saveData.ownedProducts) {
+            if (amount <= 0) {
+                continue
+            }
+
+            val product = products.find { it.name == name }
+            product?.owned = amount
+        }
+        for (name in saveData.purchasedUpgrades) {
+            val upgrade = upgrades.find { it.name == name }
+            upgrade?.purchased = true
+            upgrade?.applyEffects(this)
+        }
     }
 }
 
