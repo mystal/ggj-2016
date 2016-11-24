@@ -36,10 +36,8 @@ class Event(info: EventInfo) {
         get() = info.costs
 
     var timeRemaining: Float = 0f
-        private set
 
     var completedOnce: Boolean = false
-        private set
 
     // Whether this event can pop up. Once visible, it
     // will always be visible.

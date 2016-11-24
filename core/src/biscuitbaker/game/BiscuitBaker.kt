@@ -21,7 +21,7 @@ class BiscuitBaker(val debug: Boolean) : ApplicationAdapter() {
         // TODO: Load state when a profile is picked.
         val saveData = profileManager.getProfileData(profileManager.lastPlayedProfile)
         if (saveData != null) {
-            game.loadState(saveData)
+            game.loadState(saveData, ui)
         }
     }
 

@@ -9,6 +9,7 @@ import java.util.*
 const internal val EVENT_CHANCE: Float = 0.30f
 const internal val EVENT_FREQUENCY: Float = GameTime.DAY
 
+
 class EventManager {
     var events: ArrayList<Event> = ArrayList()
         private set
@@ -17,7 +18,6 @@ class EventManager {
         private set
 
     var eventTimer: Float = EVENT_FREQUENCY
-        private set
 
     private val rand: Random = Random()
 
@@ -74,9 +74,7 @@ class EventManager {
             event.activate()
             activeEvents.add(event)
 
-            activeEvents.sortBy { event ->
-                event.timeRemaining
-            }
+            activeEvents.sortBy { it.timeRemaining }
 
             val index = activeEvents.indexOf(event)
 

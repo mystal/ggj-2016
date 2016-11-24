@@ -1,7 +1,6 @@
 package biscuitbaker.game
 
 import biscuitbaker.game.ui.Ui
-import com.badlogic.gdx.Application.ApplicationType
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Json
 import com.moandjiezana.toml.Toml
@@ -255,13 +254,14 @@ class Game(val debug: Boolean) {
         return saveData
     }
 
-    fun loadState(saveData: GameSaveData) {
+    fun loadState(saveData: GameSaveData, ui: Ui) {
         // Load game state.
         //saveData.applyTo(this)
-        // Store resource, product, and upgrade info.
+        // Load levels and experience.
         level = saveData.level
         exp = saveData.exp
 
+        // Load resources.
         biscuits = saveData.biscuits
         biscuitsEarned = saveData.biscuitsEarned
         eclairs = saveData.eclairs
@@ -271,19 +271,45 @@ class Game(val debug: Boolean) {
         pies = saveData.pies
         piesEarned = saveData.piesEarned
 
-        for ((name, amount) in saveData.ownedProducts) {
-            if (amount <= 0) {
+        // Load owned products and upgrades.
+        for ((name, owned) in saveData.products) {
+            if (owned <= 0) {
                 continue
             }
-
             val product = products.find { it.name == name }
-            product?.owned = amount
+            product?.owned = owned
         }
-        for (name in saveData.purchasedUpgrades) {
+        for ((name, purchased) in saveData.upgrades) {
+            if (!purchased) {
+                continue
+            }
             val upgrade = upgrades.find { it.name == name }
             upgrade?.purchased = true
             upgrade?.applyEffects(this)
         }
+
+        // Load event info.
+        for ((name, completedOnce) in saveData.events) {
+            if (!completedOnce) {
+                continue
+            }
+            val event = eventManager.events.find { it.name == name }
+            event?.completedOnce = true
+        }
+        // Load active event info.
+        for ((name, timeRemaining) in saveData.activeEvents) {
+            val event = eventManager.events.find { it.name == name }
+            if (event != null) {
+                event.timeRemaining = timeRemaining
+                eventManager.activeEvents.add(event)
+            }
+        }
+        eventManager.activeEvents.sortBy { it.timeRemaining }
+        // Add active events to UI.
+        for ((i, event) in eventManager.activeEvents.withIndex()) {
+            ui.addEvent(event, i)
+        }
+        eventManager.eventTimer = saveData.eventTimer
     }
 }
 

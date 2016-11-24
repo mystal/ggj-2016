@@ -20,10 +20,11 @@ class GameSaveData() {
     var pies: Double = 0.0
     var piesEarned: Double = 0.0
 
-    var ownedProducts: HashMap<String, Int> = HashMap()
-    var purchasedUpgrades: ArrayList<String> = ArrayList()
+    var products: ArrayList<ProductSaveData> = ArrayList()
+    var upgrades: ArrayList<UpgradeSaveData> = ArrayList()
 
-    var activeEvents: ArrayList<String> = ArrayList()
+    var events: ArrayList<EventSaveData> = ArrayList()
+    var activeEvents: ArrayList<ActiveEventSaveData> = ArrayList()
     var eventTimer: Float = 0.0f
 
     constructor(game: Game) : this() {
@@ -42,26 +43,31 @@ class GameSaveData() {
         piesEarned = game.piesEarned
 
         // Save owned products and upgrades.
+        //products = game.products.filter { it.owned > 0 }.map { ProductSaveData(it.name, it.owned) }
         for (product in game.products) {
             if (product.owned > 0) {
-                ownedProducts[product.name] = product.owned
+                products.add(ProductSaveData(product.name, product.owned))
             }
         }
         for (upgrade in game.upgrades) {
             if (upgrade.purchased) {
-                purchasedUpgrades.add(upgrade.name)
+                upgrades.add(UpgradeSaveData(upgrade.name, true))
             }
         }
 
         // Save event info.
-        // TODO: Save active events, names, how long they have left.
-        // TODO: Save which events have been completedOnce.
+        for (event in game.eventManager.events) {
+            events.add(EventSaveData(event.name, event.completedOnce))
+        }
+        // Save active events, names, how long they have left.
         for (event in game.eventManager.activeEvents) {
-            activeEvents.add(event.name)
+            activeEvents.add(ActiveEventSaveData(event.name, event.timeRemaining))
         }
         eventTimer = game.eventManager.eventTimer
     }
-
-    fun applyTo(game: Game) {
-    }
 }
+
+data class ProductSaveData(var name: String = "", var owned: Int = 0)
+data class UpgradeSaveData(var name: String = "", var purchased: Boolean = false)
+data class EventSaveData(var name: String = "", var completedOnce: Boolean = false)
+data class ActiveEventSaveData(var name: String = "", var timeRemaining: Float = 0f)
