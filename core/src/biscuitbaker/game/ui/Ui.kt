@@ -49,6 +49,9 @@ class Ui(game: Game) {
     internal lateinit var rank: Label
     internal lateinit var expToNextRank: Label
 
+    // Description tab
+    internal lateinit var descriptionCard: ProductDescriptionCard
+
     // Tabs
     internal var mainPane: TabbedPane
 
@@ -91,7 +94,7 @@ class Ui(game: Game) {
                 contentPane.widget = tab.contentTable
             }
         })
-        storeTab = StoreTab(game, skin)
+        storeTab = StoreTab(game, this, skin)
         eventsTab = EventsTab(game, skin, eventCards)
         mainPane.add(storeTab)
         mainPane.add(eventsTab)
@@ -200,6 +203,13 @@ class Ui(game: Game) {
         leftColumn.add(rank)
         leftColumn.row()
         leftColumn.add(expToNextRank)
+
+        // Add product description card
+        descriptionCard = ProductDescriptionCard()
+
+        leftColumn.row()
+        leftColumn.addSeparator()
+        leftColumn.add(descriptionCard.table).fillX()
     }
 
     fun addCounterToLeft(owned: Label, perSec: Label, image: Image){

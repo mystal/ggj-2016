@@ -3,6 +3,7 @@ package biscuitbaker.game.ui
 import biscuitbaker.game.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
@@ -14,7 +15,7 @@ import java.util.*
 internal const val MAX_COLUMNS: Int = 4
 
 
-class StoreTab(game: Game, skin: Skin): Tab() {
+class StoreTab(game: Game, ui: Ui, skin: Skin): Tab() {
     internal val content: VisTable = VisTable()
 
     internal var productImages: ArrayList<Image> = ArrayList()
@@ -31,6 +32,7 @@ class StoreTab(game: Game, skin: Skin): Tab() {
 
         content.row()
 
+        // TODO: Use a HorizontalFlowGroup.
         content.addSeparator().colspan(MAX_COLUMNS)
 
         var col = 0
@@ -55,6 +57,18 @@ class StoreTab(game: Game, skin: Skin): Tab() {
             t.row()
             t.add(upgradeButton)
             t.row()
+
+            t.addListener(object : ClickListener() {
+                override fun enter(event: InputEvent?, x: Float, y: Float, pointer: Int, fromActor: Actor?) {
+                    if (pointer != -1) {
+                        return
+                    }
+
+                    ui.descriptionCard.setName(upgrade.name)
+                    ui.descriptionCard.setDescription(upgrade.strings.description)
+                    ui.descriptionCard.setFlavor(upgrade.strings.flavor)
+                }
+            })
 
             content.add(t)
             col += 1
@@ -104,6 +118,18 @@ class StoreTab(game: Game, skin: Skin): Tab() {
             t.row()
             t.add(productButton)
             t.row()
+
+            t.addListener(object : ClickListener() {
+                override fun enter(event: InputEvent?, x: Float, y: Float, pointer: Int, fromActor: Actor?) {
+                    if (pointer != -1) {
+                        return
+                    }
+
+                    ui.descriptionCard.setName(product.name)
+                    ui.descriptionCard.setDescription(product.strings.description)
+                    ui.descriptionCard.setFlavor(product.strings.flavor)
+                }
+            })
 
             content.add(t)
             col += 1
