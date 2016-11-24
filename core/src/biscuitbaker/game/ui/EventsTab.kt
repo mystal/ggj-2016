@@ -120,6 +120,6 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
     }
 
     override fun getTabTitle(): String? {
-        return "Events"
+        return "Event"
     }
 }

@@ -7,7 +7,7 @@ flavor = "Everything you need to bake up some magic! Mixers, rollers, trays, and
 description = "Makes five times more biscuits than the bread boy."
 
 ["House Elves"]
-flavor = "Humane work conditions only matter if you're human"
+flavor = "Humane work conditions only matter if you're human."
 description = "They make eclairs. Good ones."
 
 ["Marble Slab"]
@@ -23,7 +23,7 @@ flavor = "Summon angelic cupcakes from a higher plane."
 description = "You conjure extra cupcakes."
 
 ["Fruit Pie Trees"]
-flavor = "Pies didn't used to grow on tries. But we've been working on it."
+flavor = "Pies didn't used to grow on trees. But we've been working on it."
 description = "Grows pies."
 
 ["Oven"]
