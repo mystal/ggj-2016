@@ -94,6 +94,18 @@ class DebugTab(game: Game, ui: Ui, skin: Skin) : Tab() {
         })
         content.row()
         content.add(deselectEventButton)
+
+        val debugDrawButton = TextButton("Toggle Debug Draw", skin)
+        debugDrawButton.addListener(object : ClickListener() {
+            override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                ui.table.debug = !ui.table.debug
+                for (tab in ui.mainPane.tabs) {
+                    tab.contentTable.debug = !tab.contentTable.debug
+                }
+            }
+        })
+        content.row()
+        content.add(debugDrawButton)
     }
 
     override fun isCloseableByUser(): Boolean {

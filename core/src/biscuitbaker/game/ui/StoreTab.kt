@@ -10,6 +10,7 @@ import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 import java.util.*
 
+
 internal const val MAX_COLUMNS: Int = 4
 
 
@@ -25,7 +26,6 @@ class StoreTab(game: Game, skin: Skin): Tab() {
     internal var upgradeButtons: ArrayList<TextButton> = ArrayList()
 
     init {
-        //content.debug = true
         val upgradesLabel = Label("Upgrades", skin)
         content.add(upgradesLabel).colspan(MAX_COLUMNS)
 

@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 
+
 class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
     internal val content: VisTable = VisTable()
 
@@ -33,7 +34,6 @@ class EventsTab(game: Game, skin: Skin, val eventCards: EventCards): Tab() {
     internal var shownEvent: Event? = null
 
     init {
-        //content.debug = true
         content.add(noEventSelected)
 
         fulfillButton.addListener(object : ClickListener() {

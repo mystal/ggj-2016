@@ -23,6 +23,7 @@ class Ui(game: Game) {
 
     internal var skin: Skin
     internal val stage: Stage = Stage(FitViewport(WIDTH, HEIGHT))
+    internal val table: VisTable
 
     internal var leftColumn: VisTable
     internal var centerColumn: VisTable
@@ -69,17 +70,16 @@ class Ui(game: Game) {
         rightColumn = VisTable()
         eventCards = EventCards(this)
 
-        val table = VisTable()
+        table = VisTable()
         table.setFillParent(true)
-        if (game.debug) {
-            table.debug = true
-        }
 
         // Left Column
         createLeftColumn(game)
 
         // Center Column
         mainPane = TabbedPane()
+        // Turn off dragging tabs.
+        mainPane.tabsPane.draggable = null
         centerColumn.add(mainPane.table).expandX().fillX()
         centerColumn.row()
 
