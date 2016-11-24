@@ -70,6 +70,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        compile "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         compile "com.kotcrab.vis:vis-ui:$visuiVersion"
         compile "com.moandjiezana.toml:toml4j:$toml4jVersion"
     }
