@@ -9,13 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.*
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
-import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.kotcrab.vis.ui.VisUI
 import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
 import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPane
 import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPaneAdapter
+
 
 class Ui(game: Game) {
     internal val WIDTH: Float = Config.SCREEN_WIDTH.toFloat()
@@ -44,9 +44,9 @@ class Ui(game: Game) {
     internal lateinit var piesOwned: Label
     internal lateinit var piesPerSecond: Label
 
-    // Level and Exp
-    internal lateinit var level: Label
-    internal lateinit var expToNextLevel: Label
+    // Rank and Exp
+    internal lateinit var rank: Label
+    internal lateinit var expToNextRank: Label
 
     // Tabs
     internal var mainPane: TabbedPane
@@ -172,8 +172,8 @@ class Ui(game: Game) {
         piesPerSecond = Label("%.1f pies per second".format(game.pps), skin)
         val piesImage = Image(Texture(Gdx.files.internal("img/pie.png")))
 
-        level = Label("Level: %d".format(game.level), skin)
-        expToNextLevel = Label("%d to next level".format(game.expToNextLevel), skin)
+        rank = Label("Rank: %d".format(game.rank), skin)
+        expToNextRank = Label("%d to next rank".format(game.expToNextRank), skin)
 
         // Logo
         leftColumn.add(logoImage).expandX()
@@ -195,11 +195,11 @@ class Ui(game: Game) {
         // Pies
         addCounterToLeft(piesOwned, piesPerSecond, piesImage)
 
-        //Add Level info
+        //Add Rank info
         leftColumn.addSeparator()
-        leftColumn.add(level)
+        leftColumn.add(rank)
         leftColumn.row()
-        leftColumn.add(expToNextLevel)
+        leftColumn.add(expToNextRank)
     }
 
     fun addCounterToLeft(owned: Label, perSec: Label, image: Image){
@@ -237,8 +237,8 @@ class Ui(game: Game) {
         piesOwned.setText("%.0f  ".format(game.pies))
         piesPerSecond.setText("%.1f pies per second".format(game.pps))
 
-        level.setText("Level: %d".format(game.level))
-        expToNextLevel.setText("%d to next level".format(game.expToNextLevel))
+        rank.setText("Rank: %d".format(game.rank))
+        expToNextRank.setText("%d to next rank".format(game.expToNextRank))
 
         storeTab.render(dt, game)
         eventsTab.render(dt, game)

@@ -62,10 +62,10 @@ class DebugTab(game: Game, ui: Ui, skin: Skin) : Tab() {
 
         content.row()
 
-        val levelRow = HorizontalGroup()
+        val rankRow = HorizontalGroup()
 
         val expAddField = TextField("1000", skin)
-        levelRow.addActor(expAddField)
+        rankRow.addActor(expAddField)
         val expAddButton = TextButton("Add", skin)
         expAddButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
@@ -75,16 +75,16 @@ class DebugTab(game: Game, ui: Ui, skin: Skin) : Tab() {
                 }
             }
         })
-        levelRow.addActor(expAddButton)
+        rankRow.addActor(expAddButton)
 
-        val levelUpButton = TextButton("Level Up", skin)
-        levelUpButton.addListener(object : ClickListener() {
+        val rankUpButton = TextButton("Rank Up", skin)
+        rankUpButton.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                game.levelUp()
+                game.rankUp()
             }
         })
-        levelRow.addActor(levelUpButton)
-        content.add(levelRow)
+        rankRow.addActor(rankUpButton)
+        content.add(rankRow)
 
         val deselectEventButton = TextButton("Deselect Event", skin)
         deselectEventButton.addListener(object : ClickListener() {

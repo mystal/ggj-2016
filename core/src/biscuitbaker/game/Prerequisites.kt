@@ -1,5 +1,6 @@
 package biscuitbaker.game
 
+
 class Prerequisites() {
     var biscuits: Long = 0
     var eclairs: Long = 0
@@ -12,11 +13,11 @@ class Prerequisites() {
     // TODO: Support multiple upgrades
     var upgrade: String? = null
 
-    var level: Int = 0
+    var rank: Int = 0
 
     fun isSatisfied(game: Game): Boolean {
-        // Check Level
-        if (game.level < level){
+        // Check rank
+        if (game.rank < rank){
             return false
         }
 
@@ -69,7 +70,7 @@ class Prerequisites() {
             }
         }
 
-        // TODO: Check level
+        // TODO: Check rank
 
         return true
     }

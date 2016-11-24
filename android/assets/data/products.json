@@ -30,7 +30,7 @@
       "cps": 0,
       "pps": 0,
       "prereqs": {
-        "level": 1
+        "rank": 1
       }
     },
     {
@@ -41,7 +41,7 @@
       "cps": 0,
       "pps": 0,
       "prereqs": {
-        "level": 1,
+        "rank": 1,
         "eclairs": 15
       }
     },
@@ -53,7 +53,7 @@
       "cps": 0.5,
       "pps": 0,
       "prereqs": {
-        "level": 2
+        "rank": 2
       }
     },
     {
@@ -64,7 +64,7 @@
       "cps": 2,
       "pps": 0,
       "prereqs": {
-        "level": 2,
+        "rank": 2,
         "cupcakes": 10
       }
     },
@@ -76,7 +76,7 @@
       "cps": 0,
       "pps": 0.5,
       "prereqs": {
-        "level": 3
+        "rank": 3
       }
     },
     {
@@ -87,7 +87,7 @@
       "cps": 0,
       "pps": 1.5,
       "prereqs": {
-        "level": 3,
+        "rank": 3,
         "pies": 5
       }
     }

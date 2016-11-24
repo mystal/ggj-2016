@@ -8,24 +8,24 @@ import java.util.*
 
 
 class Game(val debug: Boolean) {
-    var level: Int = 0
+    var rank: Int = 0
         private set
 
     var exp: Int = 0
         private set
 
-    var expToLevel: ExpToLevel = ExpToLevel()
+    var expToRank: ExpToRank = ExpToRank()
         private set
 
-    val maxLevel: Int
-        get() = expToLevel.numLevels
+    val maxRank: Int
+        get() = expToRank.numRanks
 
-    val expToNextLevel: Int
+    val expToNextRank: Int
         get() {
-            if (level >= maxLevel) {
+            if (rank >= maxRank) {
                 return 0
             }
-            return expToLevel.get(level) - exp
+            return expToRank.get(rank) - exp
         }
 
     // TODO: Maybe make this a Long that is tenths of cookies owned?
@@ -124,21 +124,21 @@ class Game(val debug: Boolean) {
     fun addExp(amount: Int) {
         var remaining = amount
         // TODO: Don't allow negative values
-        while (level < maxLevel && remaining > 0) {
-            if (remaining < expToNextLevel) {
+        while (rank < maxRank && remaining > 0) {
+            if (remaining < expToNextRank) {
                 exp += remaining
                 remaining = 0
             } else {
-                remaining -= expToNextLevel
-                levelUp()
+                remaining -= expToNextRank
+                rankUp()
             }
         }
     }
 
-    fun levelUp() {
-        if (level < maxLevel) {
+    fun rankUp() {
+        if (rank < maxRank) {
             exp = 0
-            level += 1
+            rank += 1
         }
     }
 
@@ -223,7 +223,7 @@ class Game(val debug: Boolean) {
 
         val expFile = Gdx.files.internal("data/exp.json")
         val expJson = expFile.readString()
-        expToLevel = json.fromJson(ExpToLevel::class.java, expJson)
+        expToRank = json.fromJson(ExpToRank::class.java, expJson)
 
         val productsFile = Gdx.files.internal("data/products.json")
         val productJson = productsFile.readString()
@@ -257,8 +257,8 @@ class Game(val debug: Boolean) {
     fun loadState(saveData: GameSaveData, ui: Ui) {
         // Load game state.
         //saveData.applyTo(this)
-        // Load levels and experience.
-        level = saveData.level
+        // Load rank and experience.
+        rank = saveData.rank
         exp = saveData.exp
 
         // Load resources.
@@ -313,14 +313,14 @@ class Game(val debug: Boolean) {
     }
 }
 
-class ExpToLevel {
-    var expToLevel: ArrayList<Int> = ArrayList()
+class ExpToRank {
+    var expToRank: ArrayList<Int> = ArrayList()
         private set
 
-    val numLevels: Int
-        get() = expToLevel.size
+    val numRanks: Int
+        get() = expToRank.size
 
-    fun get(level: Int): Int {
-        return expToLevel[level]
+    fun get(rank: Int): Int {
+        return expToRank[rank]
     }
 }

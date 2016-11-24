@@ -4,7 +4,7 @@ import java.util.*
 
 
 class GameSaveData() {
-    var level: Int = 0
+    var rank: Int = 0
 
     var exp: Int = 0
 
@@ -28,8 +28,8 @@ class GameSaveData() {
     var eventTimer: Float = 0.0f
 
     constructor(game: Game) : this() {
-        // Save level and experience.
-        level = game.level
+        // Save rank and experience.
+        rank = game.rank
         exp = game.exp
 
         // Save resources.

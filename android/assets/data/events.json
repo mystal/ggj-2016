@@ -9,7 +9,7 @@
         "biscuits": 1000
       },
       "prereqs": {
-        "level": 0
+        "rank": 0
       },
       "rewards":{
         "exp": 100
@@ -24,7 +24,7 @@
         "biscuits": 1000
       },
       "prereqs": {
-        "level": 0
+        "rank": 0
       },
       "rewards":{
         "exp": 150
@@ -39,7 +39,7 @@
         "biscuits": 1000
       },
       "prereqs": {
-        "level": 0
+        "rank": 0
       },
       "rewards":{
         "exp": 400
@@ -54,7 +54,7 @@
         "biscuits": 1000
       },
       "prereqs": {
-        "level": 0
+        "rank": 0
       },
       "rewards":{
         "exp": 500
@@ -70,7 +70,7 @@
         "eclairs": 10
       },
       "prereqs": {
-        "level": 1
+        "rank": 1
       },
       "rewards":{
         "exp": 500
@@ -86,7 +86,7 @@
         "cupcakes": 10
       },
       "prereqs": {
-        "level": 2
+        "rank": 2
       },
       "rewards":{
         "exp": 1000
@@ -101,7 +101,7 @@
         "pies": 10
       },
       "prereqs": {
-        "level": 1
+        "rank": 1
       },
       "rewards":{
         "exp": 1000
