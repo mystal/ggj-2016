@@ -4,6 +4,7 @@ import java.util.*
 
 class UpgradeInfo() {
     var name: String = ""
+    var image: String = ""
     var costs: Costs? = null
     //var effect: Effect
     var prereqs: Prerequisites? = null

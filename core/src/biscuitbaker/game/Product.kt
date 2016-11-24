@@ -5,6 +5,7 @@ import java.util.*
 // NOTE: Can't use a data class since JsonBeans expects a default constructor
 class ProductInfo() {
     var name: String = ""
+    var image: String = ""
     var price: Long = 0
     var bps: Double = 0.0
     var eps: Double = 0.0

@@ -26,7 +26,11 @@ class StoreTab(game: Game, ui: Ui, skin: Skin): Tab() {
     internal var upgradeStatuses: ArrayList<Label> = ArrayList()
     internal var upgradeButtons: ArrayList<TextButton> = ArrayList()
 
+    internal var defaultTexture: Texture
+
     init {
+        defaultTexture = Texture(Gdx.files.internal("img/bread_boy.png"))
+
         val upgradesLabel = Label("Upgrades", skin)
         content.add(upgradesLabel).colspan(MAX_COLUMNS)
 
@@ -37,8 +41,7 @@ class StoreTab(game: Game, ui: Ui, skin: Skin): Tab() {
 
         var col = 0
         game.upgrades.forEachIndexed { i, upgrade ->
-            val upgradeImage = Image(Texture(Gdx.files.internal("img/bread_boy.png")))
-            upgradeImage.scaleBy(-0.35f)
+            val upgradeImage = getImage(upgrade.info.image)
 
             val buttonText = if (upgrade.purchased) "Purchased" else "Buy: %d biscuits".format(upgrade.price)
             val upgradeStatus = Label(upgrade.name, skin)
@@ -107,8 +110,7 @@ class StoreTab(game: Game, ui: Ui, skin: Skin): Tab() {
                 }
             })
 
-            val productImage = Image(Texture(Gdx.files.internal("img/bread_boy.png")))
-            productImage.scaleBy(-0.35f)
+            val productImage = getImage(product.info.image)
 
             val t = VisTable()
             val nt = VisTable()
@@ -206,5 +208,26 @@ class StoreTab(game: Game, ui: Ui, skin: Skin): Tab() {
                 //productButton.setLayoutEnabled(true)
             }
         }
+    }
+
+    fun getImage(path: String): Image {
+        val texture = getTexture(path)
+
+        val image = Image(texture)
+        image.scaleBy(-0.35f)
+        return image
+    }
+
+    fun getTexture(path: String): Texture {
+        if (path == "") {
+            return defaultTexture
+        }
+
+        val imageHandle = Gdx.files.internal("img/$path")
+        if (!imageHandle.exists()) {
+            return defaultTexture
+        }
+
+        return Texture(imageHandle)
     }
 }
